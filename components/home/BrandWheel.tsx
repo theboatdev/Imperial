@@ -17,7 +17,6 @@ const BRANDS = [
   { id: 'img4', src: '/PARTNER LOGO_S/images-4.png' },
   { id: 'img5', src: '/PARTNER LOGO_S/images-5.jpeg' },
   { id: 'img6', src: '/PARTNER LOGO_S/images-6.jpeg', fit: 'cover' as const },
-  { id: 'ime', src: '/PARTNER LOGO_S/IME LOGO - WHITE BACKGROUND.png' },
   { id: 'uae', src: '/PARTNER LOGO_S/uae-placeholder.webp' },
 ];
 
