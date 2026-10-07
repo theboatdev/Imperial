@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { getAllProducts, getCollectionProducts, getProductFilters, searchProducts } from '@/lib/shopify-api';
 import type { SortKey } from '@/lib/types';
-import ProductCard from '@/components/products/ProductCard';
 import PLPFilters from '@/components/products/PLPFilters';
-import PLPToolbar from '@/components/products/PLPToolbar';
+import PLPProductResults from '@/components/products/PLPProductResults';
 import { Suspense } from 'react';
 import Link from 'next/link';
 
@@ -161,19 +160,12 @@ async function ProductGrid({
     const pageStart = (pageNum - 1) * PRODUCTS_PER_PAGE + 1;
 
     return (
-      <>
-        <PLPToolbar
-          totalCount={products.length}
-          currentSort={sort || ''}
-          pageStart={pageStart}
-          hasNextPage={pageInfo.hasNextPage}
-        />
-        <div className="prodgrid">
-          {products.map((product, i) => (
-            <ProductCard key={product.id} product={product} priority={i < 4} />
-          ))}
-        </div>
-
+      <PLPProductResults
+        products={products}
+        currentSort={sort || ''}
+        pageStart={pageStart}
+        hasNextPage={pageInfo.hasNextPage}
+      >
         {/* Pagination — cursor-based, driven by URL */}
         {(prevUrl || nextUrl) && (
           <div className="pagerow" style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '40px 0 24px' }}>
@@ -232,7 +224,7 @@ async function ProductGrid({
             </div>
           </div>
         )}
-      </>
+      </PLPProductResults>
     );
   } catch (err) {
     console.error('ProductGrid error:', err);

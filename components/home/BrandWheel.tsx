@@ -1,23 +1,24 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
-import Image from 'next/image';
+import Image from "next/image";
 
 // Real partner logos from public directory
+// fit: 'cover' fills the circular tile (for colored rectangular assets)
 const BRANDS = [
   { id: 'sika', src: '/PARTNER LOGO_S/Sika_NoClaim_pos_rgb_30.png' },
-  { id: 'mapei', src: '/PARTNER LOGO_S/mapei-og-5.jpg' },
+  { id: 'mapei', src: '/PARTNER LOGO_S/mapei-og-5.jpg', fit: 'cover' as const },
   { id: 'weber', src: '/PARTNER LOGO_S/Weber_Logo_RGB.jpg' },
-  { id: 'fila', src: '/PARTNER LOGO_S/logo-fila.jpg' },
+  { id: 'fila', src: '/PARTNER LOGO_S/logo-fila.jpg', fit: 'cover' as const },
   { id: 'promaster', src: '/PARTNER LOGO_S/Promaster New Logo.png' },
   { id: 'img2', src: '/PARTNER LOGO_S/images-2.png' },
-  { id: 'img3', src: '/PARTNER LOGO_S/images-3.png' },
+  { id: 'img3', src: '/PARTNER LOGO_S/images-3.png', fit: 'cover' as const },
   { id: 'img4', src: '/PARTNER LOGO_S/images-4.png' },
   { id: 'img5', src: '/PARTNER LOGO_S/images-5.jpeg' },
-  { id: 'img6', src: '/PARTNER LOGO_S/images-6.jpeg' },
+  { id: 'img6', src: '/PARTNER LOGO_S/images-6.jpeg', fit: 'cover' as const },
   { id: 'ime', src: '/PARTNER LOGO_S/IME LOGO - WHITE BACKGROUND.png' },
-  { id: 'uae', src: '/PARTNER LOGO_S/uae-placeholder.webp' }
+  { id: 'uae', src: '/PARTNER LOGO_S/uae-placeholder.webp' },
 ];
 
 export default function BrandWheel() {
@@ -27,24 +28,26 @@ export default function BrandWheel() {
   // Strict index-based tracking for "1 at a time" snapping
   const activeIndex = useRef(0);
   const currentRot = useRef(0);
-  
+
   // Interaction state
   const touchStartY = useRef(0);
   const isSwiping = useRef(false);
-  const lastInteractionTime = useRef(typeof Date !== 'undefined' ? Date.now() : 0);
-  const lastAutoStepTime = useRef(typeof Date !== 'undefined' ? Date.now() : 0);
+  const lastInteractionTime = useRef(
+    typeof Date !== "undefined" ? Date.now() : 0,
+  );
+  const lastAutoStepTime = useRef(typeof Date !== "undefined" ? Date.now() : 0);
 
   const STEP = 360 / BRANDS.length;
-  // Expanded radius to prevent the orbiting items from overlapping the center logo
-  const RADIUS_X = 180; 
-  const RADIUS_Y = 240;
+  // Radius clears the larger center disc and orbiting logos
+  const RADIUS_X = 220;
+  const RADIUS_Y = 270;
 
   useEffect(() => {
     let rafId: number;
 
     const loop = () => {
       const now = Date.now();
-      
+
       // Auto-play slowly if no recent interaction
       if (now - lastInteractionTime.current > 4000) {
         if (now - lastAutoStepTime.current > 2500) {
@@ -60,30 +63,30 @@ export default function BrandWheel() {
       // Render loop: Update DOM directly for maximum 60fps performance
       itemsRef.current.forEach((el, i) => {
         if (!el) return;
-        
+
         // 0 degrees is the 3 o'clock position (Right edge)
         const angleDeg = i * STEP - currentRot.current;
         const angleRad = (angleDeg * Math.PI) / 180;
-        
+
         const x = Math.cos(angleRad) * RADIUS_X;
         const y = Math.sin(angleRad) * RADIUS_Y;
-        
+
         // Normalized X gives us a value from 0 (Left edge) to 1 (Right edge).
         const normalizedX = (Math.cos(angleRad) + 1) / 2;
-        
-        // Use a power curve so the single front-most item pops significantly 
+
+        // Use a power curve so the single front-most item pops significantly
         // compared to its immediate neighbors.
         const scaleCurve = Math.pow(normalizedX, 6);
-        
+
         // Scaled up min and max for an overall larger appearance
         const minScale = 0.35;
         const maxScale = 1.95;
-        const scale = minScale + (scaleCurve * (maxScale - minScale));
-        
+        const scale = minScale + scaleCurve * (maxScale - minScale);
+
         const minOpacity = 0.05;
         const maxOpacity = 1;
-        const opacity = minOpacity + (normalizedX * (maxOpacity - minOpacity));
-        
+        const opacity = minOpacity + normalizedX * (maxOpacity - minOpacity);
+
         const zIndex = Math.round(normalizedX * 100);
 
         el.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${scale})`;
@@ -109,9 +112,9 @@ export default function BrandWheel() {
 
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!isSwiping.current) return;
-    
+
     const deltaY = touchStartY.current - e.clientY;
-    
+
     // Threshold to trigger a 1-item snap
     if (Math.abs(deltaY) > 40) {
       if (deltaY > 0) {
@@ -133,18 +136,18 @@ export default function BrandWheel() {
   const handleWheel = (e: React.WheelEvent) => {
     const now = Date.now();
     lastInteractionTime.current = now;
-    
+
     // Throttle wheel events to ensure strict 1-by-1 snapping
     if (now - lastAutoStepTime.current < 500) return;
-    
+
     if (e.deltaY > 0) activeIndex.current--;
     else activeIndex.current++;
-    
+
     lastAutoStepTime.current = now;
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="dial-carousel-container"
       onPointerDown={handlePointerDown}
@@ -181,6 +184,15 @@ export default function BrandWheel() {
           pointer-events: none;
           display: grid;
           place-items: center;
+          width: 220px;
+          height: 220px;
+          border-radius: 50%;
+          background: #ffffff;
+          border: 2px solid var(--silver, #95a7bd);
+          box-shadow:
+            0 0 0 6px rgba(149, 167, 189, 0.18),
+            0 10px 28px rgba(7, 27, 70, 0.08);
+          overflow: hidden;
         }
 
         .dial-origin {
@@ -195,14 +207,17 @@ export default function BrandWheel() {
           position: absolute;
           top: 0;
           left: 0;
-          width: 90px;
-          height: 90px;
-          border-radius: 18px;
+          width: 124px;
+          height: 124px;
+          border-radius: 50%;
           display: grid;
           place-items: center;
           background: #ffffff;
-          border: 1px solid rgba(0, 0, 0, 0.15); /* Stronger border for clearer separation */
-          box-shadow: 0 6px 20px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.08); /* Darker, more layered base shadow */
+          border: 2px solid var(--silver, #95a7bd);
+          box-shadow:
+            0 0 0 5px rgba(149, 167, 189, 0.16),
+            0 8px 22px rgba(0, 0, 0, 0.12),
+            0 2px 8px rgba(0, 0, 0, 0.06);
           transform-origin: center;
           user-select: none;
           will-change: transform, opacity;
@@ -214,13 +229,13 @@ export default function BrandWheel() {
         <Image
           src="/IME LOGO - TRANSPARENT BACKGROUND.png"
           alt="Imperial Middle East Logo"
-          width={140}
-          height={140}
+          width={168}
+          height={168}
           priority
-          style={{ 
-            objectFit: 'contain', 
-            height: '140px', 
-            width: '140px',
+          style={{
+            objectFit: 'contain',
+            height: '168px',
+            width: '168px',
           }}
         />
       </div>
@@ -238,8 +253,12 @@ export default function BrandWheel() {
               src={brand.src}
               alt={`${brand.id} logo`}
               fill
-              sizes="90px"
-              style={{ objectFit: 'contain', padding: '12px' }}
+              sizes="124px"
+              style={
+                brand.fit === 'cover'
+                  ? { objectFit: 'cover', padding: 0 }
+                  : { objectFit: 'contain', padding: '18px' }
+              }
             />
           </div>
         ))}

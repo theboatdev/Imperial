@@ -806,9 +806,9 @@ a.btn-primary {
 /* ─── Category Grid ─────────────────────────────────────── */
 .catgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .cattile {
-  background: #fff; padding: 20px; text-align: left; border-radius: var(--r-card); cursor: pointer;
+  background: #fff; padding: 14px; text-align: left; border-radius: var(--r-card); cursor: pointer;
   box-shadow: var(--sh-soft); transition: box-shadow var(--motion), transform var(--motion);
-  display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: var(--text);
+  display: flex; flex-direction: column; gap: 14px; text-decoration: none; color: var(--text);
   border: 1px solid transparent;
 }
 .cattile:hover { box-shadow: var(--sh-lift); transform: translateY(-2px); border-color: var(--line); }
@@ -817,10 +817,66 @@ a.btn-primary {
   display: grid; place-items: center; transition: all var(--motion);
 }
 .cattile:hover .icon-box { background: var(--navy); color: #fff; box-shadow: var(--sh-chip); }
+.cattile .cat-image {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  border-radius: var(--r-soft);
+  overflow: hidden;
+  background: var(--slot);
+}
 .cattile span { font-size: 13px; font-weight: 600; }
 
 /* ─── Product Card & Grid ───────────────────────────────── */
 .prodgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.prodlist {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.prodlist .card,
+.prodlist .prod-card {
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 148px;
+}
+.prodlist .card .ph,
+.prodlist .prod-card-image {
+  width: 160px;
+  min-width: 160px;
+  height: auto;
+  min-height: 148px;
+  flex-shrink: 0;
+}
+.prodlist .card .body,
+.prodlist .prod-card-body {
+  flex: 1;
+  min-width: 0;
+  padding: 16px 18px;
+  justify-content: center;
+}
+.prodlist .card .body .name,
+.prodlist .prod-card-name {
+  min-height: 0;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.prodlist .card .price,
+.prodlist .prod-card-price {
+  margin: 6px 0 12px;
+}
+.prodlist .card .qadd,
+.prodlist .prod-card-add {
+  width: auto;
+  align-self: flex-start;
+  min-width: 140px;
+  margin-top: 0;
+}
+.prodlist .card .wish,
+.prodlist .prod-card-wish {
+  top: 12px;
+  right: 12px;
+}
 .card, .prod-card {
   background: #fff; position: relative; cursor: pointer; border-radius: var(--r-card); overflow: hidden;
   box-shadow: var(--sh-soft); transition: box-shadow var(--motion), transform var(--motion);
@@ -873,16 +929,10 @@ a.btn-primary {
 .card .price small, .prod-card-price small { font-weight: 400; color: var(--faint); font-size: 10px; }
 .card .qadd, .prod-card-add {
   position: relative;
-  overflow: hidden;
   width: 100%;
   margin-top: auto;
-  background:
-    radial-gradient(ellipse 70% 55% at 50% -8%, rgba(255, 248, 225, 0.9) 0%, rgba(255, 220, 130, 0.4) 30%, transparent 65%),
-    linear-gradient(180deg, rgba(55, 139, 255, 0.76) 0%, rgba(24, 102, 218, 0.84) 48%, rgba(9, 79, 168, 0.94) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  border-bottom-color: rgba(185, 215, 255, 0.5);
+  background: var(--imperial-blue);
+  border: 1px solid var(--imperial-blue);
   color: #ffffff;
   padding: 12px 18px;
   font-size: 12.5px;
@@ -894,75 +944,33 @@ a.btn-primary {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow:
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1.5px 2px 0 rgba(255, 255, 255, 0.35),
-    0 12px 24px -4px rgba(9, 79, 168, 0.4),
-    0 6px 14px -2px rgba(95, 60, 215, 0.22),
-    0 2px 5px rgba(7, 27, 70, 0.1);
-  transition: all var(--motion);
-}
-.card .qadd > *, .prod-card-add > * {
-  position: relative;
-  z-index: 2;
+  box-shadow: none;
+  transition: background var(--motion), border-color var(--motion);
 }
 .card .qadd::before, .prod-card-add::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 58%;
-  height: 55%;
-  border-radius: var(--r-pill) var(--r-pill) 50% 50%;
-  background: radial-gradient(
-    ellipse 60% 45% at 50% 0%,
-    #ffffff 0%,
-    rgba(255, 248, 225, 0.95) 25%,
-    rgba(255, 220, 130, 0.5) 48%,
-    rgba(255, 200, 100, 0.12) 70%,
-    transparent 100%
-  );
-  filter: blur(0.5px);
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 .card .qadd:hover, .prod-card-add:hover {
-  transform: translateY(-2px);
-  background:
-    radial-gradient(ellipse 75% 65% at 50% -8%, rgba(255, 250, 235, 1) 0%, rgba(255, 235, 160, 0.55) 35%, transparent 70%),
-    linear-gradient(180deg, rgba(70, 155, 255, 0.85) 0%, rgba(35, 118, 232, 0.9) 48%, rgba(11, 92, 194, 0.98) 100%);
-  border-color: rgba(255, 255, 255, 0.9);
-  box-shadow:
-    inset 0 2px 1.5px 0 #ffffff,
-    inset 0 -1.5px 2px 0 rgba(255, 255, 255, 0.45),
-    0 18px 36px -4px rgba(9, 79, 168, 0.52),
-    0 8px 18px -2px rgba(95, 60, 215, 0.3),
-    0 3px 6px rgba(7, 27, 70, 0.12);
+  background: var(--navy);
+  border-color: var(--navy);
+  transform: none;
+  box-shadow: none;
 }
 .card .qadd:active, .prod-card-add:active {
-  transform: translateY(0);
-  box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 14px rgba(9, 79, 168, 0.35);
+  transform: none;
+  box-shadow: none;
 }
 .card .qadd.added, .prod-card-add.added {
-  background:
-    radial-gradient(ellipse 70% 55% at 50% -8%, rgba(255, 255, 255, 0.85) 0%, transparent 65%),
-    linear-gradient(180deg, rgba(40, 185, 105, 0.85) 0%, rgba(16, 140, 72, 0.95) 100%);
-  border-color: rgba(255, 255, 255, 0.85);
-  box-shadow:
-    inset 0 1.5px 1.5px #ffffff,
-    0 12px 24px -4px rgba(16, 140, 72, 0.45);
+  background: #108c48;
+  border-color: #108c48;
+  box-shadow: none;
 }
 .card .qadd.out-of-stock, .prod-card-add.out-of-stock {
-  background: linear-gradient(180deg, rgba(220, 53, 69, 0.9) 0%, rgba(180, 25, 40, 1) 100%) !important;
+  background: #dc3545 !important;
   color: #fff !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
+  border-color: #dc3545 !important;
   opacity: 1 !important;
   box-shadow: none !important;
-  filter: none !important;
-}
-.card .qadd.out-of-stock::before, .prod-card-add.out-of-stock::before {
-  display: none !important;
 }
 
 /* ─── Reviews ───────────────────────────────────────────── */
@@ -1217,6 +1225,21 @@ footer .col div:hover, footer .col a:hover, .imp-footer-col a:hover, .imp-footer
 
 @media (max-width: 900px) {
   .catgrid, .prodgrid { grid-template-columns: repeat(2, 1fr); }
+  .prodlist .card,
+  .prodlist .prod-card {
+    flex-direction: column;
+  }
+  .prodlist .card .ph,
+  .prodlist .prod-card-image {
+    width: 100%;
+    min-width: 0;
+    height: 160px;
+    min-height: 160px;
+  }
+  .prodlist .card .qadd,
+  .prodlist .prod-card-add {
+    width: 100%;
+  }
   .reviewgrid { grid-template-columns: 1fr; }
   .plpwrap, .plp-wrap, .pdpwrap, .pdp-layout, .cartwrap { flex-direction: column; }
   .filters, .plp-filters, .pdpgallery, .pdp-gallery, .summary { width: 100%; }
