@@ -1,0 +1,80 @@
+import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import crypto from 'crypto';
+
+// Random string generator for PKCE challenge and state using base64url
+function generateRandomString(length: number) {
+  return crypto.randomBytes(length).toString('base64url').slice(0, length);
+}
+
+function generateCodeChallenge(codeVerifier: string) {
+  return crypto.createHash('sha256').update(codeVerifier).digest('base64url');
+}
+
+export async function GET(request: Request) {
+  const clientId = process.env.SHOPIFY_CUSTOMER_API_CLIENT_ID;
+  const authUrl = process.env.SHOPIFY_AUTH_URL;
+  
+  if (!clientId || !authUrl) {
+    return NextResponse.json({ error: 'Shopify Customer API credentials not configured.' }, { status: 500 });
+  }
+
+  // Failsafe: Ensure SHOPIFY_AUTH_URL isn't accidentally pointing back to our own app,
+  // which causes an infinite redirect loop.
+  if (authUrl.includes('/api/auth/login') || !authUrl.includes('shopify.com')) {
+    return NextResponse.json({ 
+      error: 'CRITICAL CONFIG ERROR: SHOPIFY_AUTH_URL in your environment variables is incorrect. It should be your Shopify Customer Account API authorization endpoint (e.g. https://shopify.com/authentication/YOUR_SHOP_ID/oauth/authorize), NOT your Netlify app URL.' 
+    }, { status: 500 });
+  }
+
+  const url = new URL(request.url);
+  
+  // Normalize the site URL (add https:// if missing, remove trailing slash)
+  let rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || url.origin;
+  if (!rawSiteUrl.startsWith('http')) {
+    rawSiteUrl = `https://${rawSiteUrl}`;
+  }
+  const siteOrigin = rawSiteUrl.replace(/\/$/, '');
+  const currentOrigin = url.origin.replace(/\/$/, '');
+
+  // If on a deploy preview (different origin), redirect to the stable domain.
+  // We use searchParams.has('redirected') as a failsafe to prevent infinite loops
+  // if the environment variables are misconfigured.
+  if (currentOrigin !== siteOrigin && !url.searchParams.has('redirected')) {
+    const targetUrl = new URL(`${siteOrigin}/api/auth/login`);
+    targetUrl.searchParams.set('redirected', '1');
+    return NextResponse.redirect(targetUrl.toString());
+  }
+
+  // 1. Generate state and nonce
+  const state = generateRandomString(32);
+  const nonce = generateRandomString(32);
+
+  // 2. Generate PKCE code verifier and challenge
+  const codeVerifier = generateRandomString(64);
+  const codeChallenge = generateCodeChallenge(codeVerifier);
+  
+  const redirectUri = `${siteOrigin}/api/auth/callback`;
+
+  // Shopify Customer Account Authorization Endpoint
+  const authorizationUrl = new URL(authUrl);
+  authorizationUrl.searchParams.append('client_id', clientId);
+  authorizationUrl.searchParams.append('response_type', 'code');
+  authorizationUrl.searchParams.append('redirect_uri', redirectUri);
+  authorizationUrl.searchParams.append('scope', 'openid email');
+  authorizationUrl.searchParams.append('state', state);
+  authorizationUrl.searchParams.append('nonce', nonce);
+  authorizationUrl.searchParams.append('code_challenge', codeChallenge);
+  authorizationUrl.searchParams.append('code_challenge_method', 'S256');
+
+  const response = NextResponse.redirect(authorizationUrl.toString());
+  
+  // Set PKCE cookies directly on the response to ensure they are never dropped
+  response.cookies.set('shopify_auth_state', state, { httpOnly: true, secure: true, maxAge: 60 * 10, path: '/', sameSite: 'lax' });
+  response.cookies.set('shopify_auth_nonce', nonce, { httpOnly: true, secure: true, maxAge: 60 * 10, path: '/', sameSite: 'lax' });
+  response.cookies.set('shopify_auth_code_verifier', codeVerifier, { httpOnly: true, secure: true, maxAge: 60 * 10, path: '/', sameSite: 'lax' });
+
+  return response;
+
+
+}
