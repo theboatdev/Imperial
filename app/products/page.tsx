@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getAllProducts, getCollectionProducts, getProductFilters } from '@/lib/shopify-api';
+import { getAllProducts, getCollectionProducts, getProductFilters, searchProducts } from '@/lib/shopify-api';
 import type { SortKey } from '@/lib/types';
 import ProductCard from '@/components/products/ProductCard';
 import PLPFilters from '@/components/products/PLPFilters';
@@ -35,6 +35,15 @@ function getSortVariables(sort?: string): { sortKey: SortKey; reverse: boolean }
     case 'price-desc': return { sortKey: 'PRICE', reverse: true };
     case 'newest': return { sortKey: 'CREATED_AT', reverse: true };
     case 'best-selling': return { sortKey: 'BEST_SELLING', reverse: false };
+    default: return { sortKey: 'RELEVANCE', reverse: false };
+  }
+}
+
+/** Map PLP sort to Storefront `search` sort keys (subset of product sorts). */
+function getSearchSortVariables(sort?: string): { sortKey: 'RELEVANCE' | 'PRICE'; reverse: boolean } {
+  switch (sort) {
+    case 'price-asc': return { sortKey: 'PRICE', reverse: false };
+    case 'price-desc': return { sortKey: 'PRICE', reverse: true };
     default: return { sortKey: 'RELEVANCE', reverse: false };
   }
 }
@@ -92,9 +101,28 @@ async function ProductGrid({
       }
       if (minPrice) products = products.filter((p) => parseFloat(p.priceRange.minVariantPrice.amount) >= parseFloat(minPrice));
       if (maxPrice) products = products.filter((p) => parseFloat(p.priceRange.minVariantPrice.amount) <= parseFloat(maxPrice));
+    } else if (q) {
+      // Typo-tolerant Storefront search (+ local fuzzy fallback)
+      const searchSort = getSearchSortVariables(sort);
+      const result = await searchProducts(q, {
+        first: PRODUCTS_PER_PAGE,
+        after,
+        sortKey: searchSort.sortKey,
+        reverse: searchSort.reverse,
+      });
+      products = result.products;
+      pageInfo = result.pageInfo;
+
+      // Facet filters applied locally so they work with search + fuzzy fallback
+      if (vendor) products = products.filter((p) => p.vendor === vendor);
+      if (type) products = products.filter((p) => p.productType === type);
+      if (tags && tags.length > 0) {
+        products = products.filter((p) => tags.every((t) => p.tags.includes(t)));
+      }
+      if (minPrice) products = products.filter((p) => parseFloat(p.priceRange.minVariantPrice.amount) >= parseFloat(minPrice));
+      if (maxPrice) products = products.filter((p) => parseFloat(p.priceRange.minVariantPrice.amount) <= parseFloat(maxPrice));
     } else {
       const queryParts: string[] = [];
-      if (q) queryParts.push(`title:${q}*`);
       if (vendor) queryParts.push(`vendor:"${vendor}"`);
       if (type) queryParts.push(`product_type:"${type}"`);
       if (tags && tags.length > 0) {

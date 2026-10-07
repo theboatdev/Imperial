@@ -4,6 +4,9 @@ import {
   PRODUCT_BY_HANDLE_QUERY,
   PRODUCT_RECOMMENDATIONS_QUERY,
   PRODUCT_FILTERS_QUERY,
+  PREDICTIVE_SEARCH_QUERY,
+  SEARCH_PRODUCTS_QUERY,
+  PRODUCT_SEARCH_INDEX_QUERY,
   COLLECTIONS_QUERY,
   COLLECTION_BY_HANDLE_QUERY,
   CREATE_CART_MUTATION,
@@ -23,6 +26,7 @@ import type {
   ProductsQueryVariables,
 } from './types';
 import { flattenConnection } from './utils';
+import { buildShopifyTextQuery, fuzzyRankProducts } from './search';
 
 // ─── Product Helpers ─────────────────────────────────────────────────────────
 
@@ -99,6 +103,162 @@ export async function getProductRecommendations(
     })) as ShopifyProduct[];
   } catch {
     return [];
+  }
+}
+
+// ─── Search API (typo-tolerant) ───────────────────────────────────────────────
+
+type SearchSortKey = 'RELEVANCE' | 'PRICE';
+
+async function getProductSearchIndex(): Promise<ShopifyProduct[]> {
+  const data = await shopifyFetch<{
+    products: ShopifyConnection<ShopifyProductRaw>;
+  }>({
+    query: PRODUCT_SEARCH_INDEX_QUERY,
+    variables: { first: 250 },
+    tags: ['products', 'search-index'],
+    revalidate: 120,
+  });
+
+  return flattenConnection(data.products).map(normalizeProduct);
+}
+
+/**
+ * Header autocomplete: Shopify predictive search (built-in typo tolerance),
+ * with a local fuzzy fallback when predictive returns nothing.
+ */
+export async function searchProductSuggestions(
+  q: string,
+  limit = 6
+): Promise<ShopifyProduct[]> {
+  const query = q.trim();
+  if (!query) return [];
+
+  const cappedLimit = Math.min(Math.max(limit, 1), 10);
+
+  try {
+    const data = await shopifyFetch<{
+      predictiveSearch: { products: ShopifyProductRaw[] };
+    }>({
+      query: PREDICTIVE_SEARCH_QUERY,
+      variables: { query, limit: cappedLimit },
+      tags: ['search', 'predictive-search'],
+      revalidate: 30,
+    });
+
+    const predictive = (data.predictiveSearch?.products ?? []).map(normalizeProduct);
+    if (predictive.length > 0) return predictive.slice(0, limit);
+  } catch (error) {
+    console.error('Predictive search failed, trying fallbacks:', error);
+  }
+
+  // Secondary: Storefront products query with wildcard
+  try {
+    const result = await getAllProducts({
+      query: buildShopifyTextQuery(query),
+      first: limit,
+      sortKey: 'RELEVANCE',
+    });
+    if (result.products.length > 0) return result.products;
+  } catch {
+    // continue to fuzzy fallback
+  }
+
+  // Final: local fuzzy match against cached catalog (handles harder typos)
+  try {
+    const catalog = await getProductSearchIndex();
+    return fuzzyRankProducts(query, catalog, limit);
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Full PLP search with Shopify's typo-tolerant `search` query.
+ * Falls back to local fuzzy ranking when Shopify returns no hits.
+ */
+export async function searchProducts(
+  q: string,
+  options: {
+    first?: number;
+    after?: string;
+    sortKey?: SearchSortKey;
+    reverse?: boolean;
+  } = {}
+): Promise<{
+  products: ShopifyProduct[];
+  pageInfo: { hasNextPage: boolean; endCursor: string | null };
+  usedFuzzyFallback: boolean;
+}> {
+  const query = q.trim();
+  const { first = 24, after, sortKey = 'RELEVANCE', reverse = false } = options;
+
+  if (!query) {
+    return {
+      products: [],
+      pageInfo: { hasNextPage: false, endCursor: null },
+      usedFuzzyFallback: false,
+    };
+  }
+
+  try {
+    const data = await shopifyFetch<{
+      search: ShopifyConnection<ShopifyProductRaw | Record<string, never>> & {
+        pageInfo: { hasNextPage: boolean; endCursor: string | null };
+        totalCount: number;
+      };
+    }>({
+      query: SEARCH_PRODUCTS_QUERY,
+      variables: {
+        query,
+        first,
+        after,
+        sortKey,
+        reverse,
+        prefix: 'LAST',
+      },
+      tags: ['search', 'products'],
+      revalidate: 30,
+    });
+
+    const products = flattenConnection(data.search)
+      .filter((node): node is ShopifyProductRaw => Boolean(node && 'id' in node && 'title' in node))
+      .map(normalizeProduct);
+
+    if (products.length > 0 || after) {
+      return {
+        products,
+        pageInfo: data.search.pageInfo ?? { hasNextPage: false, endCursor: null },
+        usedFuzzyFallback: false,
+      };
+    }
+  } catch (error) {
+    console.error('Storefront search failed, trying fuzzy fallback:', error);
+  }
+
+  // Fuzzy fallback only on the first page (no cursor) — in-memory rank of catalog
+  if (after) {
+    return {
+      products: [],
+      pageInfo: { hasNextPage: false, endCursor: null },
+      usedFuzzyFallback: true,
+    };
+  }
+
+  try {
+    const catalog = await getProductSearchIndex();
+    const ranked = fuzzyRankProducts(query, catalog, first);
+    return {
+      products: ranked,
+      pageInfo: { hasNextPage: false, endCursor: null },
+      usedFuzzyFallback: true,
+    };
+  } catch {
+    return {
+      products: [],
+      pageInfo: { hasNextPage: false, endCursor: null },
+      usedFuzzyFallback: true,
+    };
   }
 }
 

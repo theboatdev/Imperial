@@ -168,6 +168,214 @@ export const PRODUCT_FILTERS_QUERY = `
   }
 `;
 
+// Typo-tolerant typeahead (Shopify Predictive Search)
+export const PREDICTIVE_SEARCH_QUERY = `
+  query PredictiveSearch($query: String!, $limit: Int!) {
+    predictiveSearch(query: $query, limit: $limit, limitScope: EACH, types: [PRODUCT]) {
+      products {
+        id
+        title
+        handle
+        description
+        descriptionHtml
+        productType
+        vendor
+        tags
+        availableForSale
+        totalInventory
+        createdAt
+        updatedAt
+        priceRange {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+          maxVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+        images(first: 1) {
+          edges {
+            node {
+              url
+              altText
+              width
+              height
+            }
+          }
+        }
+        variants(first: 1) {
+          edges {
+            node {
+              id
+              title
+              price {
+                amount
+                currencyCode
+              }
+              availableForSale
+              quantityAvailable
+              selectedOptions {
+                name
+                value
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+// Full storefront search with typo tolerance + relevance ranking
+export const SEARCH_PRODUCTS_QUERY = `
+  query SearchProducts(
+    $query: String!
+    $first: Int!
+    $after: String
+    $sortKey: SearchSortKeys
+    $reverse: Boolean
+    $prefix: SearchPrefixQueryType
+  ) {
+    search(
+      query: $query
+      first: $first
+      after: $after
+      sortKey: $sortKey
+      reverse: $reverse
+      prefix: $prefix
+      types: [PRODUCT]
+    ) {
+      edges {
+        node {
+          ... on Product {
+            id
+            title
+            handle
+            description
+            descriptionHtml
+            productType
+            vendor
+            tags
+            availableForSale
+            totalInventory
+            createdAt
+            updatedAt
+            priceRange {
+              minVariantPrice {
+                amount
+                currencyCode
+              }
+              maxVariantPrice {
+                amount
+                currencyCode
+              }
+            }
+            images(first: 5) {
+              edges {
+                node {
+                  url
+                  altText
+                  width
+                  height
+                }
+              }
+            }
+            variants(first: 20) {
+              edges {
+                node {
+                  id
+                  title
+                  price {
+                    amount
+                    currencyCode
+                  }
+                  availableForSale
+                  quantityAvailable
+                  selectedOptions {
+                    name
+                    value
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      totalCount
+    }
+  }
+`;
+
+// Compact catalog used for local fuzzy fallback when Shopify returns no hits
+export const PRODUCT_SEARCH_INDEX_QUERY = `
+  query GetProductSearchIndex($first: Int!) {
+    products(first: $first) {
+      edges {
+        node {
+          id
+          title
+          handle
+          description
+          descriptionHtml
+          productType
+          vendor
+          tags
+          availableForSale
+          totalInventory
+          createdAt
+          updatedAt
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+            maxVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          images(first: 1) {
+            edges {
+              node {
+                url
+                altText
+                width
+                height
+              }
+            }
+          }
+          variants(first: 1) {
+            edges {
+              node {
+                id
+                title
+                price {
+                  amount
+                  currencyCode
+                }
+                availableForSale
+                quantityAvailable
+                selectedOptions {
+                  name
+                  value
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 // ─── Collection Queries ──────────────────────────────────────────────────────
 
 export const COLLECTIONS_QUERY = `
