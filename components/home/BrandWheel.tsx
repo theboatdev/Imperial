@@ -184,8 +184,8 @@ export default function BrandWheel() {
           pointer-events: none;
           display: grid;
           place-items: center;
-          width: 220px;
-          height: 220px;
+          width: 176px;
+          height: 176px;
           border-radius: 50%;
           background: #ffffff;
           border: 2px solid var(--silver, #95a7bd);
@@ -229,13 +229,13 @@ export default function BrandWheel() {
         <Image
           src="/IME LOGO - TRANSPARENT BACKGROUND.png"
           alt="Imperial Middle East Logo"
-          width={168}
-          height={168}
+          width={132}
+          height={132}
           priority
           style={{
             objectFit: 'contain',
-            height: '168px',
-            width: '168px',
+            height: '132px',
+            width: '132px',
           }}
         />
       </div>
