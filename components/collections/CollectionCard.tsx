@@ -1,12 +1,15 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 import type { ShopifyCollection } from '@/lib/types';
 
 interface CollectionCardProps {
   collection: ShopifyCollection;
 }
 
-export default function CollectionCard({ collection }: CollectionCardProps) {
+export default async function CollectionCard({ collection }: CollectionCardProps) {
+  const t = await getTranslations('Home');
+
   return (
     <Link
       href={`/products?collection=${collection.handle}`}
@@ -37,7 +40,7 @@ export default function CollectionCard({ collection }: CollectionCardProps) {
                   : collection.description}
               </p>
             )}
-            <span className="collection-card-cta">Explore Collection</span>
+            <span className="collection-card-cta">{t('explore')}</span>
           </div>
         </div>
       </div>

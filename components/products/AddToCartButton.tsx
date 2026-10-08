@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 import { useCartStore } from '@/lib/cart-store';
 import type { ShopifyProduct, ShopifyVariant } from '@/lib/types';
 import { addLineItemAction } from '@/app/actions/cart';
@@ -16,6 +17,7 @@ export default function AddToCartButton({
   selectedVariant,
   quantity = 1,
 }: AddToCartButtonProps) {
+  const t = useTranslations('Products');
   const [isAdding, setIsAdding] = useState(false);
   const [added, setAdded] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
@@ -61,12 +63,12 @@ export default function AddToCartButton({
 
   const isDisabled = !selectedVariant.availableForSale || isAdding;
   const buttonText = !selectedVariant.availableForSale
-    ? 'Out of Stock'
+    ? t('outOfStock')
     : added
-      ? 'Added to Bag'
+      ? t('addedToBag')
       : isAdding
-        ? 'Adding...'
-        : 'Add to Bag';
+        ? t('adding')
+        : t('addToBag');
 
   return (
     <button

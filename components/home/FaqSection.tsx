@@ -1,28 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-
-const FAQS = [
-  {
-    question: 'How do I earn Imperial Rewards points?',
-    answer: 'You earn points on every purchase made through our website. Once you accumulate enough points, you can redeem them for discounts on future orders or unlock professional tiers for exclusive pricing.'
-  },
-  {
-    question: 'Can I restrict purchasing to approved business accounts only?',
-    answer: 'Yes. Our B2B platform allows you to set up company profiles where guest access can be restricted, and authorized buyers can place orders using predefined credit limits.'
-  },
-  {
-    question: 'How do I calculate the coverage for a product?',
-    answer: 'Product coverage varies by substrate and application method. Please check the Technical Data Sheet (TDS) linked on each product page for precise calculation formulas, or contact our technical team for assistance.'
-  },
-  {
-    question: 'Do you offer same-day delivery in the UAE?',
-    answer: 'For items stocked in our Al Quoz warehouse, we offer same-day or next-day delivery within Dubai, and 24-48 hours for other emirates depending on the order volume.'
-  }
-];
+import { useTranslations } from 'next-intl';
 
 export default function FaqSection() {
+  const t = useTranslations('FAQ');
   const [openIdx, setOpenIdx] = useState<number | null>(0);
+
+  const FAQS = [0, 1, 2, 3].map((i) => ({
+    question: t(`items.${i}.question`),
+    answer: t(`items.${i}.answer`),
+  }));
 
   const toggle = (idx: number) => {
     setOpenIdx(openIdx === idx ? null : idx);
@@ -32,8 +20,8 @@ export default function FaqSection() {
     <div className="section" style={{ background: '#fff', margin: '0 28px 64px', borderRadius: 'var(--r-card)', padding: '48px 40px', boxShadow: 'var(--sh-soft)' }}>
       <div className="sectionhead" style={{ marginBottom: '32px' }}>
         <div>
-          <div className="kicker">Support</div>
-          <h3 style={{ borderBottom: 'none', margin: 0, padding: 0 }}>Frequently Asked Questions</h3>
+          <div className="kicker">{t('support')}</div>
+          <h3 style={{ borderBottom: 'none', margin: 0, padding: 0 }}>{t('title')}</h3>
         </div>
       </div>
 

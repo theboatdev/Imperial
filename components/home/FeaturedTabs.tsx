@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 import ProductCard from '@/components/products/ProductCard';
 import type { ShopifyProduct } from '@/lib/types';
 
@@ -9,24 +10,32 @@ interface FeaturedTabsProps {
   products: ShopifyProduct[];
 }
 
+type TabId = 'featured' | 'bestSellers' | 'rewards' | 'promotional';
+
 export default function FeaturedTabs({ products }: FeaturedTabsProps) {
-  const [activeTab, setActiveTab] = useState('Featured');
-  
-  const tabs = ['Featured', 'Best Sellers', 'Rewards', 'Promotional'];
+  const t = useTranslations('Home');
+  const [activeTab, setActiveTab] = useState<TabId>('featured');
+
+  const tabs: { id: TabId; label: string }[] = [
+    { id: 'featured', label: t('featured') },
+    { id: 'bestSellers', label: t('bestSellers') },
+    { id: 'rewards', label: t('rewards') },
+    { id: 'promotional', label: t('promotional') },
+  ];
 
   // Simulate different content based on tabs for demonstration
   // In a real app, you would fetch distinct collections for each tab
   const getTabProducts = () => {
     if (!products || products.length === 0) return [];
-    
+
     switch (activeTab) {
-      case 'Best Sellers':
+      case 'bestSellers':
         return [...products].reverse().slice(0, 8);
-      case 'Rewards':
+      case 'rewards':
         return products.slice(2, 6);
-      case 'Promotional':
+      case 'promotional':
         return products.slice(4, 8);
-      case 'Featured':
+      case 'featured':
       default:
         return products.slice(0, 8);
     }
@@ -38,8 +47,8 @@ export default function FeaturedTabs({ products }: FeaturedTabsProps) {
     <div className="section">
       <div className="sectionhead" style={{ marginBottom: '16px' }}>
         <div>
-          <div className="kicker">Curated</div>
-          <h3 style={{ borderBottom: 'none', paddingBottom: 0, margin: 0 }}>Discover Products</h3>
+          <div className="kicker">{t('curated')}</div>
+          <h3 style={{ borderBottom: 'none', paddingBottom: 0, margin: 0 }}>{t('discoverProducts')}</h3>
         </div>
         <Link href="/products" className="viewall">
           <span className="dot">
@@ -47,23 +56,23 @@ export default function FeaturedTabs({ products }: FeaturedTabsProps) {
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </span>
-          View all
+          {t('viewAll')}
         </Link>
       </div>
 
       {/* Tabs */}
       <div style={{ display: 'flex', gap: '8px', marginBottom: '32px', overflowX: 'auto', paddingBottom: '4px' }}>
-        {tabs.map(tab => (
+        {tabs.map((tab) => (
           <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
             style={{
               padding: '8px 16px',
               borderRadius: 'var(--r-pill)',
               border: '1px solid',
-              borderColor: activeTab === tab ? 'var(--navy)' : 'var(--line)',
-              background: activeTab === tab ? 'var(--navy)' : '#fff',
-              color: activeTab === tab ? '#fff' : 'var(--muted)',
+              borderColor: activeTab === tab.id ? 'var(--navy)' : 'var(--line)',
+              background: activeTab === tab.id ? 'var(--navy)' : '#fff',
+              color: activeTab === tab.id ? '#fff' : 'var(--muted)',
               fontSize: '13px',
               fontWeight: 600,
               cursor: 'pointer',
@@ -71,7 +80,7 @@ export default function FeaturedTabs({ products }: FeaturedTabsProps) {
               transition: 'all var(--motion)'
             }}
           >
-            {tab}
+            {tab.label}
           </button>
         ))}
       </div>
@@ -84,7 +93,7 @@ export default function FeaturedTabs({ products }: FeaturedTabsProps) {
         </div>
       ) : (
         <div style={{ padding: '48px 0', textAlign: 'center', color: 'var(--muted)' }}>
-          <p>No products available in this category.</p>
+          <p>{t('noProducts')}</p>
         </div>
       )}
     </div>

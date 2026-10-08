@@ -1,11 +1,12 @@
+import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { routing } from './i18n/routing';
+
+const intlMiddleware = createMiddleware(routing);
 
 /**
- * Middleware for account route protection and transparent auth token refresh.
- * Intercepts requests to /account/* routes and checks if the access token
- * is missing but a refresh token exists. If so, redirects through the
- * refresh endpoint to obtain a new token transparently.
+ * Middleware for locale routing, account route protection, and transparent auth token refresh.
  */
 export function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
@@ -16,23 +17,26 @@ export function middleware(request: NextRequest) {
     || request.headers.get('Next-Router-State-Tree') !== null
     || request.headers.get('Next-Router-Prefetch') !== null
     || searchParams.has('_rsc');
-  
+
   if (isRscRequest) {
     return NextResponse.next();
   }
 
+  // Strip locale prefix for account auth checks: /en/account → /account, /ar/account → /account
+  const pathnameWithoutLocale = pathname.replace(/^\/(en|ar)(?=\/|$)/, '') || '/';
+
   // --- ACCOUNT ROUTES PROTECTION ---
-  if (pathname.startsWith('/account')) {
+  if (pathnameWithoutLocale.startsWith('/account')) {
     const accessToken = request.cookies.get('customer_access_token')?.value;
     const refreshToken = request.cookies.get('customer_refresh_token')?.value;
     const loggedInIndicator = request.cookies.get('customer_logged_in')?.value;
 
     if (searchParams.has('error') || searchParams.has('auth')) {
-      return NextResponse.next();
+      return intlMiddleware(request);
     }
 
     if (accessToken) {
-      return NextResponse.next();
+      return intlMiddleware(request);
     }
 
     if (refreshToken) {
@@ -54,9 +58,12 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  return NextResponse.next();
+  return intlMiddleware(request);
 }
 
 export const config = {
-  matcher: ['/account/:path*'],
+  matcher: [
+    // Match all pathnames except api, _next internals, and static files
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+  ],
 };

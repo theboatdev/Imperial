@@ -1,13 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 import { useCartStore } from '@/lib/cart-store';
 import { formatPrice, isValidCheckoutUrl } from '@/lib/utils';
 import { useEffect, useRef, useState } from 'react';
 import { updateLineItemAction, removeLineItemAction } from '@/app/actions/cart';
 
 export default function CartDrawer() {
+  const t = useTranslations('Cart');
   const isOpen = useCartStore((s) => s.isOpen);
   const closeCart = useCartStore((s) => s.closeCart);
   const items = useCartStore((s) => s.items);
@@ -127,15 +129,17 @@ export default function CartDrawer() {
         className={`cart-drawer ${isOpen ? 'cart-drawer-open' : ''}`}
         role="dialog"
         aria-modal="true"
-        aria-label="Shopping cart"
+        aria-label={t('shoppingCart')}
         id="cart-drawer"
       >
         {/* Header */}
         <div className="cart-drawer-header">
           <h2 className="cart-drawer-title">
-            Cart {mounted && totalQuantity > 0 ? `(${totalQuantity})` : ''}
+            {mounted && totalQuantity > 0
+              ? t('cartCount', { count: totalQuantity })
+              : t('yourCart')}
           </h2>
-          <button onClick={closeCart} className="cart-drawer-close" aria-label="Close cart">
+          <button onClick={closeCart} className="cart-drawer-close" aria-label={t('closeCart')}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
@@ -151,9 +155,9 @@ export default function CartDrawer() {
                 <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
               </svg>
-              <p className="cart-empty-text">Your cart is empty</p>
+              <p className="cart-empty-text">{t('empty')}</p>
               <Link href="/products" className="cart-empty-link" onClick={closeCart}>
-                Browse Products
+                {t('browseProducts')}
               </Link>
             </div>
           ) : (
@@ -186,7 +190,7 @@ export default function CartDrawer() {
                     <button
                       onClick={() => handleRemoveItem(item.merchandiseId, item.id)}
                       className="cart-item-remove"
-                      aria-label={`Remove ${item.title}`}
+                      aria-label={t('removeItem', { title: item.title })}
                       disabled={isUpdating}
                     >
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -200,14 +204,14 @@ export default function CartDrawer() {
                       <button
                         onClick={() => handleDecrement(item.merchandiseId, item.id, item.quantity)}
                         className="cart-qty-btn"
-                        aria-label="Decrease quantity"
+                        aria-label={t('decreaseQty')}
                         disabled={isUpdating}
                       >−</button>
                       <span className="cart-qty-value">{item.quantity}</span>
                       <button
                         onClick={() => handleIncrement(item.merchandiseId, item.id, item.quantity)}
                         className="cart-qty-btn"
-                        aria-label="Increase quantity"
+                        aria-label={t('increaseQty')}
                         disabled={isUpdating}
                       >+</button>
                     </div>
@@ -228,22 +232,22 @@ export default function CartDrawer() {
         {mounted && items.length > 0 && (
           <div className="cart-drawer-footer">
             <div className="cart-subtotal">
-              <span>Subtotal</span>
+              <span>{t('subtotal')}</span>
               <span>{formatPrice({ amount: subtotal, currencyCode: currency })}</span>
             </div>
-            <p className="cart-tax-note">VAT (5%) and shipping calculated at checkout</p>
+            <p className="cart-tax-note">{t('vatNote')}</p>
             <button onClick={handleCheckout} className="btn primary block" style={{ marginBottom: '10px' }} id="checkout-button">
-              Proceed to Checkout
+              {t('proceedToCheckout')}
               <svg className="ic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
               <Link href="/compare" onClick={closeCart} className="btn secondary block" style={{ textAlign: 'center' }}>
-                Compare Items
+                {t('compareItems')}
               </Link>
               <button onClick={closeCart} className="btn secondary block">
-                Continue Shopping
+                {t('continueShopping')}
               </button>
             </div>
           </div>

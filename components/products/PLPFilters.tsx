@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useCallback, useTransition } from 'react';
+import { useTranslations } from 'next-intl';
 import type { ProductFilters } from '@/lib/shopify-api';
 
 interface PLPFiltersProps {
@@ -12,6 +13,7 @@ interface PLPFiltersProps {
 }
 
 export default function PLPFilters({ filters, currentSort, currentVendor, currentType }: PLPFiltersProps) {
+  const t = useTranslations('Products');
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -38,7 +40,7 @@ export default function PLPFilters({ filters, currentSort, currentVendor, curren
       params.append('tag', tag);
     } else {
       params.delete('tag');
-      existing.filter((t) => t !== tag).forEach((t) => params.append('tag', t));
+      existing.filter((existingTag) => existingTag !== tag).forEach((existingTag) => params.append('tag', existingTag));
     }
     startTransition(() => router.push(`${pathname}?${params.toString()}`));
   };
@@ -63,7 +65,7 @@ export default function PLPFilters({ filters, currentSort, currentVendor, curren
             type="button"
             style={{ background: 'none', border: 'none', color: 'var(--imperial-blue)', fontSize: '11px', cursor: 'pointer', fontWeight: 600 }}
           >
-            Clear all filters
+            {t('clearAllFilters')}
           </button>
         </div>
       )}
@@ -71,7 +73,7 @@ export default function PLPFilters({ filters, currentSort, currentVendor, curren
       {/* Vendors / Brands */}
       {filters.vendors.length > 0 && (
         <div className="filtergroup">
-          <h6>Brand</h6>
+          <h6>{t('brand')}</h6>
           <div className="opts">
             {filters.vendors.map((vendor) => {
               const isChecked = currentVendor === vendor;
@@ -98,7 +100,7 @@ export default function PLPFilters({ filters, currentSort, currentVendor, curren
       {/* Product Types / Categories */}
       {filters.productTypes.length > 0 && (
         <div className="filtergroup">
-          <h6>Category</h6>
+          <h6>{t('category')}</h6>
           <div className="opts">
             {filters.productTypes.map((type) => {
               const isChecked = currentType === type;
@@ -125,7 +127,7 @@ export default function PLPFilters({ filters, currentSort, currentVendor, curren
       {/* Attributes / Tags */}
       {filters.tags.length > 0 && (
         <div className="filtergroup">
-          <h6>Attributes</h6>
+          <h6>{t('attributes')}</h6>
           <div className="opts">
             {filters.tags.slice(0, 10).map((tag) => {
               const isChecked = activeTags.includes(tag);
@@ -151,7 +153,7 @@ export default function PLPFilters({ filters, currentSort, currentVendor, curren
 
       {/* Price Range Slider */}
       <div className="filtergroup">
-        <h6>Price (AED)</h6>
+        <h6>{t('priceAed')}</h6>
         <div className="opts rangewrap">
           <input
             type="range"
@@ -160,11 +162,15 @@ export default function PLPFilters({ filters, currentSort, currentVendor, curren
             step={10}
             value={currentMax || filters.maxPrice || 10000}
             onChange={handleMaxPrice}
-            aria-label="Maximum price"
+            aria-label={t('maxPrice')}
           />
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', color: 'var(--faint)', marginTop: '6px' }}>
-            <span>AED {filters.minPrice || 0}</span>
-            <span>AED {currentMax || `${filters.maxPrice || 10000}+`}</span>
+            <span>{t('aedAmount', { amount: filters.minPrice || 0 })}</span>
+            <span>
+              {currentMax
+                ? t('aedAmount', { amount: currentMax })
+                : t('aedAmountPlus', { amount: filters.maxPrice || 10000 })}
+            </span>
           </div>
         </div>
       </div>

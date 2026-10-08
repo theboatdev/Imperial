@@ -2,7 +2,8 @@
 
 import { useWishlistStore } from '@/lib/wishlist-store';
 import ProductCard from '@/components/products/ProductCard';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
 import type { ShopifyProduct } from '@/lib/types';
 
@@ -47,6 +48,7 @@ export default function WishlistGrid({
   maxItems,
   compact = false,
 }: WishlistGridProps) {
+  const t = useTranslations('Account');
   const [mounted, setMounted] = useState(false);
   const wishlistIds = useWishlistStore((s) => s.items);
 
@@ -80,9 +82,9 @@ export default function WishlistGrid({
     if (compact) {
       return (
         <div style={{ padding: '20px 0', color: 'var(--muted)', fontSize: '13.5px' }}>
-          <p style={{ margin: '0 0 14px' }}>Your wishlist is currently empty.</p>
+          <p style={{ margin: '0 0 14px' }}>{t('wishlistEmpty')}</p>
           <Link href="/products" className="btn secondary" style={{ fontSize: '12px', padding: '9px 16px' }}>
-            Explore Catalogue
+            {t('exploreCatalogue')}
           </Link>
         </div>
       );
@@ -90,12 +92,12 @@ export default function WishlistGrid({
     return (
       <div style={{ background: '#fff', padding: '56px 24px', textAlign: 'center', borderRadius: 'var(--r-card)', boxShadow: 'var(--sh-soft)' }}>
         <div style={{ fontSize: '48px', marginBottom: '16px', color: 'var(--silver)' }}>♡</div>
-        <h2 style={{ fontSize: '20px', color: 'var(--navy)', marginBottom: '8px' }}>Your wishlist is empty</h2>
+        <h2 style={{ fontSize: '20px', color: 'var(--navy)', marginBottom: '8px' }}>{t('wishlistEmptyTitle')}</h2>
         <p style={{ color: 'var(--muted)', marginBottom: '24px', maxWidth: '400px', margin: '0 auto 24px', lineHeight: 1.6 }}>
-          Save materials, equipment, and chemicals by clicking the heart icon on any product card.
+          {t('wishlistEmptyDesc')}
         </p>
         <Link href="/products" className="btn primary">
-          Browse Products
+          {t('browseProducts')}
         </Link>
       </div>
     );
@@ -106,7 +108,7 @@ export default function WishlistGrid({
       {!compact && (
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <p style={{ fontSize: '13.5px', color: 'var(--muted)', margin: 0 }}>
-            Showing <strong>{activeProducts.length}</strong> saved {activeProducts.length === 1 ? 'item' : 'items'}
+            {t('showingSaved', { count: activeProducts.length })}
           </p>
         </div>
       )}

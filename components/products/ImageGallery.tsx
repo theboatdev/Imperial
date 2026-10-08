@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import type { ShopifyImage } from '@/lib/types';
 
 interface ImageGalleryProps {
@@ -10,12 +11,13 @@ interface ImageGalleryProps {
 }
 
 export default function ImageGallery({ images, productTitle }: ImageGalleryProps) {
+  const t = useTranslations('Products');
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   if (images.length === 0) {
     return (
       <div className="gallery-empty">
-        <span>No images available</span>
+        <span>{t('noImages')}</span>
       </div>
     );
   }
@@ -44,7 +46,7 @@ export default function ImageGallery({ images, productTitle }: ImageGalleryProps
               key={index}
               onClick={() => setSelectedIndex(index)}
               className={`gallery-thumb ${index === selectedIndex ? 'gallery-thumb-active' : ''}`}
-              aria-label={`View image ${index + 1}`}
+              aria-label={t('viewImage', { n: index + 1 })}
               id={`gallery-thumb-${index}`}
             >
               <Image

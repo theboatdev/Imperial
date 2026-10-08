@@ -7,6 +7,7 @@
 :root {
   --font-display: "Garet", var(--font-poppins), "Poppins", Arial, sans-serif;
   --font-body: var(--font-poppins), "Poppins", Arial, sans-serif;
+  --font-arabic: var(--font-cairo), "Cairo", "Segoe UI", Tahoma, sans-serif;
 
   --midnight: #020817;
   --navy: #071b46;
@@ -1157,4 +1158,82 @@ footer .col div:hover, footer .col a:hover, .imp-footer-col a:hover, .imp-footer
   .footer-statement { padding: 36px 18px 28px; }
   .footer-columns { gap: 24px; }
   .store-frame, #storeframe { margin: 0; border-radius: 0; box-shadow: none; }
+}
+
+/* ─── Language switcher ─────────────────────────────────── */
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.lang-switcher button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 2px 4px;
+  cursor: pointer;
+  transition: color var(--motion);
+}
+.lang-switcher button.active,
+.lang-switcher button:hover {
+  color: #fff;
+}
+.lang-switcher .lang-sep {
+  color: rgba(255, 255, 255, 0.35);
+  user-select: none;
+}
+.lang-switcher[data-pending] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ─── Arabic / RTL ──────────────────────────────────────── */
+html[dir="rtl"] body,
+body.font-arabic {
+  font-family: var(--font-arabic);
+}
+html[dir="rtl"] {
+  --font-display: var(--font-arabic);
+  --font-body: var(--font-arabic);
+}
+
+html[dir="rtl"] .topbar .topbar-left span { margin-right: 0; margin-left: 20px; }
+html[dir="rtl"] .check .cnt { margin-left: 0; margin-right: auto; }
+
+html[dir="rtl"] .hero-text { text-align: right; }
+html[dir="rtl"] .hero-actions .btn .ic,
+html[dir="rtl"] .hero-link .ic,
+html[dir="rtl"] .footer-statement .btn .ic {
+  transform: scaleX(-1);
+}
+html[dir="rtl"] .hero-dots { left: 0; right: auto; }
+
+html[dir="rtl"] .cart-drawer {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+  border-left: none;
+  border-right: 1px solid var(--line);
+  box-shadow: 20px 0 60px rgba(14, 48, 94, 0.12);
+}
+html[dir="rtl"] .cart-drawer-open { transform: translateX(0); }
+
+html[dir="rtl"] .megaitem-btn svg {
+  margin-left: 0 !important;
+  margin-right: 4px;
+}
+
+html[dir="rtl"] button[style*="text-align: left"],
+html[dir="rtl"] .faq-question,
+html[dir="rtl"] .filters,
+html[dir="rtl"] .plp-filters {
+  text-align: right;
+}
+
+html[dir="rtl"] .searchbar button .ic,
+html[dir="rtl"] .header-search button .ic {
+  margin-inline-end: 4px;
 }

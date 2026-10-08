@@ -1,8 +1,9 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useState, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 import type { ShopifyProduct } from '@/lib/types';
 import { useCartStore } from '@/lib/cart-store';
 import { useWishlistStore } from '@/lib/wishlist-store';
@@ -15,6 +16,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, priority = false }: ProductCardProps) {
+  const t = useTranslations('Products');
   const { formatWithVat } = usePrice();
   const image = product.images[0];
   const [isAdding, setIsAdding] = useState(false);
@@ -85,12 +87,33 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
     : 'In Stock';
   const isLowStock = stockStatus === 'Low Stock';
 
+  const stockLabel =
+    stockStatus === 'Out of Stock'
+      ? t('outOfStock')
+      : isLowStock
+      ? stockQty !== null
+        ? t('lowStockLeft', { count: stockQty })
+        : t('lowStock')
+      : stockQty !== null
+      ? t('inStockCount', { count: stockQty })
+      : t('inStock');
+
+  const buttonLabel = unknownPrice
+    ? t('getQuote')
+    : isAdding
+    ? t('adding')
+    : added
+    ? t('added')
+    : isAvailable
+    ? t('quickAdd')
+    : t('outOfStock');
+
   return (
     <div className="card prod-card">
       {/* Wishlist button */}
       <button
         className={`wish prod-card-wish ${wishlisted ? 'active' : ''}`}
-        aria-label={wishlisted ? `Remove ${product.title} from wishlist` : `Add ${product.title} to wishlist`}
+        aria-label={wishlisted ? t('removeFromWishlist') : t('addToWishlist')}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -148,23 +171,19 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
               <polyline points="20 6 9 17 4 12" />
             </svg>
           )}
-          {stockStatus === 'Out of Stock'
-            ? 'Out of Stock'
-            : isLowStock
-            ? `Low Stock${stockQty !== null ? ` — ${stockQty} left` : ''}`
-            : `In Stock${stockQty !== null ? ` (${stockQty})` : ''}`}
+          {stockLabel}
         </div>
         <div className="price prod-card-price">
           {unknownPrice ? (
             <span className="card-price-value" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--imperial-blue)' }}>
-              Request for Quote
+              {t('requestForQuote')}
             </span>
           ) : (
             <>
               <span className="card-price-value">
                 {formatWithVat(currentPrice)}
               </span>
-              <small> / unit</small>
+              <small> {t('perUnit')}</small>
             </>
           )}
         </div>
@@ -172,7 +191,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
           className={`qadd prod-card-add ${added ? 'added' : ''} ${(!isAvailable && !unknownPrice) ? 'out-of-stock' : ''}`}
           onClick={unknownPrice ? (e) => { e.preventDefault(); e.stopPropagation(); window.location.href='/rfq'; } : handleAddToCart}
           disabled={(!isAvailable && !unknownPrice) || isAdding}
-          aria-label={unknownPrice ? `Request quote for ${product.title}` : `Add ${product.title} to cart`}
+          aria-label={unknownPrice ? t('requestQuote') : t('addToCart')}
         >
           <svg className="ic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             {unknownPrice ? (
@@ -184,7 +203,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
               </>
             )}
           </svg>
-          {unknownPrice ? 'Get Quote' : isAdding ? 'Adding...' : added ? '✓ Added' : isAvailable ? 'Quick Add' : 'Out of Stock'}
+          {buttonLabel}
         </button>
       </div>
     </div>
