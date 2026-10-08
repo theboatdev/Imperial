@@ -24,28 +24,42 @@ export default async function HomePage() {
   const collections = collectionsResult.status === 'fulfilled' ? collectionsResult.value : [];
   const products = productsResult.status === 'fulfilled' ? productsResult.value.products : [];
 
-  const CATEGORIES = [
-    {
-      title: 'Construction Chemicals',
-      href: '/products?collection=construction-chemicals',
-      image: '/category-chemicals.png',
-    },
-    {
-      title: 'Paints & Equipments',
-      href: '/products?collection=paints-equipments',
-      image: '/category-paints.png',
-    },
-    {
-      title: 'Building Materials',
-      href: '/products?collection=building-materials',
-      image: '/category-building-materials.png',
-    },
-    {
-      title: 'Tools & Equipment',
-      href: '/products?collection=tools',
-      image: '/category-tools.png',
-    },
+  // Prefer live Shopify collections; fall back to product-type categories
+  const CATEGORY_IMAGES = [
+    '/category-chemicals.png',
+    '/category-paints.png',
+    '/category-building-materials.png',
+    '/category-tools.png',
   ];
+  const CATEGORIES =
+    collections.length > 0
+      ? collections.slice(0, 4).map((col, i) => ({
+          title: col.title.charAt(0).toUpperCase() + col.title.slice(1),
+          href: `/products?collection=${col.handle}`,
+          image: CATEGORY_IMAGES[i % CATEGORY_IMAGES.length],
+        }))
+      : [
+          {
+            title: 'Waterproofing',
+            href: '/products?collection=waterproofing',
+            image: '/category-chemicals.png',
+          },
+          {
+            title: 'Adhesives',
+            href: '/products?collection=adhesive',
+            image: '/category-paints.png',
+          },
+          {
+            title: 'Sealants',
+            href: '/products?collection=sealent',
+            image: '/category-building-materials.png',
+          },
+          {
+            title: 'Bonding',
+            href: '/products?collection=bonding',
+            image: '/category-tools.png',
+          },
+        ];
 
   return (
     <>

@@ -24,9 +24,29 @@ import type {
   CartLineItem,
   ShopifyConnection,
   ProductsQueryVariables,
+  CollectionSortKey,
+  SortKey,
 } from './types';
 import { flattenConnection } from './utils';
-import { buildShopifyTextQuery, fuzzyRankProducts } from './search';
+import { buildShopifyTextQuery, buildCategoryProductQuery, fuzzyRankProducts } from './search';
+
+/** Map PLP / ProductSortKeys onto Collection.products sort keys. */
+function toCollectionSortKey(sortKey?: SortKey | string): CollectionSortKey {
+  switch (sortKey) {
+    case 'PRICE':
+      return 'PRICE';
+    case 'BEST_SELLING':
+      return 'BEST_SELLING';
+    case 'TITLE':
+      return 'TITLE';
+    case 'CREATED_AT':
+    case 'CREATED':
+      return 'CREATED';
+    // RELEVANCE is only valid on collections when a search query is passed
+    default:
+      return 'COLLECTION_DEFAULT';
+  }
+}
 
 // ─── Product Helpers ─────────────────────────────────────────────────────────
 
@@ -345,7 +365,8 @@ export async function getCollectionProducts(
   pageInfo: { hasNextPage: boolean; endCursor: string | null };
   collection: { id: string; title: string; handle: string; description: string } | null;
 }> {
-  const { first = 24, after, sortKey = 'COLLECTION_DEFAULT', reverse = false } = options;
+  const { first = 24, after, sortKey = 'RELEVANCE', reverse = false } = options;
+  const collectionSortKey = toCollectionSortKey(sortKey);
 
   try {
     const data = await shopifyFetch<{
@@ -360,34 +381,78 @@ export async function getCollectionProducts(
       } | null;
     }>({
       query: COLLECTION_BY_HANDLE_QUERY,
-      variables: { handle, first, after, sortKey, reverse },
+      variables: { handle, first, after, sortKey: collectionSortKey, reverse },
       tags: ['collection', handle],
+      revalidate: 60,
     });
 
     if (!data.collection) {
+      // Collection handle may not exist — still try product_type fallback
+      const fallback = await getAllProducts({
+        first,
+        after,
+        sortKey,
+        reverse,
+        query: buildCategoryProductQuery(handle),
+      });
+      return {
+        products: fallback.products,
+        pageInfo: fallback.pageInfo,
+        collection: null,
+      };
+    }
+
+    const collectionMeta = {
+      id: data.collection.id,
+      title: data.collection.title,
+      handle: data.collection.handle,
+      description: data.collection.description,
+    };
+
+    const products = flattenConnection(data.collection.products).map(normalizeProduct);
+    const pageInfo = data.collection.products.pageInfo ?? {
+      hasNextPage: false,
+      endCursor: null,
+    };
+
+    // Collections in this store are often empty shells; fall back to productType match
+    if (products.length === 0 && !after) {
+      const fallback = await getAllProducts({
+        first,
+        sortKey,
+        reverse,
+        query: buildCategoryProductQuery(handle, data.collection.title),
+      });
+      return {
+        products: fallback.products,
+        pageInfo: fallback.pageInfo,
+        collection: collectionMeta,
+      };
+    }
+
+    return { products, pageInfo, collection: collectionMeta };
+  } catch (error) {
+    console.error(`getCollectionProducts("${handle}") failed:`, error);
+    try {
+      const fallback = await getAllProducts({
+        first,
+        after,
+        sortKey,
+        reverse,
+        query: buildCategoryProductQuery(handle),
+      });
+      return {
+        products: fallback.products,
+        pageInfo: fallback.pageInfo,
+        collection: null,
+      };
+    } catch {
       return {
         products: [],
         pageInfo: { hasNextPage: false, endCursor: null },
         collection: null,
       };
     }
-
-    return {
-      products: flattenConnection(data.collection.products).map(normalizeProduct),
-      pageInfo: data.collection.products.pageInfo ?? { hasNextPage: false, endCursor: null },
-      collection: {
-        id: data.collection.id,
-        title: data.collection.title,
-        handle: data.collection.handle,
-        description: data.collection.description,
-      },
-    };
-  } catch {
-    return {
-      products: [],
-      pageInfo: { hasNextPage: false, endCursor: null },
-      collection: null,
-    };
   }
 }
 

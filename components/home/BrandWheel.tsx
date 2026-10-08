@@ -10,6 +10,7 @@ const BRANDS = [
   { id: 'sika', src: '/PARTNER LOGO_S/Sika_NoClaim_pos_rgb_30.png' },
   { id: 'mapei', src: '/PARTNER LOGO_S/mapei-og-5.jpg', fit: 'cover' as const },
   { id: 'weber', src: '/PARTNER LOGO_S/Weber_Logo_RGB.jpg' },
+  { id: 'fosroc', src: '/PARTNER LOGO_S/fosroc.png' },
   { id: 'fila', src: '/PARTNER LOGO_S/logo-fila.jpg', fit: 'cover' as const },
   { id: 'promaster', src: '/PARTNER LOGO_S/Promaster New Logo.png' },
   { id: 'img2', src: '/PARTNER LOGO_S/images-2.png' },

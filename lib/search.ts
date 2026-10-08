@@ -168,3 +168,50 @@ export function buildShopifyTextQuery(q: string): string {
   const safe = trimmed.replace(/"/g, '');
   return `${safe}*`;
 }
+
+/**
+ * Map empty Shopify collection handles/titles to product_type search terms.
+ * Many stores create category collections before assigning products; productType
+ * is often the real category signal.
+ */
+const CATEGORY_SEARCH_TERMS: Record<string, string[]> = {
+  adhesive: ['adhesive', 'adhesives'],
+  adhesives: ['adhesive', 'adhesives'],
+  sealent: ['sealant', 'sealants'], // common typo in this store's handle
+  sealant: ['sealant', 'sealants'],
+  sealants: ['sealant', 'sealants'],
+  waterproofing: ['waterproofing'],
+  bonding: ['bond', 'bonding', 'adhesive'],
+  hardware: ['hardware'],
+  coatings: ['coating', 'coatings'],
+  'protective-coatings': ['protective coatings', 'coating'],
+  flooring: ['flooring'],
+  grouts: ['grout', 'grouts'],
+};
+
+/**
+ * Build a products() query that matches a category/collection by product type
+ * (and title as a light secondary signal) when the collection itself is empty.
+ */
+export function buildCategoryProductQuery(handle: string, title?: string): string {
+  const key = handle.toLowerCase().trim();
+  const fromAlias = CATEGORY_SEARCH_TERMS[key];
+  const fallbackTerm = normalizeSearchText(title || handle).replace(/\s+/g, ' ');
+  const terms = fromAlias ?? (fallbackTerm ? [fallbackTerm] : [key]);
+
+  const parts: string[] = [];
+  for (const term of terms) {
+    const t = term.trim();
+    if (!t) continue;
+    // Prefer product_type; Shopify partial-matches "ADHESIVES" against related types
+    if (t.includes(' ')) {
+      parts.push(`product_type:"${t}"`);
+      parts.push(`product_type:*${t.split(' ')[0]}*`);
+    } else {
+      parts.push(`product_type:${t}*`);
+      parts.push(`product_type:*${t}*`);
+    }
+  }
+
+  return [...new Set(parts)].join(' OR ');
+}

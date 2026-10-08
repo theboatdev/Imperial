@@ -24,10 +24,10 @@ export default function Footer() {
         {/* Shop */}
         <div className="col imp-footer-col">
           <h6>Shop</h6>
-          <Link href="/products?collection=construction-chemicals">Construction Chemicals</Link>
-          <Link href="/products?collection=building-materials">Building Materials</Link>
-          <Link href="/products?collection=tools">Tools &amp; Equipment</Link>
-          <Link href="/products?collection=paints">Paints &amp; Decorating</Link>
+          <Link href="/products?collection=waterproofing">Waterproofing</Link>
+          <Link href="/products?collection=adhesive">Adhesives</Link>
+          <Link href="/products?collection=sealent">Sealants</Link>
+          <Link href="/products?collection=bonding">Bonding</Link>
         </div>
 
         {/* Trade */}
