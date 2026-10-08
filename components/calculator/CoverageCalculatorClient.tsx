@@ -400,7 +400,8 @@ export default function CoverageCalculatorClient({
                   value={groutArea}
                   onChange={(e) => setGroutArea(e.target.value)}
                   placeholder="e.g. 50"
-                  min="0.1"
+                  min="0"
+                  step="any"
                   style={{ width: '100%', padding: '12px', borderRadius: 'var(--r-soft)', border: '1px solid var(--line)', background: 'var(--slot)' }}
                 />
               </div>
