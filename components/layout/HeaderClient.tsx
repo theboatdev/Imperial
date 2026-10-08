@@ -1,14 +1,15 @@
 'use client';
 
-import Link from 'next/link';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
+import { useTranslations } from 'next-intl';
 import { useCartStore } from '@/lib/cart-store';
 import { useWishlistStore } from '@/lib/wishlist-store';
 import { useVatStore } from '@/lib/vat-store';
-import { useRouter, usePathname } from 'next/navigation';
 import type { ShopifyCollection, ShopifyProduct } from '@/lib/types';
 import { usePrice } from '@/lib/use-price';
+import LanguageSwitcher from './LanguageSwitcher';
 
 type MegaMenuKey = 'collections' | 'brands' | 'about' | null;
 
@@ -18,6 +19,7 @@ interface Props {
 }
 
 export default function HeaderClient({ collections, vendors = [] }: Props) {
+  const t = useTranslations('Nav');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -130,7 +132,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
       {/* ── Topbar ── */}
       <div className="topbar">
         <div className="topbar-left">
-          <span>Free delivery on orders over AED 500</span>
+          <span>{t('freeDelivery')}</span>
           <span className="topbar-email">info@imperial.ae</span>
         </div>
         <div className="topbar-right">
@@ -140,24 +142,23 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
               type="button" 
               onClick={() => setVatInclusive(true)}
             >
-              Inc VAT
+              {t('incVat')}
             </button>
             <button 
               className={!isVatInclusive ? 'active' : ''} 
               type="button" 
               onClick={() => setVatInclusive(false)}
             >
-              Ex VAT
+              {t('exVat')}
             </button>
           </div>
           <div className="topbar-language">
-            <select aria-label="Language">
-              <option>EN</option>
-              <option>AR</option>
-            </select>
+            <Suspense fallback={<span className="lang-switcher">EN / AR</span>}>
+              <LanguageSwitcher />
+            </Suspense>
           </div>
           <div className="topbar-currency currency">
-            <select aria-label="Currency">
+            <select aria-label={t('currency')}>
               <option>AED</option>
               <option>USD</option>
               <option>EUR</option>
@@ -169,10 +170,10 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
 
       {/* ── Main header row ── */}
       <div className="headerrow" style={{ position: 'relative' }}>
-        <Link href="/" className="logo header-logo" aria-label="IMPERIAL Middle East Home">
+        <Link href="/" className="logo header-logo" aria-label={t('homeAria')}>
           <Image
             src="/logo.png"
-            alt="Imperial Middle East"
+            alt={t('logoAlt')}
             width={160}
             height={50}
             priority
@@ -184,20 +185,20 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
           <form className={`searchbar ${mobileSearchOpen ? 'mobile-open' : ''}`} onSubmit={handleSearch} role="search" style={{ margin: 0, width: '100%' }}>
             <input
               type="search"
-              placeholder="Search products, brands, categories..."
+              placeholder={t('searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => {
                 if (searchQuery.trim().length >= 2) setShowSuggestions(true);
               }}
-              aria-label="Search products"
+              aria-label={t('searchAria')}
             />
-            <button type="submit" aria-label="Search">
+            <button type="submit" aria-label={t('search')}>
               <svg className="ic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="11" cy="11" r="7"/>
                 <path d="m16.5 16.5 4.5 4.5"/>
               </svg>
-              Search
+              {t('search')}
             </button>
           </form>
 
@@ -208,7 +209,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
               zIndex: 100, border: '1px solid var(--line)', maxHeight: '400px', overflowY: 'auto'
             }}>
               {isSearching ? (
-                <div style={{ padding: '16px', textAlign: 'center', color: 'var(--muted)', fontSize: '13px' }}>Searching...</div>
+                <div style={{ padding: '16px', textAlign: 'center', color: 'var(--muted)', fontSize: '13px' }}>{t('searching')}</div>
               ) : suggestions.length > 0 ? (
                 <div>
                   {suggestions.map((prod) => (
@@ -238,12 +239,12 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
                   ))}
                   <div style={{ padding: '8px' }}>
                     <Link href={`/products?q=${encodeURIComponent(searchQuery)}`} onClick={() => setShowSuggestions(false)} style={{ display: 'block', textAlign: 'center', padding: '8px', background: 'var(--slot)', borderRadius: '6px', fontSize: '13px', fontWeight: 600, color: 'var(--imperial-blue)', textDecoration: 'none' }}>
-                      View all results &rarr;
+                      {t('viewAllResults')}
                     </Link>
                   </div>
                 </div>
               ) : (
-                <div style={{ padding: '16px', textAlign: 'center', color: 'var(--muted)', fontSize: '13px' }}>No products found</div>
+                <div style={{ padding: '16px', textAlign: 'center', color: 'var(--muted)', fontSize: '13px' }}>{t('noProductsFound')}</div>
               )}
             </div>
           )}
@@ -254,7 +255,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
             className="header-mobile-toggle header-mobile-search-toggle"
             type="button"
             onClick={() => { setMobileSearchOpen(!mobileSearchOpen); setMobileMenuOpen(false); }}
-            aria-label="Toggle search"
+            aria-label={t('toggleSearch')}
             style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer' }}
           >
             <div className="box">
@@ -265,7 +266,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
             </div>
           </button>
           
-          <Link href="/compare" className="icon" aria-label="Compare">
+          <Link href="/compare" className="icon" aria-label={t('compare')}>
             <div className="box">
               <svg className="ic lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                 <path d="m16 3 4 4-4 4"/>
@@ -274,10 +275,10 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
                 <path d="M4 17h16"/>
               </svg>
             </div>
-            <span>Compare</span>
+            <span>{t('compare')}</span>
           </Link>
           
-          <Link href="/account/wishlist" prefetch={false} className="icon" aria-label={`Wishlist with ${wishlistCount} items`}>
+          <Link href="/account/wishlist" prefetch={false} className="icon" aria-label={t('wishlistAria', { count: wishlistCount })}>
             <div className="box">
               <svg className={`ic lg ${wishlistCount > 0 ? 'fill' : ''}`} viewBox="0 0 24 24" fill={wishlistCount > 0 ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.75">
                 <path d="M12 20.2C9.5 18 4.5 14.4 4.5 10.6A3.9 3.9 0 0 1 12 8.4a3.9 3.9 0 0 1 7.5 2.2c0 3.8-5 7.4-7.5 9.6Z"/>
@@ -286,23 +287,23 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
                 <span className="badge pop">{wishlistCount}</span>
               )}
             </div>
-            <span>Wishlist</span>
+            <span>{t('wishlist')}</span>
           </Link>
 
-          <Link href="/account" prefetch={false} className="icon" aria-label="Account">
+          <Link href="/account" prefetch={false} className="icon" aria-label={t('account')}>
             <div className="box">
               <svg className="ic lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                 <circle cx="12" cy="8.5" r="3.5"/>
                 <path d="M5.5 20c0-3.3 2.9-5.5 6.5-5.5s6.5 2.2 6.5 5.5"/>
               </svg>
             </div>
-            <span>Account</span>
+            <span>{t('account')}</span>
           </Link>
 
           <Link
             href="/cart"
             className="icon"
-            aria-label={`Shopping cart with ${displayQuantity} items`}
+            aria-label={t('cartAria', { count: displayQuantity })}
             id="cart-toggle"
           >
             <div className="box">
@@ -315,14 +316,14 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
                 <span className="badge pop">{totalQuantity}</span>
               )}
             </div>
-            <span>Cart</span>
+            <span>{t('cart')}</span>
           </Link>
 
           <button
             className="header-mobile-toggle"
             type="button"
             onClick={() => { setMobileMenuOpen(!mobileMenuOpen); setMobileSearchOpen(false); }}
-            aria-label="Toggle menu"
+            aria-label={t('toggleMenu')}
             aria-expanded={mobileMenuOpen}
             style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer' }}
           >
@@ -339,9 +340,9 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
       </div>
 
       {/* ── Mega Menu Nav ── */}
-      <nav className="megabar" aria-label="Main navigation">
+      <nav className="megabar" aria-label={t('mainNav')}>
         {/* All Products — simple link */}
-        <Link href="/products" className="megaitem megaitem-link">All Products</Link>
+        <Link href="/products" className="megaitem megaitem-link">{t('allProducts')}</Link>
 
         {/* Brands dropdown */}
         {vendors.length > 0 && (
@@ -357,7 +358,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
               aria-haspopup="true"
               onClick={() => setOpenMenu(openMenu === 'brands' ? null : 'brands')}
             >
-              Brands
+              {t('brands')}
               <svg
                 width="12" height="12" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" strokeWidth="2.5" aria-hidden="true"
@@ -416,7 +417,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
               aria-haspopup="true"
               onClick={() => setOpenMenu(openMenu === 'collections' ? null : 'collections')}
             >
-              Categories
+              {t('categories')}
               <svg
                 width="12" height="12" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" strokeWidth="2.5" aria-hidden="true"
@@ -458,13 +459,13 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
                 )}
                 <div className="megacol megacol-cta">
                   <Link href="/categories" className="megacol-view-all" onClick={() => setOpenMenu(null)}>
-                    View all categories →
+                    {t('viewAllCategories')}
                   </Link>
                   <Link href="/bulk-inquiries" className="megacol-rfq" onClick={() => setOpenMenu(null)}>
-                    Bulk Inquiries
+                    {t('bulkInquiries')}
                   </Link>
                   <Link href="/rfq" className="megacol-rfq" onClick={() => setOpenMenu(null)} style={{ marginTop: '10px' }}>
-                    Request a Quote
+                    {t('requestQuote')}
                   </Link>
                 </div>
               </div>
@@ -485,7 +486,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
             aria-haspopup="true"
             onClick={() => setOpenMenu(openMenu === 'about' ? null : 'about')}
           >
-            About Us
+            {t('aboutUs')}
             <svg
               width="12" height="12" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" strokeWidth="2.5" aria-hidden="true"
@@ -498,46 +499,46 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
           {openMenu === 'about' && (
             <div className="megapanel" role="menu" style={{ minWidth: '220px', padding: '16px 20px' }}>
               <div className="megacol" style={{ minWidth: '100%' }}>
-                <Link href="/company" role="menuitem" onClick={() => setOpenMenu(null)}>The Company</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>Why Imperial?</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>Our Projects</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>Testimonials</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>Awards & Certificates</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>Social Media</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>Blog</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>Get Credit. Pay Later</Link>
+                <Link href="/company" role="menuitem" onClick={() => setOpenMenu(null)}>{t('theCompany')}</Link>
+                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('whyImperial')}</Link>
+                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('ourProjects')}</Link>
+                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('testimonials')}</Link>
+                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('awards')}</Link>
+                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('socialMedia')}</Link>
+                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('blog')}</Link>
+                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('getCredit')}</Link>
               </div>
             </div>
           )}
         </div>
 
         <Link href="/promotions" className="megaitem megaitem-link" style={{ color: 'var(--signal-red)', fontWeight: 700 }}>
-          % Promotions
+          {t('promotions')}
         </Link>
         <Link href="/coverage-calculator" className="megaitem megaitem-link">
-          Coverage Calculator
+          {t('coverageCalculator')}
         </Link>
         <Link href="/bulk-inquiries" className="megaitem megaitem-link highlight">
-          Bulk Inquiries
+          {t('bulkInquiries')}
         </Link>
         <Link href="/rfq" className="megaitem megaitem-link highlight">
-          Request a Quote
+          {t('requestQuote')}
         </Link>
       </nav>
 
       {/* ── Mobile Menu ── */}
       {mobileMenuOpen && (
-        <nav className="mobile-nav" aria-label="Mobile navigation">
+        <nav className="mobile-nav" aria-label={t('mobileNav')}>
           <Link href="/products" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-            All Products
+            {t('allProducts')}
           </Link>
           <Link href="/coverage-calculator" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-            Coverage Calculator
+            {t('coverageCalculator')}
           </Link>
           <Link href="/promotions" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--signal-red)', fontWeight: 700 }}>
-            % Promotions
+            {t('promotions')}
           </Link>
-          <div className="mobile-nav-section">Brands</div>
+          <div className="mobile-nav-section">{t('brands')}</div>
           {vendors.slice(0, 8).map((vendor) => (
             <Link
               key={vendor}
@@ -548,7 +549,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
               {vendor}
             </Link>
           ))}
-          <div className="mobile-nav-section">Categories</div>
+          <div className="mobile-nav-section">{t('categories')}</div>
           {collections.slice(0, 8).map((col) => (
             <Link
               key={col.id}
@@ -561,25 +562,25 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
           ))}
           {collections.length > 8 && (
             <Link href="/categories" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-              All Categories →
+              {t('allCategories')}
             </Link>
           )}
-          <div className="mobile-nav-section">About Us</div>
-          <Link href="/company" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>The Company</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Why Imperial?</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Our Projects</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Testimonials</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Awards & Certificates</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Social Media</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Get Credit. Pay Later</Link>
+          <div className="mobile-nav-section">{t('aboutUs')}</div>
+          <Link href="/company" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('theCompany')}</Link>
+          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('whyImperial')}</Link>
+          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('ourProjects')}</Link>
+          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('testimonials')}</Link>
+          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('awards')}</Link>
+          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('socialMedia')}</Link>
+          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('blog')}</Link>
+          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('getCredit')}</Link>
 
-          <div className="mobile-nav-section" style={{ marginTop: '8px' }}>Action</div>
+          <div className="mobile-nav-section" style={{ marginTop: '8px' }}>{t('action')}</div>
           <Link href="/bulk-inquiries" className="mobile-nav-link mobile-nav-link-cta" onClick={() => setMobileMenuOpen(false)}>
-            Bulk Inquiries
+            {t('bulkInquiries')}
           </Link>
           <Link href="/rfq" className="mobile-nav-link mobile-nav-link-cta" onClick={() => setMobileMenuOpen(false)}>
-            Request a Quote
+            {t('requestQuote')}
           </Link>
         </nav>
       )}

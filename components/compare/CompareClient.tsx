@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 import type { ShopifyProduct } from '@/lib/types';
 import { useCartStore } from '@/lib/cart-store';
 import { useCompareStore } from '@/lib/compare-store';
@@ -10,6 +11,7 @@ import { addLineItemAction } from '@/app/actions/cart';
 import { usePrice } from '@/lib/use-price';
 
 export default function CompareClient() {
+  const t = useTranslations('Compare');
   const { formatWithVat, isVatInclusive, vatRate } = usePrice();
   const [mounted, setMounted] = useState(false);
   const products = useCompareStore((s) => s.products);
@@ -59,15 +61,15 @@ export default function CompareClient() {
   };
 
   if (!mounted) {
-    return <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--muted)' }}>Loading...</div>;
+    return <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--muted)' }}>{t('loading')}</div>;
   }
 
   if (products.length === 0) {
     return (
       <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--muted)' }}>
-        <p>No products to compare. Add some products from the store to compare them side-by-side.</p>
+        <p>{t('empty')}</p>
         <Link href="/products" className="btn block" style={{ maxWidth: '240px', margin: '20px auto' }}>
-          Browse Products
+          {t('browseProducts')}
         </Link>
       </div>
     );
@@ -111,7 +113,7 @@ export default function CompareClient() {
                     </Link>
                     <div>
                       <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--navy)' }}>{formatWithVat(basePrice)}</div>
-                      {isVatInclusive && <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>Excl. Tax: {exclTaxStr}</div>}
+                      {isVatInclusive && <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>{t('exclTax', { price: exclTaxStr })}</div>}
                     </div>
                     <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
                       <button 
@@ -119,12 +121,12 @@ export default function CompareClient() {
                         style={{ flex: 1, padding: '10px 14px', fontSize: '11px', textTransform: 'uppercase' }}
                         onClick={() => handleAddToCart(p)}
                       >
-                        Add to Cart
+                        {t('addToCart')}
                       </button>
                       <button 
                         className="btn secondary"
                         style={{ width: '40px', padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                        aria-label="Add to Wishlist"
+                        aria-label={t('addToWishlist')}
                       >
                         ♡
                       </button>
@@ -137,18 +139,18 @@ export default function CompareClient() {
 
           {/* SKU Row */}
           <tr>
-            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>SKU</td>
+            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>{t('sku')}</td>
             {products.map((p) => (
               <td key={p.id} style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '13px', color: 'var(--text)' }}>
                 {/* Fallback to variant ID or a mock SKU if variants lack SKU */}
-                {p.variants[0]?.id.split('/').pop()?.slice(0, 8) || 'N/A'}
+                {p.variants[0]?.id.split('/').pop()?.slice(0, 8) || t('na')}
               </td>
             ))}
           </tr>
 
           {/* Description Row (HTML) */}
           <tr>
-            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)', verticalAlign: 'top' }}>Description</td>
+            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)', verticalAlign: 'top' }}>{t('description')}</td>
             {products.map((p) => (
               <td key={p.id} style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '13px', color: 'var(--text)', verticalAlign: 'top', lineHeight: 1.6 }}>
                 {p.descriptionHtml ? (
@@ -162,7 +164,7 @@ export default function CompareClient() {
 
           {/* Short Description */}
           <tr>
-            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>Short Description</td>
+            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>{t('shortDescription')}</td>
             {products.map((p) => (
               <td key={p.id} style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '13px', color: 'var(--text)' }}>
                 {p.description.length > 150 ? p.description.substring(0, 150) + '...' : p.description}
@@ -172,40 +174,40 @@ export default function CompareClient() {
 
           {/* Brand Name */}
           <tr>
-            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>Brand Name</td>
+            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>{t('brandName')}</td>
             {products.map((p) => (
               <td key={p.id} style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '13px', color: 'var(--text)' }}>
-                {p.vendor || 'N/A'}
+                {p.vendor || t('na')}
               </td>
             ))}
           </tr>
 
           {/* By Activity / Tags */}
           <tr>
-            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>By Activity</td>
+            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>{t('byActivity')}</td>
             {products.map((p) => (
               <td key={p.id} style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '13px', color: 'var(--text)' }}>
-                {p.tags && p.tags.length > 0 ? p.tags.slice(0, 2).join(', ') : 'N/A'}
+                {p.tags && p.tags.length > 0 ? p.tags.slice(0, 2).join(', ') : t('na')}
               </td>
             ))}
           </tr>
 
           {/* By Product Type */}
           <tr>
-            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>By Product Type</td>
+            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>{t('byProductType')}</td>
             {products.map((p) => (
               <td key={p.id} style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '13px', color: 'var(--text)' }}>
-                {p.productType || 'N/A'}
+                {p.productType || t('na')}
               </td>
             ))}
           </tr>
           
           {/* Content Type */}
           <tr>
-            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>Content Type</td>
+            <td style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>{t('contentType')}</td>
             {products.map((p) => (
               <td key={p.id} style={{ border: '1px solid var(--line)', padding: '16px', fontSize: '13px', color: 'var(--text)' }}>
-                Products
+                {t('products')}
               </td>
             ))}
           </tr>

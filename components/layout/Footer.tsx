@@ -1,6 +1,8 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { getTranslations } from 'next-intl/server';
 
-export default function Footer() {
+export default async function Footer() {
+  const t = await getTranslations('Footer');
   const year = new Date().getFullYear();
 
   return (
@@ -8,11 +10,11 @@ export default function Footer() {
       {/* Statement banner */}
       <div className="footer-statement">
         <div>
-          <div className="eyebrow on-dark">Imperial Middle East</div>
-          <h2>Built for the projects<br />shaping tomorrow.</h2>
+          <div className="eyebrow on-dark">{t('eyebrow')}</div>
+          <h2>{t('tagline1')}<br />{t('tagline2')}</h2>
         </div>
         <Link href="/rfq" className="btn primary" style={{ textDecoration: 'none' }}>
-          Request a project quote
+          {t('cta')}
           <svg className="ic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginLeft: '4px' }}>
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
@@ -23,47 +25,47 @@ export default function Footer() {
       <div className="footer-columns">
         {/* Shop */}
         <div className="col imp-footer-col">
-          <h6>Shop</h6>
-          <Link href="/products?collection=waterproofing">Waterproofing</Link>
-          <Link href="/products?collection=adhesive">Adhesives</Link>
-          <Link href="/products?collection=sealent">Sealants</Link>
-          <Link href="/products?collection=bonding">Bonding</Link>
+          <h6>{t('shop')}</h6>
+          <Link href="/products?collection=waterproofing">{t('waterproofing')}</Link>
+          <Link href="/products?collection=adhesive">{t('adhesives')}</Link>
+          <Link href="/products?collection=sealent">{t('sealants')}</Link>
+          <Link href="/products?collection=bonding">{t('bonding')}</Link>
         </div>
 
         {/* Trade */}
         <div className="col imp-footer-col">
-          <h6>Trade</h6>
-          <Link href="/rfq">Request a Quote</Link>
-          <Link href="/bulk-inquiries">Bulk Order Terms</Link>
-          <Link href="/company">The Company</Link>
-          <div>Project Credit</div>
+          <h6>{t('trade')}</h6>
+          <Link href="/rfq">{t('requestQuote')}</Link>
+          <Link href="/bulk-inquiries">{t('bulkOrderTerms')}</Link>
+          <Link href="/company">{t('theCompany')}</Link>
+          <div>{t('projectCredit')}</div>
         </div>
 
         {/* Support */}
         <div className="col imp-footer-col">
-          <h6>Support</h6>
-          <Link href="/coverage-calculator">Coverage Calculator</Link>
-          <Link href="/rfq">Send Inquiry</Link>
-          <Link href="/products">Product Specialists</Link>
-          <div>Documents &amp; Downloads</div>
-          <div>Technical Support</div>
+          <h6>{t('support')}</h6>
+          <Link href="/coverage-calculator">{t('coverageCalculator')}</Link>
+          <Link href="/rfq">{t('sendInquiry')}</Link>
+          <Link href="/products">{t('productSpecialists')}</Link>
+          <div>{t('documents')}</div>
+          <div>{t('technicalSupport')}</div>
         </div>
 
         {/* Imperial */}
         <div className="col imp-footer-col">
-          <h6>Imperial</h6>
+          <h6>{t('imperial')}</h6>
           <div>info@imperial.ae</div>
           <div>Al Quoz, Dubai, UAE</div>
           <div style={{ marginTop: '8px', fontSize: '11px', color: '#637b9c' }}>
-            Secured checkout · UAE based
+            {t('securedCheckout')}
           </div>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="footer-bottom imp-footer-bottom">
-        <span>© {year} Imperial Middle East. All Rights Reserved.</span>
-        <span>UAE Built · Project Ready</span>
+        <span>{t('copyright', { year })}</span>
+        <span>{t('taglineBottom')}</span>
       </div>
     </footer>
   );

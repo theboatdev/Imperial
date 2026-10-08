@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import type { ShopifyVariant } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
@@ -14,6 +15,8 @@ export default function VariantSelector({
   selectedVariantId,
   onSelect,
 }: VariantSelectorProps) {
+  const t = useTranslations('Products');
+
   // Group variants by option name
   const optionGroups = variants.reduce<
     Record<string, { name: string; values: { value: string; variantId: string; available: boolean }[] }>
@@ -52,7 +55,7 @@ export default function VariantSelector({
         <div key={group.name} className="variant-group">
           <div className="variant-group-header">
             <span className="variant-label">
-              Select {group.name}
+              {t('selectOption', { name: group.name })}
             </span>
           </div>
           <div className="variant-options">

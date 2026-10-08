@@ -2,8 +2,10 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useCallback, useTransition } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function ProductFilters() {
+  const t = useTranslations('Products');
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
@@ -59,7 +61,7 @@ export default function ProductFilters() {
       {/* Sort Dropdown */}
       <div className="filter-group">
         <label htmlFor="sort-select" style={{ display: 'block', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px', color: 'var(--color-grey)' }}>
-          Sort By
+          {t('sortBy')}
         </label>
         <select
           id="sort-select"
@@ -77,23 +79,23 @@ export default function ProductFilters() {
             minWidth: '200px'
           }}
         >
-          <option value="featured">Featured</option>
-          <option value="newest">Newest Arrivals</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="best-selling">Best Selling</option>
+          <option value="featured">{t('featured')}</option>
+          <option value="newest">{t('newestArrivals')}</option>
+          <option value="price-asc">{t('priceLowHigh')}</option>
+          <option value="price-desc">{t('priceHighLow')}</option>
+          <option value="best-selling">{t('bestSelling')}</option>
         </select>
       </div>
 
       {/* Price Range Filter */}
       <div className="filter-group">
         <label style={{ display: 'block', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px', color: 'var(--color-grey)' }}>
-          Price Range
+          {t('priceRange')}
         </label>
         <form onSubmit={handlePriceSubmit} style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <input
             type="number"
-            placeholder="Min"
+            placeholder={t('min')}
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
             disabled={isPending}
@@ -109,7 +111,7 @@ export default function ProductFilters() {
           <span style={{ color: 'var(--color-grey)' }}>-</span>
           <input
             type="number"
-            placeholder="Max"
+            placeholder={t('max')}
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
             disabled={isPending}
@@ -137,7 +139,7 @@ export default function ProductFilters() {
               letterSpacing: '0.05em'
             }}
           >
-            Apply
+            {t('apply')}
           </button>
         </form>
       </div>
@@ -157,7 +159,7 @@ export default function ProductFilters() {
             padding: '12px 0'
           }}
         >
-          Clear Filters
+          {t('clearFilters')}
         </button>
       )}
 

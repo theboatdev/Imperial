@@ -1,42 +1,25 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import BrandWheel from './BrandWheel';
 
-const HERO_SLIDES = [
-  {
-    l1: 'Construction chemicals & systems',
-    l2: 'Stocked in Al Quoz, Dubai',
-    title: 'Materials. Systems.',
-    titleLine2: 'Project confidence.',
-    description: 'Technical products, responsive support and reliable UAE supply for demanding construction environments.',
-    note: 'Over 900 lines held in UAE stock.',
-    artType: 0,
-  },
-  {
-    l1: 'Waterproofing & tanking',
-    l2: 'Sika · Mapei · Fosroc',
-    title: 'Sealed once.',
-    titleLine2: 'Signed off once.',
-    description: 'Membranes, primers and tapes specified as one system, so the detail passes inspection the first time.',
-    note: 'Compatibility checked before dispatch.',
-    artType: 1,
-  },
-  {
-    l1: 'Tile adhesives & grouts',
-    l2: 'C2TE and C2TES1 classes',
-    title: 'Large format,',
-    titleLine2: 'zero lippage.',
-    description: 'Flexible adhesives for porcelain and natural stone, with coverage figures printed on every bag.',
-    note: 'Coverage calculator on every product.',
-    artType: 2,
-  },
-];
-
 export default function HeroSection() {
+  const t = useTranslations('Hero');
   const [activeIdx, setActiveIdx] = useState(0);
+
+  const HERO_SLIDES = [0, 1, 2].map((i) => ({
+    l1: t(`slides.${i}.l1`),
+    l2: t(`slides.${i}.l2`),
+    title: t(`slides.${i}.title`),
+    titleLine2: t(`slides.${i}.titleLine2`),
+    description: t(`slides.${i}.description`),
+    note: t(`slides.${i}.note`),
+    artType: i,
+  }));
+
   const slide = HERO_SLIDES[activeIdx];
 
   const handleStep = (delta: number) => {
@@ -49,7 +32,7 @@ export default function HeroSection() {
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
         <Image 
           src="/Gemini_Generated_Image_s18lxes18lxes18l.png" 
-          alt="Imperial Construction Projects" 
+          alt={t('alt')} 
           fill
           priority
           style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -92,10 +75,10 @@ export default function HeroSection() {
           <p>{slide.description}</p>
           <div className="hero-actions">
             <Link href="/rfq" className="btn line">
-              Request a quote
+              {t('requestQuote')}
             </Link>
             <Link href="/products" className="hero-link">
-              Browse the catalogue
+              {t('browseCatalogue')}
               <svg className="ic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -103,13 +86,13 @@ export default function HeroSection() {
           </div>
 
           <div className="hero-nav">
-            <button onClick={() => handleStep(-1)} aria-label="Previous slide">
+            <button onClick={() => handleStep(-1)} aria-label={t('previousSlide')}>
               <svg className="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
             </button>
             <span className="sep" aria-hidden="true" />
-            <button onClick={() => handleStep(1)} aria-label="Next slide">
+            <button onClick={() => handleStep(1)} aria-label={t('nextSlide')}>
               <svg className="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -124,13 +107,13 @@ export default function HeroSection() {
         </div>
 
         {/* Right dots */}
-        <div className="hero-dots" role="tablist" aria-label="Hero slides">
+        <div className="hero-dots" role="tablist" aria-label={t('heroSlides')}>
           {HERO_SLIDES.map((_, i) => (
             <i
               key={i}
               className={i === activeIdx ? 'on' : ''}
               role="tab"
-              aria-label={`Slide ${i + 1}`}
+              aria-label={t('slide', { n: i + 1 })}
               onClick={() => setActiveIdx(i)}
             />
           ))}

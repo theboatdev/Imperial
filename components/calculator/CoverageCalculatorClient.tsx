@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useMemo, useCallback } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 import type { ShopifyProduct } from '@/lib/types';
 import { useCartStore } from '@/lib/cart-store';
 import { usePrice } from '@/lib/use-price';
@@ -24,6 +24,7 @@ export default function CoverageCalculatorClient({
   products,
   isLoggedIn = false,
 }: CoverageCalculatorClientProps) {
+  const t = useTranslations('Calculator');
   const { formatWithVat } = usePrice();
   const addItem = useCartStore((s) => s.addItem);
   const cartId = useCartStore((s) => s.cartId);
@@ -101,7 +102,7 @@ export default function CoverageCalculatorClient({
     if (e) e.preventDefault();
     const l = parseFloat(tileLength) || 0;
     const w = parseFloat(tileWidth) || 0;
-    const t = parseFloat(tileThickness) || 0;
+    const th = parseFloat(tileThickness) || 0;
     const j = parseFloat(groutJointWidth) || 0;
     const a = parseFloat(groutArea) || 0;
     const waste = parseFloat(groutWaste) || 5;
@@ -109,7 +110,7 @@ export default function CoverageCalculatorClient({
     const res = calculateGroutConsumption({
       tileLengthMm: l,
       tileWidthMm: w,
-      tileThicknessMm: t,
+      tileThicknessMm: th,
       jointWidthMm: j,
       areaSqm: a,
       wastePercent: waste,
@@ -196,19 +197,33 @@ export default function CoverageCalculatorClient({
     [isAddingToCart, cartId, addItem, syncFromApi]
   );
 
+  const loginNote = isLoggedIn ? (
+    <span style={{ color: 'var(--uae-green)', fontWeight: 600 }}>{t('loggedInNote')}</span>
+  ) : (
+    <a href="/api/auth/login" style={{ color: 'inherit', textDecoration: 'none' }}>
+      {t('loginPrompt')}
+    </a>
+  );
+
+  const cartButtonLabel = (count: number, bags: boolean) => {
+    if (isAddingToCart) return t('addingToCart');
+    if (addedSuccess) return t('addedToCart');
+    return bags ? t('addBagsToCart', { count }) : t('addCartridgesToCart', { count });
+  };
+
   return (
     <div className="store-frame calc-page-wrapper" style={{ padding: '32px 28px 60px', maxWidth: '1100px', margin: '0 auto' }}>
       {/* Page Header */}
       <div style={{ marginBottom: '28px' }}>
         <div className="breadcrumb" style={{ padding: '0 0 14px' }}>
-          <Link href="/">Home</Link> / <span>Coverage Calculator</span>
+          <Link href="/">{t('home')}</Link> / <span>{t('breadcrumb')}</span>
         </div>
-        <div className="kicker">Technical Estimator</div>
+        <div className="kicker">{t('kicker')}</div>
         <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(26px, 3.2vw, 36px)', color: 'var(--navy)', margin: '8px 0 10px', letterSpacing: '-0.02em' }}>
-          Construction Material Calculator
+          {t('title')}
         </h1>
         <p style={{ color: 'var(--muted)', fontSize: '13.5px', maxWidth: '680px', lineHeight: 1.6 }}>
-          Calculate accurate consumption, material volume, and exact package counts for tile grouting and joint sealing according to international standards.
+          {t('description')}
         </p>
       </div>
 
@@ -250,7 +265,7 @@ export default function CoverageCalculatorClient({
             <rect x="14" y="14" width="7" height="7" />
             <rect x="3" y="14" width="7" height="7" />
           </svg>
-          Grouts
+          {t('grouts')}
         </button>
 
         <button
@@ -278,7 +293,7 @@ export default function CoverageCalculatorClient({
             <line x1="4" y1="3" x2="4" y2="21" />
             <line x1="20" y1="3" x2="20" y2="21" />
           </svg>
-          Sealants
+          {t('sealants')}
         </button>
       </div>
 
@@ -288,14 +303,14 @@ export default function CoverageCalculatorClient({
       {activeTab === 'grout' && (
         <div style={{ background: '#fff', borderRadius: 'var(--r-card)', padding: '32px', boxShadow: 'var(--sh-soft)', border: '1px solid var(--line)' }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--navy)', marginBottom: '24px' }}>
-            Calculation of joint consumption
+            {t('groutCalcTitle')}
           </h2>
 
           <form onSubmit={handleGroutSubmit}>
             {/* Product Selector */}
             <div className="formrow" style={{ marginBottom: '24px' }}>
               <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: 'var(--navy)', marginBottom: '8px', letterSpacing: '0.06em' }}>
-                Product
+                {t('product')}
               </label>
               <select
                 value={selectedGroutProductId}
@@ -311,7 +326,7 @@ export default function CoverageCalculatorClient({
                   outline: 'none',
                 }}
               >
-                <option value="generic-grout">Standard Cementitious Tile Grout (20kg Bag - General)</option>
+                <option value="generic-grout">{t('standardGrout')}</option>
                 {groutProducts.map((p) => (
                   <option key={p.id} value={p.id}>
                     {p.title} — {formatWithVat(p.priceRange.minVariantPrice)}
@@ -323,12 +338,12 @@ export default function CoverageCalculatorClient({
             {/* Tile Specifications Group */}
             <div style={{ marginBottom: '24px' }}>
               <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--navy)', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                Tile specifications
+                {t('tileSpecs')}
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                    Tile Length (mm)
+                    {t('tileDimensions')}
                   </label>
                   <input
                     type="number"
@@ -341,7 +356,7 @@ export default function CoverageCalculatorClient({
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                    Tile Width (mm)
+                    {t('tileDimensions')}
                   </label>
                   <input
                     type="number"
@@ -354,7 +369,7 @@ export default function CoverageCalculatorClient({
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                    Tile Thickness (mm)
+                    {t('tileDimensions')}
                   </label>
                   <input
                     type="number"
@@ -372,10 +387,10 @@ export default function CoverageCalculatorClient({
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '18px', marginBottom: '28px' }}>
               <div>
                 <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--navy)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  Grout specifications
+                  {t('groutSpecs')}
                 </div>
                 <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                  Grout Joint Width (mm) *
+                  {t('jointWidth')}
                 </label>
                 <input
                   type="number"
@@ -390,10 +405,10 @@ export default function CoverageCalculatorClient({
 
               <div>
                 <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--navy)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  Area to be covered
+                  {t('areaToCover')}
                 </div>
                 <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                  Area to be grouted (m²) *
+                  {t('areaToGrout')}
                 </label>
                 <input
                   type="number"
@@ -407,20 +422,20 @@ export default function CoverageCalculatorClient({
 
               <div>
                 <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--navy)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  Wastage Allowance
+                  {t('wastageAllowance')}
                 </div>
                 <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                  Recommended 5% - 10%
+                  {t('recommendedWaste')}
                 </label>
                 <select
                   value={groutWaste}
                   onChange={(e) => setGroutWaste(e.target.value)}
                   style={{ width: '100%', padding: '12px', borderRadius: 'var(--r-soft)', border: '1px solid var(--line)', background: 'var(--slot)' }}
                 >
-                  <option value="0">0% (Exact Net Volume)</option>
-                  <option value="5">5% (Standard Tile Layout)</option>
-                  <option value="10">10% (Diagonal / High Waste)</option>
-                  <option value="15">15% (Irregular / Mosaic)</option>
+                  <option value="0">0%</option>
+                  <option value="5">5%</option>
+                  <option value="10">10%</option>
+                  <option value="15">15%</option>
                 </select>
               </div>
             </div>
@@ -428,17 +443,7 @@ export default function CoverageCalculatorClient({
             {/* Bottom Bar matching Screenshot: Log in prompt + RESET + SUBMIT */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--line)', paddingTop: '20px', flexWrap: 'wrap', gap: '16px' }}>
               <div style={{ fontSize: '12px', color: 'var(--muted)' }}>
-                {isLoggedIn ? (
-                  <span style={{ color: 'var(--uae-green)', fontWeight: 600 }}>✓ Logged in as customer — Calculation will sync to your account</span>
-                ) : (
-                  <span>
-                    If you wish to save the calculation result,{' '}
-                    <Link href="/api/auth/login" style={{ color: 'var(--imperial-blue)', fontWeight: 600, textDecoration: 'underline' }}>
-                      log in
-                    </Link>{' '}
-                    to the website.
-                  </span>
-                )}
+                {loginNote}
               </div>
 
               <div style={{ display: 'flex', gap: '12px' }}>
@@ -448,7 +453,7 @@ export default function CoverageCalculatorClient({
                   className="btn line"
                   style={{ padding: '10px 20px', fontSize: '12px', borderRadius: 'var(--r-soft)' }}
                 >
-                  Reset
+                  {t('reset')}
                 </button>
                 <button
                   type="submit"
@@ -462,7 +467,7 @@ export default function CoverageCalculatorClient({
                     <line x1="16" y1="14" x2="16" y2="18" />
                     <path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01" />
                   </svg>
-                  Calculate Grout
+                  {t('calculateGrout')}
                 </button>
               </div>
             </div>
@@ -482,8 +487,8 @@ export default function CoverageCalculatorClient({
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', marginBottom: '18px' }}>
                 <div>
-                  <div className="eyebrow" style={{ color: 'var(--imperial-blue)' }}>Estimated Consumption</div>
-                  <h3 style={{ fontSize: '18px', color: 'var(--navy)', margin: '4px 0 0' }}>Grout Requirements Breakdown</h3>
+                  <div className="eyebrow" style={{ color: 'var(--imperial-blue)' }}>{t('estimatedConsumption')}</div>
+                  <h3 style={{ fontSize: '18px', color: 'var(--navy)', margin: '4px 0 0' }}>{t('groutBreakdown')}</h3>
                 </div>
                 <div style={{ background: '#fff', border: '1px solid var(--line)', padding: '6px 14px', borderRadius: 'var(--r-pill)', fontSize: '12px', fontWeight: 600, color: 'var(--navy)' }}>
                   Tile: {tileLength} × {tileWidth} × {tileThickness} mm | Joint: {groutJointWidth} mm
@@ -493,35 +498,35 @@ export default function CoverageCalculatorClient({
               {/* Metrics Grid */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px', marginBottom: '24px' }}>
                 <div style={{ background: '#fff', padding: '16px', borderRadius: 'var(--r-soft)', boxShadow: 'var(--sh-soft)' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--muted)', textTransform: 'uppercase' }}>Consumption Rate</div>
+                  <div style={{ fontSize: '11px', color: 'var(--muted)', textTransform: 'uppercase' }}>{t('consumptionRate')}</div>
                   <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--navy)', margin: '4px 0' }}>
-                    {groutResult.consumptionKgPerSqm} <span style={{ fontSize: '12px', fontWeight: 400 }}>kg/m²</span>
+                    {groutResult.consumptionKgPerSqm} <span style={{ fontSize: '12px', fontWeight: 400 }}>{t('kgPerM2')}</span>
                   </div>
-                  <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>Theoretical rate without waste</div>
+                  <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>{t('theoreticalRate')}</div>
                 </div>
 
                 <div style={{ background: '#fff', padding: '16px', borderRadius: 'var(--r-soft)', boxShadow: 'var(--sh-soft)' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--muted)', textTransform: 'uppercase' }}>Total Net Weight</div>
+                  <div style={{ fontSize: '11px', color: 'var(--muted)', textTransform: 'uppercase' }}>{t('totalNetWeight')}</div>
                   <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--navy)', margin: '4px 0' }}>
                     {groutResult.netMaterialKg} <span style={{ fontSize: '12px', fontWeight: 400 }}>kg</span>
                   </div>
-                  <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>Net for {groutArea} m² area</div>
+                  <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>{t('netForArea', { area: groutArea })}</div>
                 </div>
 
                 <div style={{ background: '#fff', padding: '16px', borderRadius: 'var(--r-soft)', boxShadow: 'var(--sh-soft)', border: '1px solid rgba(9, 79, 168, 0.3)' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--imperial-blue)', fontWeight: 700, textTransform: 'uppercase' }}>Total Required (Gross)</div>
+                  <div style={{ fontSize: '11px', color: 'var(--imperial-blue)', fontWeight: 700, textTransform: 'uppercase' }}>{t('totalRequired')}</div>
                   <div style={{ fontSize: '22px', fontWeight: 700, color: 'var(--imperial-blue)', margin: '4px 0' }}>
                     {groutResult.grossMaterialKg} <span style={{ fontSize: '12px', fontWeight: 400 }}>kg</span>
                   </div>
-                  <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>Includes {groutResult.wastePercent}% site wastage</div>
+                  <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>{t('includesWaste', { pct: groutResult.wastePercent })}</div>
                 </div>
 
                 <div style={{ background: 'var(--navy)', padding: '16px', borderRadius: 'var(--r-soft)', color: '#fff', boxShadow: 'var(--sh-lift)' }}>
-                  <div style={{ fontSize: '11px', color: '#b9cde8', textTransform: 'uppercase' }}>Bags Required</div>
+                  <div style={{ fontSize: '11px', color: '#b9cde8', textTransform: 'uppercase' }}>{t('bagsRequired')}</div>
                   <div style={{ fontSize: '24px', fontWeight: 700, color: '#fff', margin: '4px 0' }}>
-                    {groutResult.packsNeeded} <span style={{ fontSize: '13px', fontWeight: 400 }}>Bags (20kg)</span>
+                    {groutResult.packsNeeded} <span style={{ fontSize: '13px', fontWeight: 400 }}>{t('bags20kg')}</span>
                   </div>
-                  <div style={{ fontSize: '10.5px', color: '#88a6d4' }}>Standard 20kg industrial packaging</div>
+                  <div style={{ fontSize: '10.5px', color: '#88a6d4' }}>{t('standardPackaging')}</div>
                 </div>
               </div>
 
@@ -532,7 +537,7 @@ export default function CoverageCalculatorClient({
                   className="btn secondary"
                   style={{ borderRadius: 'var(--r-soft)', padding: '12px 20px', fontSize: '12.5px' }}
                 >
-                  Request a Quote
+                  {t('requestQuote')}
                 </Link>
 
                 {currentGroutProduct ? (
@@ -543,11 +548,11 @@ export default function CoverageCalculatorClient({
                     className="btn primary"
                     style={{ borderRadius: 'var(--r-soft)', padding: '12px 24px', fontSize: '12.5px' }}
                   >
-                    {isAddingToCart ? 'Adding to Cart...' : addedSuccess ? '✓ Added to Cart!' : `Add ${groutResult.packsNeeded} Bags to Cart`}
+                    {cartButtonLabel(groutResult.packsNeeded, true)}
                   </button>
                 ) : (
                   <Link href="/products?collection=construction-chemicals" className="btn primary" style={{ borderRadius: 'var(--r-soft)', padding: '12px 24px', fontSize: '12.5px' }}>
-                    Browse Available Grouts
+                    {t('browseGrouts')}
                   </Link>
                 )}
               </div>
@@ -562,14 +567,14 @@ export default function CoverageCalculatorClient({
       {activeTab === 'sealant' && (
         <div style={{ background: '#fff', borderRadius: 'var(--r-card)', padding: '32px', boxShadow: 'var(--sh-soft)', border: '1px solid var(--line)' }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--navy)', marginBottom: '24px' }}>
-            Calculation of sealant consumption
+            {t('sealantCalcTitle')}
           </h2>
 
           <form onSubmit={handleSealantSubmit}>
             {/* Product Selector */}
             <div className="formrow" style={{ marginBottom: '24px' }}>
               <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: 'var(--navy)', marginBottom: '8px', letterSpacing: '0.06em' }}>
-                Product
+                {t('product')}
               </label>
               <select
                 value={selectedSealantProductId}
@@ -585,7 +590,7 @@ export default function CoverageCalculatorClient({
                   outline: 'none',
                 }}
               >
-                <option value="generic-sealant">Standard Silicone / Polyurethane Sealant (310 mL Cartridge)</option>
+                <option value="generic-sealant">{t('genericSealant')}</option>
                 {sealantProducts.map((p) => (
                   <option key={p.id} value={p.id}>
                     {p.title} — {formatWithVat(p.priceRange.minVariantPrice)}
@@ -597,10 +602,10 @@ export default function CoverageCalculatorClient({
             {/* Perimeter to be sealed */}
             <div style={{ marginBottom: '24px' }}>
               <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--navy)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                Perimeter to be sealed
+                {t('perimeter')}
               </div>
               <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                Linear meters to be sealed (m) *
+                {t('linearMeters')}
               </label>
               <input
                 type="number"
@@ -616,13 +621,13 @@ export default function CoverageCalculatorClient({
             {/* Joint specifications */}
             <div style={{ marginBottom: '20px' }}>
               <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--navy)', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                Joint specifications
+                {t('jointSpecs')}
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                    Joint width (mm) *
+                    {t('jointWidthLabel')}
                   </label>
                   <input
                     type="number"
@@ -637,7 +642,7 @@ export default function CoverageCalculatorClient({
 
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                    Suggested joint depth (mm)
+                    {t('jointDepthLabel')}
                   </label>
                   <div
                     style={{
@@ -651,13 +656,13 @@ export default function CoverageCalculatorClient({
                       fontSize: '13px',
                     }}
                   >
-                    ~{suggestedDepth} mm (Standard Rule)
+                    {t('standardRule', { n: suggestedDepth })}
                   </div>
                 </div>
 
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                    Joint depth (mm) *
+                    {t('jointDepthLabel')}
                   </label>
                   <input
                     type="number"
@@ -672,16 +677,16 @@ export default function CoverageCalculatorClient({
 
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', marginBottom: '6px' }}>
-                    Wastage %
+                    {t('wastagePct')}
                   </label>
                   <select
                     value={sealantWaste}
                     onChange={(e) => setSealantWaste(e.target.value)}
                     style={{ width: '100%', padding: '12px', borderRadius: 'var(--r-soft)', border: '1px solid var(--line)', background: 'var(--slot)' }}
                   >
-                    <option value="5">5% (Clean joint)</option>
-                    <option value="10">10% (Standard application)</option>
-                    <option value="15">15% (Rough masonry/facade)</option>
+                    <option value="5">5%</option>
+                    <option value="10">10%</option>
+                    <option value="15">15%</option>
                   </select>
                 </div>
               </div>
@@ -710,7 +715,7 @@ export default function CoverageCalculatorClient({
                   <line x1="12" y1="16" x2="12" y2="12" />
                   <line x1="12" y1="8" x2="12.01" y2="8" />
                 </svg>
-                How to size the elastic joint? {showJointGuide ? '▲' : '▼'}
+                {t('howToSize')} {showJointGuide ? '▲' : '▼'}
               </button>
 
               {showJointGuide && (
@@ -742,17 +747,7 @@ export default function CoverageCalculatorClient({
             {/* Bottom bar: Log in prompt + RESET + SUBMIT */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--line)', paddingTop: '20px', flexWrap: 'wrap', gap: '16px' }}>
               <div style={{ fontSize: '12px', color: 'var(--muted)' }}>
-                {isLoggedIn ? (
-                  <span style={{ color: 'var(--uae-green)', fontWeight: 600 }}>✓ Logged in as customer — Calculation will sync to your account</span>
-                ) : (
-                  <span>
-                    If you wish to save the calculation result,{' '}
-                    <Link href="/api/auth/login" style={{ color: 'var(--imperial-blue)', fontWeight: 600, textDecoration: 'underline' }}>
-                      log in
-                    </Link>{' '}
-                    to the website.
-                  </span>
-                )}
+                {loginNote}
               </div>
 
               <div style={{ display: 'flex', gap: '12px' }}>
@@ -762,7 +757,7 @@ export default function CoverageCalculatorClient({
                   className="btn line"
                   style={{ padding: '10px 20px', fontSize: '12px', borderRadius: 'var(--r-soft)' }}
                 >
-                  Reset
+                  {t('reset')}
                 </button>
                 <button
                   type="submit"
@@ -775,7 +770,7 @@ export default function CoverageCalculatorClient({
                     <line x1="16" y1="14" x2="16" y2="18" />
                     <path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01" />
                   </svg>
-                  Calculate Sealant
+                  {t('calculateSealant')}
                 </button>
               </div>
             </div>
@@ -800,8 +795,8 @@ export default function CoverageCalculatorClient({
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', marginBottom: '18px' }}>
                 <div>
-                  <div className="eyebrow" style={{ color: 'var(--imperial-blue)' }}>Estimated Consumption</div>
-                  <h3 style={{ fontSize: '18px', color: 'var(--navy)', margin: '4px 0 0' }}>Sealant Requirements Breakdown</h3>
+                  <div className="eyebrow" style={{ color: 'var(--imperial-blue)' }}>{t('estimatedConsumption')}</div>
+                  <h3 style={{ fontSize: '18px', color: 'var(--navy)', margin: '4px 0 0' }}>{t('estimatedConsumption')}</h3>
                 </div>
                 <div style={{ background: '#fff', border: '1px solid var(--line)', padding: '6px 14px', borderRadius: 'var(--r-pill)', fontSize: '12px', fontWeight: 600, color: 'var(--navy)' }}>
                   Joint: {sealantJointWidth} × {sealantJointDepth} mm | Length: {linearMeters} m
@@ -811,37 +806,32 @@ export default function CoverageCalculatorClient({
               {/* Metrics Grid */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px', marginBottom: '24px' }}>
                 <div style={{ background: '#fff', padding: '16px', borderRadius: 'var(--r-soft)', boxShadow: 'var(--sh-soft)' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--muted)', textTransform: 'uppercase' }}>Volume per Meter</div>
+                  <div style={{ fontSize: '11px', color: 'var(--muted)', textTransform: 'uppercase' }}>{t('volumePerMeter')}</div>
                   <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--navy)', margin: '4px 0' }}>
                     {sealantResult.volumeMlPerMeter} <span style={{ fontSize: '12px', fontWeight: 400 }}>mL/m</span>
                   </div>
-                  <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>Cross-sectional volume</div>
                 </div>
 
                 <div style={{ background: '#fff', padding: '16px', borderRadius: 'var(--r-soft)', boxShadow: 'var(--sh-soft)' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--muted)', textTransform: 'uppercase' }}>Total Required (Gross)</div>
+                  <div style={{ fontSize: '11px', color: 'var(--muted)', textTransform: 'uppercase' }}>{t('totalRequired')}</div>
                   <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--imperial-blue)', margin: '4px 0' }}>
                     {sealantResult.grossVolumeMl} <span style={{ fontSize: '12px', fontWeight: 400 }}>mL</span>
                   </div>
-                  <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>Includes {sealantResult.wastePercent}% site wastage</div>
+                  <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>{t('includesWaste', { pct: sealantResult.wastePercent })}</div>
                 </div>
 
                 <div style={{ background: 'var(--navy)', padding: '16px', borderRadius: 'var(--r-soft)', color: '#fff', boxShadow: 'var(--sh-lift)' }}>
-                  <div style={{ fontSize: '11px', color: '#b9cde8', textTransform: 'uppercase' }}>Cartridges (310 mL)</div>
+                  <div style={{ fontSize: '11px', color: '#b9cde8', textTransform: 'uppercase' }}>{t('cartridges')}</div>
                   <div style={{ fontSize: '24px', fontWeight: 700, color: '#fff', margin: '4px 0' }}>
-                    {sealantResult.cartridgesNeeded} <span style={{ fontSize: '13px', fontWeight: 400 }}>Cartridges</span>
-                  </div>
-                  <div style={{ fontSize: '10.5px', color: '#88a6d4' }}>
-                    Yield: ~{sealantResult.metersPerCartridge} m per 310mL cartridge
+                    {sealantResult.cartridgesNeeded}
                   </div>
                 </div>
 
                 <div style={{ background: '#fff', padding: '16px', borderRadius: 'var(--r-soft)', boxShadow: 'var(--sh-soft)', border: '1px solid var(--line)' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--muted)', textTransform: 'uppercase' }}>Sausages (600 mL)</div>
+                  <div style={{ fontSize: '11px', color: 'var(--muted)', textTransform: 'uppercase' }}>{t('sausages')}</div>
                   <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--navy)', margin: '4px 0' }}>
-                    {sealantResult.sausagesNeeded} <span style={{ fontSize: '12px', fontWeight: 400 }}>Sausage Foils</span>
+                    {sealantResult.sausagesNeeded}
                   </div>
-                  <div style={{ fontSize: '10.5px', color: 'var(--muted)' }}>Industrial bulk packaging</div>
                 </div>
               </div>
 
@@ -852,7 +842,7 @@ export default function CoverageCalculatorClient({
                   className="btn secondary"
                   style={{ borderRadius: 'var(--r-soft)', padding: '12px 20px', fontSize: '12.5px' }}
                 >
-                  Request a Quote
+                  {t('requestQuote')}
                 </Link>
 
                 {currentSealantProduct ? (
@@ -863,11 +853,11 @@ export default function CoverageCalculatorClient({
                     className="btn primary"
                     style={{ borderRadius: 'var(--r-soft)', padding: '12px 24px', fontSize: '12.5px' }}
                   >
-                    {isAddingToCart ? 'Adding to Cart...' : addedSuccess ? '✓ Added to Cart!' : `Add ${sealantResult.cartridgesNeeded} Cartridges to Cart`}
+                    {cartButtonLabel(sealantResult.cartridgesNeeded, false)}
                   </button>
                 ) : (
                   <Link href="/products?collection=construction-chemicals" className="btn primary" style={{ borderRadius: 'var(--r-soft)', padding: '12px 24px', fontSize: '12.5px' }}>
-                    Browse Available Sealants
+                    {t('browseSealants')}
                   </Link>
                 )}
               </div>
