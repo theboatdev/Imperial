@@ -2,7 +2,7 @@
 
 import { useCartStore } from '@/lib/cart-store';
 import { useVatStore } from '@/lib/vat-store';
-import { isValidCheckoutUrl } from '@/lib/utils';
+import { formatPrice, isValidCheckoutUrl } from '@/lib/utils';
 import { updateLineItemAction, removeLineItemAction } from '@/app/actions/cart';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
@@ -20,7 +20,6 @@ export default function CartPage() {
   const syncFromApi = useCartStore((s) => s.syncFromApi);
   const subtotalStr = useCartStore((s) => s.subtotal());
   const subtotalNum = parseFloat(subtotalStr) || 0;
-  const currency = useCartStore((s) => s.currency());
 
   const { isVatInclusive, vatRate } = useVatStore();
   const [isUpdating, setIsUpdating] = useState(false);
@@ -184,7 +183,7 @@ export default function CartPage() {
                   </div>
 
                   <div className="price">
-                    {currency} {itemTotal.toFixed(2)}
+                    {formatPrice({ amount: itemTotal.toString(), currencyCode: 'AED' })}
                   </div>
                 </div>
               );
@@ -198,20 +197,24 @@ export default function CartPage() {
             <h4>{t('orderSummary')}</h4>
             <div className="sumrow">
               <span>{t('subtotal')}</span>
-              <span>{currency} {subtotalNum.toFixed(2)}</span>
+              <span>{formatPrice({ amount: subtotalNum.toString(), currencyCode: 'AED' })}</span>
             </div>
             <div className="sumrow">
               <span>{t('shipping')}</span>
-              <span>{shippingCost === 0 ? t('free') : `${currency} ${shippingCost.toFixed(2)}`}</span>
+              <span>{shippingCost === 0 ? t('free') : formatPrice({ amount: shippingCost.toString(), currencyCode: 'AED' })}</span>
             </div>
             <div className="sumrow">
               <span>{t('vat', { rate: Math.round(vatRate * 100) })}</span>
-              <span>{currency} {vatAmount.toFixed(2)}</span>
+              <span>{formatPrice({ amount: vatAmount.toString(), currencyCode: 'AED' })}</span>
             </div>
             <div className="sumrow total">
               <span>{t('total')}</span>
-              <span>{currency} {grandTotal.toFixed(2)}</span>
+              <span>{formatPrice({ amount: grandTotal.toString(), currencyCode: 'AED' })}</span>
             </div>
+
+            <p style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.55, marginTop: '14px' }}>{t('vatNote')}</p>
+            <p style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.55, marginTop: '8px' }}>{t('stockNote')}</p>
+            <p style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.55, marginTop: '8px' }}>{t('deliveryNote')}</p>
 
             <button
               type="button"
@@ -224,6 +227,18 @@ export default function CartPage() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
+
+            <div style={{ marginTop: '16px', padding: '14px', background: 'var(--slot)', borderRadius: 'var(--r-soft)' }}>
+              <div style={{ fontWeight: 600, fontSize: '13px', color: 'var(--navy)', marginBottom: '6px' }}>
+                {t('convertToQuote')}
+              </div>
+              <p style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.55, marginBottom: '10px' }}>
+                {t('convertToQuoteDesc')}
+              </p>
+              <Link href="/rfq" className="btn secondary block" style={{ textAlign: 'center' }}>
+                {t('convertToQuote')}
+              </Link>
+            </div>
           </div>
         )}
       </div>

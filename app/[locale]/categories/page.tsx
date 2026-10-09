@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 
 /** Local category images in public/collections — distinct from home page category art */
 const COLLECTION_IMAGES: Record<string, string> = {
-  waterproofing: '/collections/waterproofing.png',
-  adhesive: '/collections/adhesive.png',
-  adhesives: '/collections/adhesive.png',
-  sealent: '/collections/sealent.png',
-  sealant: '/collections/sealent.png',
-  sealants: '/collections/sealent.png',
-  bonding: '/collections/bonding.png',
+  waterproofing: '/collections/waterproofing.webp',
+  adhesive: '/collections/adhesive.webp',
+  adhesives: '/collections/adhesive.webp',
+  sealent: '/collections/sealent.webp',
+  sealant: '/collections/sealent.webp',
+  sealants: '/collections/sealent.webp',
+  bonding: '/collections/bonding.webp',
 };
 
 function resolveCollectionImage(collection: ShopifyCollection): string | null {

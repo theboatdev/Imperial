@@ -483,7 +483,11 @@ export async function createCart(
     cartCreate: { cart: Record<string, unknown> | null; userErrors: { message: string }[] };
   }>({
     query: CREATE_CART_MUTATION,
-    variables: { lines },
+    variables: {
+      lines,
+      // Lock cart to UAE so Shopify Markets does not switch to visitor currency (e.g. LKR)
+      buyerIdentity: { countryCode: 'AE' },
+    },
     cache: 'no-store',
   });
 
@@ -572,6 +576,14 @@ export async function updateCartBuyerIdentity(
   cartId: string,
   customerAccessToken: string
 ): Promise<Cart> {
+  return updateCartBuyerCountry(cartId, { customerAccessToken, countryCode: 'AE' });
+}
+
+/** Keep carts on the UAE / AED market (Shopify Markets otherwise follows visitor geo). */
+export async function updateCartBuyerCountry(
+  cartId: string,
+  buyerIdentity: { countryCode?: string; customerAccessToken?: string } = { countryCode: 'AE' }
+): Promise<Cart> {
   const data = await shopifyFetch<{
     cartBuyerIdentityUpdate: {
       cart: Record<string, unknown> | null;
@@ -581,7 +593,7 @@ export async function updateCartBuyerIdentity(
     query: CART_BUYER_IDENTITY_UPDATE_MUTATION,
     variables: {
       cartId,
-      buyerIdentity: { customerAccessToken },
+      buyerIdentity: { countryCode: 'AE', ...buyerIdentity },
     },
     cache: 'no-store',
   });

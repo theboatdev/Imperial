@@ -68,14 +68,31 @@ export default function BulkInquiryForm({ products }: Props) {
       </div>
 
       <div className="formrow">
+        <label htmlFor="bulk-location">{t('bulk.location')}</label>
+        <select id="bulk-location" className="softselect" style={{ width: '100%', height: '48px' }} defaultValue="">
+          <option value="">{t('bulk.selectEmirate')}</option>
+          <option value="abu-dhabi">{t('emirates.abuDhabi')}</option>
+          <option value="dubai">{t('emirates.dubai')}</option>
+          <option value="sharjah">{t('emirates.sharjah')}</option>
+          <option value="ajman">{t('emirates.ajman')}</option>
+          <option value="uaq">{t('emirates.uaq')}</option>
+          <option value="rak">{t('emirates.rak')}</option>
+          <option value="fujairah">{t('emirates.fujairah')}</option>
+          <option value="other">{t('emirates.other')}</option>
+        </select>
+      </div>
+
+      <div className="formrow">
         <label htmlFor="bulk-docs">{t('bulk.upload')}</label>
         <div style={{ background: '#fff', padding: '16px', borderRadius: 'var(--r-soft)', boxShadow: 'var(--sh-soft)' }}>
           <input
             id="bulk-docs"
             type="file"
+            accept=".pdf,.xls,.xlsx,.csv,.doc,.docx,.jpg,.jpeg,.png"
             onChange={(e) => setFile(e.target.files?.[0] || null)}
             style={{ width: '100%', cursor: 'pointer' }}
           />
+          <small style={{ color: 'var(--muted)', marginTop: '6px', display: 'block' }}>{t('bulk.uploadHint')}</small>
           {file && (
             <small style={{ color: 'var(--imperial-blue)', marginTop: '6px', display: 'block', fontWeight: 600 }}>
               {t('bulk.attached', { filename: file.name })}

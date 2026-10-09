@@ -4,8 +4,9 @@ import { Link } from '@/i18n/navigation';
 import { getTranslations } from 'next-intl/server';
 
 export const metadata: Metadata = {
-  title: 'Request a Quote | IMPERIAL',
-  description: 'Request a project quote for construction chemicals, building materials and tools. UAE supply, fast response.',
+  title: 'Request Building Materials Quote UAE | Imperial',
+  description:
+    'Upload a BOQ or material list for technical review, material recommendations, special project pricing and delivery across all seven Emirates.',
 };
 
 export default async function RFQPage() {

@@ -10,9 +10,9 @@ import type { Metadata } from 'next';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'IMPERIAL — Materials. Systems. Project confidence.',
+  title: 'Building Materials Supplier Abu Dhabi & UAE | Imperial',
   description:
-    'Technical products, responsive support and reliable UAE supply for demanding construction environments.',
+    'Source construction chemicals, tools and project materials from Imperial in Mussafah, Abu Dhabi, with technical support and delivery across all seven Emirates.',
 };
 
 export default async function HomePage() {
@@ -28,10 +28,10 @@ export default async function HomePage() {
 
   // Prefer live Shopify collections; fall back to product-type categories
   const CATEGORY_IMAGES = [
-    '/category-chemicals.png',
-    '/category-paints.png',
-    '/category-building-materials.png',
-    '/category-tools.png',
+    '/category-chemicals.webp',
+    '/category-paints.webp',
+    '/category-building-materials.webp',
+    '/category-tools.webp',
   ];
   const CATEGORIES =
     collections.length > 0
@@ -44,22 +44,22 @@ export default async function HomePage() {
           {
             title: t('waterproofing'),
             href: '/products?collection=waterproofing',
-            image: '/category-chemicals.png',
+            image: '/category-chemicals.webp',
           },
           {
             title: t('adhesives'),
             href: '/products?collection=adhesive',
-            image: '/category-paints.png',
+            image: '/category-paints.webp',
           },
           {
             title: t('sealants'),
             href: '/products?collection=sealent',
-            image: '/category-building-materials.png',
+            image: '/category-building-materials.webp',
           },
           {
             title: t('bonding'),
             href: '/products?collection=bonding',
-            image: '/category-tools.png',
+            image: '/category-tools.webp',
           },
         ];
 
@@ -74,7 +74,15 @@ export default async function HomePage() {
             '@type': 'Organization',
             name: 'Imperial Middle East',
             url: 'https://imperial.ae',
-            description: 'Materials. Systems. Project confidence.',
+            description:
+              'Building materials and construction products supplier based in Mussafah, Abu Dhabi, serving all seven Emirates.',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: 'M45, Mussafah',
+              addressLocality: 'Abu Dhabi',
+              addressCountry: 'AE',
+            },
+            telephone: '+97126442611',
           }),
         }}
       />
@@ -86,7 +94,7 @@ export default async function HomePage() {
       <div style={{ position: 'relative', borderRadius: 'var(--r-card)', margin: '48px 28px', boxShadow: 'var(--sh-lift)', overflow: 'hidden', minHeight: '280px' }}>
         {/* Full-width background image */}
         <img
-          src="/IME WEB REWARDS CARDS.png"
+          src="/IME WEB REWARDS CARDS.webp"
           alt={t('rewardsAlt')}
           style={{
             position: 'absolute',

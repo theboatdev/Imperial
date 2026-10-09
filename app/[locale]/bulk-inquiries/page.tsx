@@ -5,8 +5,9 @@ import { Link } from '@/i18n/navigation';
 import { getTranslations } from 'next-intl/server';
 
 export const metadata: Metadata = {
-  title: 'Bulk Inquiries | IMPERIAL',
-  description: 'Submit bulk inquiries for wholesale construction materials, chemicals, and tools.',
+  title: 'Trade and Project Volume Pricing | Imperial',
+  description:
+    'Request volume, pallet or contract pricing with BOQ upload, material recommendations and UAE delivery planning from Mussafah, Abu Dhabi.',
 };
 
 export default async function BulkInquiriesPage() {

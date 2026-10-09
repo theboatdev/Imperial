@@ -54,8 +54,16 @@ export default async function Footer() {
         {/* Imperial */}
         <div className="col imp-footer-col">
           <h6>{t('imperial')}</h6>
-          <div>info@imperial.ae</div>
-          <div>Al Quoz, Dubai, UAE</div>
+          <div>{t('email')}</div>
+          <div>{t('address')}</div>
+          <div>
+            <a href="tel:+97126442611" style={{ color: 'inherit', textDecoration: 'none' }}>{t('landline')}</a>
+          </div>
+          <div>
+            <a href="https://wa.me/971566694324" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+              {t('whatsapp')}
+            </a>
+          </div>
           <div style={{ marginTop: '8px', fontSize: '11px', color: '#637b9c' }}>
             {t('securedCheckout')}
           </div>

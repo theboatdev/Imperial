@@ -524,9 +524,10 @@ const CART_FRAGMENT = `
   }
 `;
 
+/** Force UAE market/currency so cart prices stay in AED (not visitor geo). */
 export const CREATE_CART_MUTATION = `
-  mutation CreateCart($lines: [CartLineInput!]!) {
-    cartCreate(input: { lines: $lines }) {
+  mutation CreateCart($lines: [CartLineInput!]!, $buyerIdentity: CartBuyerIdentityInput) @inContext(country: AE) {
+    cartCreate(input: { lines: $lines, buyerIdentity: $buyerIdentity }) {
       cart {
         ...CartFields
       }
@@ -540,7 +541,7 @@ export const CREATE_CART_MUTATION = `
 `;
 
 export const ADD_TO_CART_MUTATION = `
-  mutation AddToCart($cartId: ID!, $lines: [CartLineInput!]!) {
+  mutation AddToCart($cartId: ID!, $lines: [CartLineInput!]!) @inContext(country: AE) {
     cartLinesAdd(cartId: $cartId, lines: $lines) {
       cart {
         ...CartFields
@@ -555,7 +556,7 @@ export const ADD_TO_CART_MUTATION = `
 `;
 
 export const UPDATE_CART_LINE_MUTATION = `
-  mutation UpdateCartLine($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+  mutation UpdateCartLine($cartId: ID!, $lines: [CartLineUpdateInput!]!) @inContext(country: AE) {
     cartLinesUpdate(cartId: $cartId, lines: $lines) {
       cart {
         ...CartFields
@@ -570,7 +571,7 @@ export const UPDATE_CART_LINE_MUTATION = `
 `;
 
 export const REMOVE_FROM_CART_MUTATION = `
-  mutation RemoveFromCart($cartId: ID!, $lineIds: [ID!]!) {
+  mutation RemoveFromCart($cartId: ID!, $lineIds: [ID!]!) @inContext(country: AE) {
     cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
       cart {
         ...CartFields
@@ -585,7 +586,7 @@ export const REMOVE_FROM_CART_MUTATION = `
 `;
 
 export const GET_CART_QUERY = `
-  query GetCart($cartId: ID!) {
+  query GetCart($cartId: ID!) @inContext(country: AE) {
     cart(id: $cartId) {
       ...CartFields
     }
@@ -594,7 +595,7 @@ export const GET_CART_QUERY = `
 `;
 
 export const CART_BUYER_IDENTITY_UPDATE_MUTATION = `
-  mutation CartBuyerIdentityUpdate($cartId: ID!, $buyerIdentity: CartBuyerIdentityInput!) {
+  mutation CartBuyerIdentityUpdate($cartId: ID!, $buyerIdentity: CartBuyerIdentityInput!) @inContext(country: AE) {
     cartBuyerIdentityUpdate(cartId: $cartId, buyerIdentity: $buyerIdentity) {
       cart {
         ...CartFields

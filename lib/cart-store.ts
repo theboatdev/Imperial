@@ -80,7 +80,7 @@ export const useCartStore = create<CartState>()(
         );
         return total.toFixed(2);
       },
-      currency: () => get().items[0]?.price.currencyCode || 'USD',
+      currency: () => get().items[0]?.price.currencyCode || 'AED',
 
       // UI Actions
       openCart: () => set({ isOpen: true }),

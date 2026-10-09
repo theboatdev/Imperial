@@ -31,7 +31,7 @@ export default function HeroSection() {
       {/* Immersive Background Image */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
         <Image 
-          src="/Gemini_Generated_Image_s18lxes18lxes18l.png" 
+          src="/Gemini_Generated_Image_s18lxes18lxes18l.webp" 
           alt={t('alt')} 
           fill
           priority
@@ -103,7 +103,7 @@ export default function HeroSection() {
         {/* Stage with dynamic rotating brand wheel */}
         <div className="hero-stage">
           <BrandWheel />
-          <p className="hero-note" style={{ position: 'relative', zIndex: 20 }}>{slide.note}</p>
+          <p className="hero-note">{slide.note}</p>
         </div>
 
         {/* Right dots */}
