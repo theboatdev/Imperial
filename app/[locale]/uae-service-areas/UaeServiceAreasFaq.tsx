@@ -13,7 +13,7 @@ export default function UaeServiceAreasFaq() {
   }));
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
       {faqs.map((faq, i) => {
         const open = openIdx === i;
         return (
@@ -21,8 +21,10 @@ export default function UaeServiceAreasFaq() {
             key={i}
             style={{
               border: '1px solid var(--line)',
-              borderRadius: '8px',
+              borderRadius: 'var(--r-soft)',
               overflow: 'hidden',
+              boxShadow: open ? 'var(--sh-track)' : 'none',
+              background: '#fff',
             }}
           >
             <button
@@ -43,24 +45,38 @@ export default function UaeServiceAreasFaq() {
                 fontSize: '15px',
                 fontWeight: 600,
                 color: 'var(--navy)',
+                letterSpacing: '-0.01em',
               }}
             >
               {faq.question}
-              <svg
-                className="ic sm"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
+              <span
                 aria-hidden="true"
                 style={{
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '8px',
+                  background: open ? 'rgba(9, 79, 168, 0.12)' : 'var(--slot)',
+                  color: 'var(--navy)',
+                  display: 'grid',
+                  placeItems: 'center',
                   flexShrink: 0,
-                  transform: open ? 'rotate(180deg)' : 'none',
-                  transition: 'transform var(--motion)',
                 }}
               >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  style={{
+                    transform: open ? 'rotate(180deg)' : 'none',
+                    transition: 'transform var(--motion)',
+                  }}
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </span>
             </button>
             {open && (
               <div
@@ -69,7 +85,7 @@ export default function UaeServiceAreasFaq() {
                   background: 'rgba(9, 79, 168, 0.04)',
                   color: 'var(--muted)',
                   fontSize: '14px',
-                  lineHeight: 1.7,
+                  lineHeight: 1.75,
                 }}
               >
                 {faq.answer}

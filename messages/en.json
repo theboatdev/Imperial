@@ -837,7 +837,13 @@
         "question": "Are site visits available in every Emirate?",
         "answer": "Site visits can be considered for suitable requirements, but they are not automatic. Confirmation depends on project scope, location, technical need, access, team availability and agreed terms."
       }
-    }
+    },
+    "heroLine": "Mussafah base — coordinated supply and delivery across all seven Emirates.",
+    "noteTitle": "One consolidated coverage page",
+    "emiratesTitle": "Service by Emirate",
+    "emiratesIntro": "Confirm location, access and timing on every enquiry so we can plan support and delivery accurately.",
+    "ctaStrip": "Need project pricing or delivery planning for a site in any Emirate?",
+    "ctaRfq": "Request a Quote"
   },
   "Errors": {
     "somethingWrong": "Something went wrong",
@@ -965,7 +971,12 @@
           }
         }
       }
-    }
+    },
+    "heroLine": "Answers on coverage, products, technical support, quotations and orders.",
+    "topicsTitle": "Browse by topic",
+    "topicsHint": "Jump to a section",
+    "topicsIntro": "Choose a category below, or scroll the full FAQ set for building materials and project supply.",
+    "ctaStrip": "Still need help? Send a quote request or speak with the Mussafah team."
   },
   "TechnicalResources": {
     "breadcrumb": "Technical Resources",
@@ -1016,7 +1027,12 @@
         "question": "Are product documents permanently valid?",
         "answer": "No. Manufacturers can revise documents. Imperial publishes the current version available and documents on product pages should be checked for issue or revision date before use."
       }
-    }
+    },
+    "heroLine": "TDS, SDS, approvals and application guidance from Mussafah.",
+    "searchTitle": "How to find documents",
+    "supportHint": "What we can help with",
+    "libraryRowHint": "Document type",
+    "ctaStrip": "Need a specific datasheet, approval or application note for your project?"
   },
   "DeliveryInformation": {
     "breadcrumb": "Delivery Information",
@@ -1065,7 +1081,14 @@
         "question": "Can I collect from Mussafah instead?",
         "answer": "Collection may be arranged after the order, payment and collection readiness are confirmed. Contact the team before travelling."
       }
-    }
+    },
+    "heroLine": "Confirmed deliveries and collection coordinated from Mussafah, Abu Dhabi.",
+    "dependTitle": "What delivery depends on",
+    "infoHint": "For faster confirmation",
+    "acceptHint": "Checklist",
+    "confirmTitle": "Order-specific confirmation",
+    "ctaStrip": "Share destination, access and timing so we can confirm delivery or collection.",
+    "ctaContact": "Contact Support"
   },
   "ContactUs": {
     "breadcrumb": "Contact Us",

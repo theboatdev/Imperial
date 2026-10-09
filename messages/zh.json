@@ -837,7 +837,13 @@
         "question": "每个酋长国都能安排现场拜访吗？",
         "answer": "可为合适需求考虑现场拜访，但并非自动安排。确认取决于项目范围、地点、技术需求、通行、团队档期与约定条款。"
       }
-    }
+    },
+    "heroLine": "穆萨法基地 — 七个酋长国的供应与配送协调。",
+    "noteTitle": "统一服务覆盖页",
+    "emiratesTitle": "按酋长国划分的服务",
+    "emiratesIntro": "请在每次询价中确认地点、通行与时间，以便我们准确安排支持与配送。",
+    "ctaStrip": "需要任一酋长国工地的项目报价或配送规划？",
+    "ctaRfq": "请求报价"
   },
   "Errors": {
     "somethingWrong": "出了点问题",
@@ -965,7 +971,12 @@
           }
         }
       }
-    }
+    },
+    "heroLine": "覆盖、产品、技术支持、报价与订单常见问题解答。",
+    "topicsTitle": "按主题浏览",
+    "topicsHint": "跳转到章节",
+    "topicsIntro": "选择下方类别，或浏览建材与项目供应的完整常见问题。",
+    "ctaStrip": "仍需帮助？发送报价请求或联系穆萨法团队。"
   },
   "TechnicalResources": {
     "breadcrumb": "技术资源",
@@ -1016,7 +1027,12 @@
         "question": "产品文档是否永久有效？",
         "answer": "否。制造商可能修订文档。帝国发布其当前可用版本，使用前请核对产品页上的发布或修订日期。"
       }
-    }
+    },
+    "heroLine": "穆萨法提供的 TDS、SDS、批文与施工应用指导。",
+    "searchTitle": "如何查找文件",
+    "supportHint": "我们可以协助的事项",
+    "libraryRowHint": "文件类型",
+    "ctaStrip": "需要特定数据表、批文或项目应用说明？"
   },
   "DeliveryInformation": {
     "breadcrumb": "配送信息",
@@ -1065,7 +1081,14 @@
         "question": "我能否改为从穆萨法自提？",
         "answer": "在确认订单、付款与自提准备就绪后可安排自提。出行前请联系团队。"
       }
-    }
+    },
+    "heroLine": "从阿布扎比穆萨法协调的确认配送与自提。",
+    "dependTitle": "配送取决于哪些因素",
+    "infoHint": "加快确认",
+    "acceptHint": "检查清单",
+    "confirmTitle": "按订单确认",
+    "ctaStrip": "请提供目的地、通行与时间，以便我们确认配送或自提。",
+    "ctaContact": "联系支持"
   },
   "ContactUs": {
     "breadcrumb": "联系我们",
