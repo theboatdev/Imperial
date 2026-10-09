@@ -35,6 +35,8 @@ yarn-error.log*
 .env*
 .env.local*
 
+Imperial_Middle_East_Website_Content_Handover-2.docx
+
 # vercel
 .vercel
 

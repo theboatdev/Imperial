@@ -3,6 +3,7 @@
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useState, useEffect, useRef, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useCartStore } from '@/lib/cart-store';
 import { useWishlistStore } from '@/lib/wishlist-store';
@@ -41,7 +42,23 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
 
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const headerRef = useRef<HTMLElement>(null);
+
+  const hasCollection = Boolean(searchParams.get('collection'));
+  const hasVendor = Boolean(searchParams.get('vendor'));
+  const isProductsPath = pathname === '/products' || pathname.startsWith('/products/');
+
+  const navActive = {
+    products: isProductsPath && !hasCollection && !hasVendor,
+    brands: isProductsPath && hasVendor,
+    categories: pathname === '/categories' || pathname.startsWith('/categories/') || (isProductsPath && hasCollection),
+    about: pathname === '/company' || pathname.startsWith('/company/'),
+    promotions: pathname === '/promotions' || pathname.startsWith('/promotions/'),
+    calculator: pathname === '/coverage-calculator' || pathname.startsWith('/coverage-calculator/'),
+    bulk: pathname === '/bulk-inquiries' || pathname.startsWith('/bulk-inquiries/'),
+    rfq: pathname === '/rfq' || pathname.startsWith('/rfq/'),
+  };
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -342,12 +359,18 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
       {/* ── Mega Menu Nav ── */}
       <nav className="megabar" aria-label={t('mainNav')}>
         {/* All Products — simple link */}
-        <Link href="/products" className="megaitem megaitem-link">{t('allProducts')}</Link>
+        <Link
+          href="/products"
+          className={`megaitem megaitem-link${navActive.products ? ' active' : ''}`}
+          aria-current={navActive.products ? 'page' : undefined}
+        >
+          {t('allProducts')}
+        </Link>
 
         {/* Brands dropdown */}
         {vendors.length > 0 && (
           <div
-            className="megaitem"
+            className={`megaitem${navActive.brands ? ' active' : ''}`}
             onMouseEnter={() => setOpenMenu('brands')}
             onMouseLeave={() => setOpenMenu(null)}
           >
@@ -356,6 +379,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
               className="megaitem-btn"
               aria-expanded={openMenu === 'brands'}
               aria-haspopup="true"
+              aria-current={navActive.brands ? 'page' : undefined}
               onClick={() => setOpenMenu(openMenu === 'brands' ? null : 'brands')}
             >
               {t('brands')}
@@ -406,7 +430,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
         {/* Collections dropdown — real data */}
         {collections.length > 0 && (
           <div
-            className="megaitem"
+            className={`megaitem${navActive.categories ? ' active' : ''}`}
             onMouseEnter={() => setOpenMenu('collections')}
             onMouseLeave={() => setOpenMenu(null)}
           >
@@ -415,6 +439,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
               className="megaitem-btn"
               aria-expanded={openMenu === 'collections'}
               aria-haspopup="true"
+              aria-current={navActive.categories ? 'page' : undefined}
               onClick={() => setOpenMenu(openMenu === 'collections' ? null : 'collections')}
             >
               {t('categories')}
@@ -475,7 +500,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
 
         {/* About Us dropdown */}
         <div
-          className="megaitem"
+          className={`megaitem${navActive.about ? ' active' : ''}`}
           onMouseEnter={() => setOpenMenu('about')}
           onMouseLeave={() => setOpenMenu(null)}
         >
@@ -484,6 +509,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
             className="megaitem-btn"
             aria-expanded={openMenu === 'about'}
             aria-haspopup="true"
+            aria-current={navActive.about ? 'page' : undefined}
             onClick={() => setOpenMenu(openMenu === 'about' ? null : 'about')}
           >
             {t('aboutUs')}
@@ -512,16 +538,33 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
           )}
         </div>
 
-        <Link href="/promotions" className="megaitem megaitem-link" style={{ color: 'var(--signal-red)', fontWeight: 700 }}>
+        <Link
+          href="/promotions"
+          className={`megaitem megaitem-link${navActive.promotions ? ' active' : ''}`}
+          style={{ color: 'var(--signal-red)', fontWeight: 700 }}
+          aria-current={navActive.promotions ? 'page' : undefined}
+        >
           {t('promotions')}
         </Link>
-        <Link href="/coverage-calculator" className="megaitem megaitem-link">
+        <Link
+          href="/coverage-calculator"
+          className={`megaitem megaitem-link${navActive.calculator ? ' active' : ''}`}
+          aria-current={navActive.calculator ? 'page' : undefined}
+        >
           {t('coverageCalculator')}
         </Link>
-        <Link href="/bulk-inquiries" className="megaitem megaitem-link highlight">
+        <Link
+          href="/bulk-inquiries"
+          className={`megaitem megaitem-link highlight${navActive.bulk ? ' active' : ''}`}
+          aria-current={navActive.bulk ? 'page' : undefined}
+        >
           {t('bulkInquiries')}
         </Link>
-        <Link href="/rfq" className="megaitem megaitem-link highlight">
+        <Link
+          href="/rfq"
+          className={`megaitem megaitem-link highlight${navActive.rfq ? ' active' : ''}`}
+          aria-current={navActive.rfq ? 'page' : undefined}
+        >
           {t('requestQuote')}
         </Link>
       </nav>
@@ -529,44 +572,80 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
       {/* ── Mobile Menu ── */}
       {mobileMenuOpen && (
         <nav className="mobile-nav" aria-label={t('mobileNav')}>
-          <Link href="/products" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+          <Link
+            href="/products"
+            className={`mobile-nav-link${navActive.products ? ' active' : ''}`}
+            aria-current={navActive.products ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             {t('allProducts')}
           </Link>
-          <Link href="/coverage-calculator" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+          <Link
+            href="/coverage-calculator"
+            className={`mobile-nav-link${navActive.calculator ? ' active' : ''}`}
+            aria-current={navActive.calculator ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             {t('coverageCalculator')}
           </Link>
-          <Link href="/promotions" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--signal-red)', fontWeight: 700 }}>
+          <Link
+            href="/promotions"
+            className={`mobile-nav-link${navActive.promotions ? ' active' : ''}`}
+            aria-current={navActive.promotions ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+            style={{ color: 'var(--signal-red)', fontWeight: 700 }}
+          >
             {t('promotions')}
           </Link>
-          <div className="mobile-nav-section">{t('brands')}</div>
-          {vendors.slice(0, 8).map((vendor) => (
-            <Link
-              key={vendor}
-              href={`/products?vendor=${encodeURIComponent(vendor)}`}
-              className="mobile-nav-link"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {vendor}
-            </Link>
-          ))}
-          <div className="mobile-nav-section">{t('categories')}</div>
-          {collections.slice(0, 8).map((col) => (
-            <Link
-              key={col.id}
-              href={`/products?collection=${col.handle}`}
-              className="mobile-nav-link"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {col.title}
-            </Link>
-          ))}
+          <div className={`mobile-nav-section${navActive.brands ? ' active' : ''}`}>{t('brands')}</div>
+          {vendors.slice(0, 8).map((vendor) => {
+            const isVendorActive = hasVendor && searchParams.get('vendor') === vendor;
+            return (
+              <Link
+                key={vendor}
+                href={`/products?vendor=${encodeURIComponent(vendor)}`}
+                className={`mobile-nav-link${isVendorActive ? ' active' : ''}`}
+                aria-current={isVendorActive ? 'page' : undefined}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {vendor}
+              </Link>
+            );
+          })}
+          <div className={`mobile-nav-section${navActive.categories ? ' active' : ''}`}>{t('categories')}</div>
+          {collections.slice(0, 8).map((col) => {
+            const isColActive = hasCollection && searchParams.get('collection') === col.handle;
+            return (
+              <Link
+                key={col.id}
+                href={`/products?collection=${col.handle}`}
+                className={`mobile-nav-link${isColActive ? ' active' : ''}`}
+                aria-current={isColActive ? 'page' : undefined}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {col.title}
+              </Link>
+            );
+          })}
           {collections.length > 8 && (
-            <Link href="/categories" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+            <Link
+              href="/categories"
+              className={`mobile-nav-link${pathname === '/categories' ? ' active' : ''}`}
+              aria-current={pathname === '/categories' ? 'page' : undefined}
+              onClick={() => setMobileMenuOpen(false)}
+            >
               {t('allCategories')}
             </Link>
           )}
-          <div className="mobile-nav-section">{t('aboutUs')}</div>
-          <Link href="/company" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('theCompany')}</Link>
+          <div className={`mobile-nav-section${navActive.about ? ' active' : ''}`}>{t('aboutUs')}</div>
+          <Link
+            href="/company"
+            className={`mobile-nav-link${navActive.about ? ' active' : ''}`}
+            aria-current={navActive.about ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('theCompany')}
+          </Link>
           <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('whyImperial')}</Link>
           <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('ourProjects')}</Link>
           <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('testimonials')}</Link>
@@ -576,10 +655,20 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
           <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('getCredit')}</Link>
 
           <div className="mobile-nav-section" style={{ marginTop: '8px' }}>{t('action')}</div>
-          <Link href="/bulk-inquiries" className="mobile-nav-link mobile-nav-link-cta" onClick={() => setMobileMenuOpen(false)}>
+          <Link
+            href="/bulk-inquiries"
+            className={`mobile-nav-link mobile-nav-link-cta${navActive.bulk ? ' active' : ''}`}
+            aria-current={navActive.bulk ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             {t('bulkInquiries')}
           </Link>
-          <Link href="/rfq" className="mobile-nav-link mobile-nav-link-cta" onClick={() => setMobileMenuOpen(false)}>
+          <Link
+            href="/rfq"
+            className={`mobile-nav-link mobile-nav-link-cta${navActive.rfq ? ' active' : ''}`}
+            aria-current={navActive.rfq ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             {t('requestQuote')}
           </Link>
         </nav>
