@@ -53,7 +53,11 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
     products: isProductsPath && !hasCollection && !hasVendor,
     brands: isProductsPath && hasVendor,
     categories: pathname === '/categories' || pathname.startsWith('/categories/') || (isProductsPath && hasCollection),
-    about: pathname === '/company' || pathname.startsWith('/company/'),
+    about:
+      pathname === '/company' ||
+      pathname.startsWith('/company/') ||
+      pathname === '/tile-installation-systems' ||
+      pathname === '/roof-waterproofing-materials-abu-dhabi',
     promotions: pathname === '/promotions' || pathname.startsWith('/promotions/'),
     calculator: pathname === '/coverage-calculator' || pathname.startsWith('/coverage-calculator/'),
     bulk: pathname === '/bulk-inquiries' || pathname.startsWith('/bulk-inquiries/'),
@@ -526,6 +530,8 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
             <div className="megapanel" role="menu" style={{ minWidth: '220px', padding: '16px 20px' }}>
               <div className="megacol" style={{ minWidth: '100%' }}>
                 <Link href="/company" role="menuitem" onClick={() => setOpenMenu(null)}>{t('theCompany')}</Link>
+                <Link href="/tile-installation-systems" role="menuitem" onClick={() => setOpenMenu(null)}>{t('tileSystems')}</Link>
+                <Link href="/roof-waterproofing-materials-abu-dhabi" role="menuitem" onClick={() => setOpenMenu(null)}>{t('roofWaterproofing')}</Link>
                 <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('whyImperial')}</Link>
                 <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('ourProjects')}</Link>
                 <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('testimonials')}</Link>
@@ -640,11 +646,27 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
           <div className={`mobile-nav-section${navActive.about ? ' active' : ''}`}>{t('aboutUs')}</div>
           <Link
             href="/company"
-            className={`mobile-nav-link${navActive.about ? ' active' : ''}`}
-            aria-current={navActive.about ? 'page' : undefined}
+            className={`mobile-nav-link${pathname === '/company' ? ' active' : ''}`}
+            aria-current={pathname === '/company' ? 'page' : undefined}
             onClick={() => setMobileMenuOpen(false)}
           >
             {t('theCompany')}
+          </Link>
+          <Link
+            href="/tile-installation-systems"
+            className={`mobile-nav-link${pathname === '/tile-installation-systems' ? ' active' : ''}`}
+            aria-current={pathname === '/tile-installation-systems' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('tileSystems')}
+          </Link>
+          <Link
+            href="/roof-waterproofing-materials-abu-dhabi"
+            className={`mobile-nav-link${pathname === '/roof-waterproofing-materials-abu-dhabi' ? ' active' : ''}`}
+            aria-current={pathname === '/roof-waterproofing-materials-abu-dhabi' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('roofWaterproofing')}
           </Link>
           <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('whyImperial')}</Link>
           <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('ourProjects')}</Link>

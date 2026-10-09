@@ -20,6 +20,10 @@
     "promotionsDescription": "帝国中东的特别优惠与促销活动。",
     "companyTitle": "关于帝国中东 | 阿布扎比穆萨法",
     "companyDescription": "帝国是位于阿布扎比穆萨法的建筑材料供应商，服务阿联酋全部七个酋长国的客户与项目。",
+    "tileSystemsTitle": "阿布扎比瓷砖铺贴材料 | 帝国",
+    "tileSystemsDescription": "从位于阿布扎比穆萨法的帝国采购底涂、找平、防水、瓷砖胶、填缝剂、密封剂与工具。",
+    "roofWaterproofingTitle": "阿布扎比屋面防水材料 | 帝国",
+    "roofWaterproofingDescription": "比较来自阿布扎比穆萨法帝国的屋面防水膜、液体系统、底涂、密封剂与修补产品。",
     "categoriesTitle": "分类",
     "categoriesDescription": "按分类选购建筑化学品、防水材料、瓷砖系统、工具与工程材料。",
     "contactTitle": "联系我们",
@@ -60,6 +64,8 @@
     "requestQuote": "申请报价",
     "aboutUs": "关于我们",
     "theCompany": "公司介绍",
+    "tileSystems": "瓷砖铺贴系统",
+    "roofWaterproofing": "屋面防水",
     "whyImperial": "为什么选择帝国？",
     "ourProjects": "我们的项目",
     "testimonials": "客户评价",
@@ -87,6 +93,8 @@
     "adhesives": "胶粘剂",
     "sealants": "密封剂",
     "bonding": "粘结材料",
+    "tileSystems": "瓷砖铺贴系统",
+    "roofWaterproofing": "屋面防水",
     "requestQuote": "申请报价",
     "bulkOrderTerms": "批量订购条款",
     "theCompany": "关于帝国",
@@ -567,6 +575,95 @@
     "allCategories": "全部分类",
     "noCollections": "暂无可用合集",
     "noCollectionsDesc": "无法加载合集。请检查您的 Shopify 连接。"
+  },
+  "TileSystems": {
+    "breadcrumb": "瓷砖铺贴系统",
+    "kicker": "系统",
+    "title": "完整瓷砖铺贴系统",
+    "quickAnswer": "帝国中东供应来自阿布扎比穆萨法的完整瓷砖铺贴材料，包括基层处理、底涂、找平、防水、胶粘剂、填缝剂、密封剂与施工工具。",
+    "overviewTitle": "应用概览",
+    "overview": "可靠的瓷砖铺贴取决于完整体系。瓷砖材质与尺寸、基层强度与平整度、潮湿暴露、变形、接缝设计与使用条件都会影响所选系统。",
+    "infoTitle": "建议提供的信息",
+    "infoItems": {
+      "0": "瓷砖材质与尺寸",
+      "1": "墙面或地面基层",
+      "2": "室内、室外、潮湿或浸水条件",
+      "3": "所需胶粘剂等级",
+      "4": "填缝宽度、颜色与耐性要求",
+      "5": "面积、地点与项目进度"
+    },
+    "relatedTitle": "相关产品线",
+    "relatedAdhesives": "瓷砖胶与填缝剂",
+    "relatedWaterproofing": "防水材料",
+    "relatedSealants": "胶粘剂与密封剂",
+    "relatedTools": "工具与设备",
+    "uaeSupport": "帝国从阿布扎比穆萨法为全部七个酋长国提供合适支持，包括产品指导、工程报价、安排现场拜访与确认配送计划。",
+    "ctaQuote": "申请系统报价",
+    "ctaSupport": "申请技术支持",
+    "ctaSiteVisit": "申请现场拜访",
+    "faqTitle": "常见问题",
+    "faqs": {
+      "0": {
+        "question": "什么构成完整的瓷砖铺贴系统？",
+        "answer": "完整系统涵盖基层处理、找平、必要时的防水、胶粘剂、填缝剂、变形缝、周边缝与施工工具。"
+      },
+      "1": {
+        "question": "大规格瓷砖适合用哪种胶？",
+        "answer": "选择取决于瓷砖尺寸、重量、基层、位置、所需等级与使用条件。请遵循批准规格与确切产品 TDS。"
+      },
+      "2": {
+        "question": "帝国能否审核瓷砖明细或 BOQ？",
+        "answer": "可以。请上传明细、规格、数量、瓷砖信息、项目地点与进度，以便进行技术与商务评估。"
+      },
+      "3": {
+        "question": "材料能否配送到任意酋长国？",
+        "answer": "确认的瓷砖系统订单可协调配送至阿布扎比、迪拜、沙迦、阿治曼、乌姆盖万、拉斯海玛和富查伊拉，视库存、搬运、通行与进度而定。"
+      }
+    }
+  },
+  "RoofWaterproofing": {
+    "breadcrumb": "屋面防水",
+    "kicker": "解决方案",
+    "title": "面向阿联酋项目的屋面防水材料",
+    "quickAnswer": "帝国中东供应来自阿布扎比穆萨法的屋面防水材料，包括液体、水泥基与沥青体系，以及相关底涂、增强材料、密封剂、修补产品与配件。",
+    "overviewTitle": "应用概览",
+    "overview": "屋面系统必须匹配基层、现有状况、排水、变形、紫外线暴露、通行与细部区域。请确认屋面是新建还是既有、进水方式、现有系统，以及饰面或质保要求。",
+    "infoTitle": "建议提供的信息",
+    "infoItems": {
+      "0": "屋面面积、基层与现有系统",
+      "1": "外露或保护性饰面",
+      "2": "排水口、上翻、穿管与收边",
+      "3": "紫外线、通行与变形要求",
+      "4": "项目地点、所需批准与完工日期"
+    },
+    "relatedTitle": "相关产品线",
+    "relatedWaterproofing": "防水材料",
+    "relatedSealants": "胶粘剂与密封剂",
+    "relatedConcrete": "混凝土修补",
+    "relatedTools": "工具与设备",
+    "uaeSupport": "帝国从阿布扎比穆萨法为全部七个酋长国提供合适支持，包括产品指导、工程报价、安排现场拜访与确认配送计划。",
+    "ctaQuote": "申请系统报价",
+    "ctaSupport": "申请技术支持",
+    "ctaSiteVisit": "申请现场拜访",
+    "faqTitle": "常见问题",
+    "faqs": {
+      "0": {
+        "question": "推荐屋面防水系统需要哪些信息？",
+        "answer": "请提供基层、现有层、屋面面积、排水、渗漏点、紫外线与通行暴露、细部条件、规格与要求完工日期。"
+      },
+      "1": {
+        "question": "帝国能否安排屋面现场拜访？",
+        "answer": "团队在审核技术要求、项目地点、范围、通行与商务条款后，可考虑安排现场拜访。"
+      },
+      "2": {
+        "question": "帝国是否供应完整屋面系统组件？",
+        "answer": "可用报价可包括主要防水材料，以及兼容的底涂、增强材料、密封剂、修补产品与所需配件。"
+      },
+      "3": {
+        "question": "屋面防水产品能否配送到阿联酋任意地点？",
+        "answer": "确认的工程配送可协调至阿布扎比、迪拜、沙迦、阿治曼、乌姆盖万、拉斯海玛和富查伊拉，视产品、数量、通行与进度而定。"
+      }
+    }
   },
   "Errors": {
     "somethingWrong": "出了点问题",

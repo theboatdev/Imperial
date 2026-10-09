@@ -20,6 +20,10 @@
     "promotionsDescription": "Special offers and promotions from Imperial Middle East.",
     "companyTitle": "About Imperial Middle East | Mussafah Abu Dhabi",
     "companyDescription": "Imperial is a building materials supplier based in Mussafah, Abu Dhabi, supporting customers and projects across all seven Emirates.",
+    "tileSystemsTitle": "Tile Installation Materials Abu Dhabi | Imperial",
+    "tileSystemsDescription": "Source primers, levellers, waterproofing, tile adhesives, grouts, sealants and tools from Imperial in Mussafah, Abu Dhabi.",
+    "roofWaterproofingTitle": "Roof Waterproofing Materials Abu Dhabi | Imperial",
+    "roofWaterproofingDescription": "Compare roof waterproofing membranes, liquid systems, primers, sealants and repair products from Imperial in Mussafah, Abu Dhabi.",
     "categoriesTitle": "Categories",
     "categoriesDescription": "Shop construction chemicals, waterproofing, tile systems, tools and project materials by category.",
     "contactTitle": "Contact Us",
@@ -60,6 +64,8 @@
     "requestQuote": "Request a Quote",
     "aboutUs": "About Us",
     "theCompany": "The Company",
+    "tileSystems": "Tile Installation Systems",
+    "roofWaterproofing": "Roof Waterproofing",
     "whyImperial": "Why Imperial?",
     "ourProjects": "Our Projects",
     "testimonials": "Testimonials",
@@ -87,6 +93,8 @@
     "adhesives": "Adhesives",
     "sealants": "Sealants",
     "bonding": "Bonding",
+    "tileSystems": "Tile Installation Systems",
+    "roofWaterproofing": "Roof Waterproofing",
     "requestQuote": "Request a Quote",
     "bulkOrderTerms": "Bulk Order Terms",
     "theCompany": "About Imperial",
@@ -567,6 +575,95 @@
     "allCategories": "All Categories",
     "noCollections": "No Collections Available",
     "noCollectionsDesc": "Could not load collections. Please check your Shopify connection."
+  },
+  "TileSystems": {
+    "breadcrumb": "Tile Installation Systems",
+    "kicker": "Systems",
+    "title": "Complete Tile Installation Systems",
+    "quickAnswer": "Imperial Middle East supplies complete tile installation materials from Mussafah, Abu Dhabi, including surface preparation, primers, levellers, waterproofing, adhesives, grouts, sealants and application tools.",
+    "overviewTitle": "Application overview",
+    "overview": "Reliable tile installation depends on the full build-up. Tile material and dimensions, substrate strength and flatness, water exposure, movement, joint design and service conditions all affect the selected system.",
+    "infoTitle": "Information to send",
+    "infoItems": {
+      "0": "Tile material and dimensions",
+      "1": "Wall or floor substrate",
+      "2": "Internal, external, wet or immersed condition",
+      "3": "Required adhesive classification",
+      "4": "Grout joint width, colour and resistance",
+      "5": "Area, location and project programme"
+    },
+    "relatedTitle": "Related ranges",
+    "relatedAdhesives": "Tile Adhesives and Grouts",
+    "relatedWaterproofing": "Waterproofing Materials",
+    "relatedSealants": "Adhesives and Sealants",
+    "relatedTools": "Tools and Equipment",
+    "uaeSupport": "Imperial supports suitable requirements from Mussafah, Abu Dhabi across all seven Emirates through product guidance, project quotations, arranged site visits and confirmed delivery planning.",
+    "ctaQuote": "Request a System Quote",
+    "ctaSupport": "Request Technical Support",
+    "ctaSiteVisit": "Request a Site Visit",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "What makes a tile installation system complete?",
+        "answer": "A complete system accounts for substrate preparation, levelling, waterproofing where required, adhesive, grout, movement joints, perimeter joints and application tools."
+      },
+      "1": {
+        "question": "Which adhesive is suitable for large-format porcelain?",
+        "answer": "Selection depends on tile dimensions, weight, substrate, location, required classification and service conditions. Follow the approved specification and the exact product TDS."
+      },
+      "2": {
+        "question": "Can Imperial review a tile schedule or BOQ?",
+        "answer": "Yes. Upload the schedule, specification, quantities, tile details, project location and programme for technical and commercial review."
+      },
+      "3": {
+        "question": "Can the materials be delivered to any Emirate?",
+        "answer": "Confirmed tile-system orders can be coordinated to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah, subject to availability, handling, access and schedule."
+      }
+    }
+  },
+  "RoofWaterproofing": {
+    "breadcrumb": "Roof Waterproofing",
+    "kicker": "Solutions",
+    "title": "Roof Waterproofing Materials for UAE Projects",
+    "quickAnswer": "Imperial Middle East supplies roof waterproofing materials from Mussafah, Abu Dhabi, including liquid-applied, cementitious and bituminous systems with related primers, reinforcement, sealants, repair products and accessories.",
+    "overviewTitle": "Application overview",
+    "overview": "A roof system must suit the substrate, existing condition, drainage, movement, UV exposure, traffic and detail areas. Confirm whether the roof is new or existing, how water is entering, what system is already present and what finish or warranty requirement applies.",
+    "infoTitle": "Information to send",
+    "infoItems": {
+      "0": "Roof area, substrate and existing system",
+      "1": "Exposed or protected finish",
+      "2": "Drains, upstands, penetrations and terminations",
+      "3": "UV, traffic and movement requirements",
+      "4": "Project location, required approval and completion date"
+    },
+    "relatedTitle": "Related ranges",
+    "relatedWaterproofing": "Waterproofing Materials",
+    "relatedSealants": "Adhesives and Sealants",
+    "relatedConcrete": "Concrete Repair",
+    "relatedTools": "Tools and Equipment",
+    "uaeSupport": "Imperial supports suitable requirements from Mussafah, Abu Dhabi across all seven Emirates through product guidance, project quotations, arranged site visits and confirmed delivery planning.",
+    "ctaQuote": "Request a System Quote",
+    "ctaSupport": "Request Technical Support",
+    "ctaSiteVisit": "Request a Site Visit",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "What information is needed to recommend a roof waterproofing system?",
+        "answer": "Share the substrate, existing layer, roof area, drainage, leakage points, UV and traffic exposure, detail conditions, specification and required completion date."
+      },
+      "1": {
+        "question": "Can Imperial arrange a roof site visit?",
+        "answer": "A site visit can be considered after the team reviews the technical requirement, project location, scope, access and commercial terms."
+      },
+      "2": {
+        "question": "Does Imperial supply complete roof system components?",
+        "answer": "Available quotations can include the main waterproofing material together with compatible primers, reinforcement, sealants, repair products and accessories where required."
+      },
+      "3": {
+        "question": "Can roof waterproofing products be delivered anywhere in the UAE?",
+        "answer": "Confirmed project deliveries can be coordinated to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah, subject to product, quantity, access and schedule."
+      }
+    }
   },
   "Errors": {
     "somethingWrong": "Something went wrong",
