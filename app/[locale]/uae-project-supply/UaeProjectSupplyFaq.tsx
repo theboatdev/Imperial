@@ -3,11 +3,11 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
-export default function RoofWaterproofingFaq() {
-  const t = useTranslations('RoofWaterproofing');
+export default function UaeProjectSupplyFaq() {
+  const t = useTranslations('UaeProjectSupply');
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
-  const faqs = [0, 1, 2, 3].map((i) => ({
+  const faqs = [0, 1, 2, 3, 4, 5].map((i) => ({
     question: t(`faqs.${i}.question`),
     answer: t(`faqs.${i}.answer`),
   }));

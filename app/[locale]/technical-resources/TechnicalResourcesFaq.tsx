@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
-export default function RoofWaterproofingFaq() {
-  const t = useTranslations('RoofWaterproofing');
+export default function TechnicalResourcesFaq() {
+  const t = useTranslations('TechnicalResources');
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   const faqs = [0, 1, 2, 3].map((i) => ({
@@ -13,7 +13,7 @@ export default function RoofWaterproofingFaq() {
   }));
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       {faqs.map((faq, i) => {
         const open = openIdx === i;
         return (
@@ -21,10 +21,8 @@ export default function RoofWaterproofingFaq() {
             key={i}
             style={{
               border: '1px solid var(--line)',
-              borderRadius: 'var(--r-soft)',
+              borderRadius: '8px',
               overflow: 'hidden',
-              boxShadow: open ? 'var(--sh-track)' : 'none',
-              background: '#fff',
             }}
           >
             <button
@@ -45,38 +43,24 @@ export default function RoofWaterproofingFaq() {
                 fontSize: '15px',
                 fontWeight: 600,
                 color: 'var(--navy)',
-                letterSpacing: '-0.01em',
               }}
             >
               {faq.question}
-              <span
+              <svg
+                className="ic sm"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
                 aria-hidden="true"
                 style={{
-                  width: '28px',
-                  height: '28px',
-                  borderRadius: '8px',
-                  background: open ? 'rgba(9, 79, 168, 0.12)' : 'var(--slot)',
-                  color: 'var(--navy)',
-                  display: 'grid',
-                  placeItems: 'center',
                   flexShrink: 0,
+                  transform: open ? 'rotate(180deg)' : 'none',
+                  transition: 'transform var(--motion)',
                 }}
               >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  style={{
-                    transform: open ? 'rotate(180deg)' : 'none',
-                    transition: 'transform var(--motion)',
-                  }}
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </span>
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
             {open && (
               <div
@@ -85,7 +69,7 @@ export default function RoofWaterproofingFaq() {
                   background: 'rgba(9, 79, 168, 0.04)',
                   color: 'var(--muted)',
                   fontSize: '14px',
-                  lineHeight: 1.75,
+                  lineHeight: 1.7,
                 }}
               >
                 {faq.answer}

@@ -39,6 +39,8 @@ export default async function Footer() {
           <h6>{t('trade')}</h6>
           <Link href="/rfq">{t('requestQuote')}</Link>
           <Link href="/bulk-inquiries">{t('bulkOrderTerms')}</Link>
+          <Link href="/uae-project-supply">{t('uaeProjectSupply')}</Link>
+          <Link href="/uae-service-areas">{t('uaeServiceAreas')}</Link>
           <Link href="/company">{t('theCompany')}</Link>
           <div>{t('projectCredit')}</div>
         </div>
@@ -47,10 +49,12 @@ export default async function Footer() {
         <div className="col imp-footer-col">
           <h6>{t('support')}</h6>
           <Link href="/coverage-calculator">{t('coverageCalculator')}</Link>
+          <Link href="/faqs">{t('faqHub')}</Link>
+          <Link href="/technical-resources">{t('technicalResources')}</Link>
+          <Link href="/delivery-information">{t('deliveryInformation')}</Link>
+          <Link href="/contact-us">{t('contactUs')}</Link>
           <Link href="/rfq">{t('sendInquiry')}</Link>
           <Link href="/products">{t('productSpecialists')}</Link>
-          <div>{t('documents')}</div>
-          <div>{t('technicalSupport')}</div>
         </div>
 
         {/* Imperial */}

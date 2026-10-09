@@ -57,7 +57,13 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
       pathname === '/company' ||
       pathname.startsWith('/company/') ||
       pathname === '/tile-installation-systems' ||
-      pathname === '/roof-waterproofing-materials-abu-dhabi',
+      pathname === '/roof-waterproofing-materials-abu-dhabi' ||
+      pathname === '/uae-project-supply' ||
+      pathname === '/uae-service-areas' ||
+      pathname === '/faqs' ||
+      pathname === '/technical-resources' ||
+      pathname === '/delivery-information' ||
+      pathname === '/contact-us',
     promotions: pathname === '/promotions' || pathname.startsWith('/promotions/'),
     calculator: pathname === '/coverage-calculator' || pathname.startsWith('/coverage-calculator/'),
     bulk: pathname === '/bulk-inquiries' || pathname.startsWith('/bulk-inquiries/'),
@@ -532,13 +538,12 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
                 <Link href="/company" role="menuitem" onClick={() => setOpenMenu(null)}>{t('theCompany')}</Link>
                 <Link href="/tile-installation-systems" role="menuitem" onClick={() => setOpenMenu(null)}>{t('tileSystems')}</Link>
                 <Link href="/roof-waterproofing-materials-abu-dhabi" role="menuitem" onClick={() => setOpenMenu(null)}>{t('roofWaterproofing')}</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('whyImperial')}</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('ourProjects')}</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('testimonials')}</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('awards')}</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('socialMedia')}</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('blog')}</Link>
-                <Link href="#" role="menuitem" onClick={() => setOpenMenu(null)}>{t('getCredit')}</Link>
+                <Link href="/uae-project-supply" role="menuitem" onClick={() => setOpenMenu(null)}>{t('uaeProjectSupply')}</Link>
+                <Link href="/uae-service-areas" role="menuitem" onClick={() => setOpenMenu(null)}>{t('uaeServiceAreas')}</Link>
+                <Link href="/faqs" role="menuitem" onClick={() => setOpenMenu(null)}>{t('faqHub')}</Link>
+                <Link href="/technical-resources" role="menuitem" onClick={() => setOpenMenu(null)}>{t('technicalResources')}</Link>
+                <Link href="/delivery-information" role="menuitem" onClick={() => setOpenMenu(null)}>{t('deliveryInformation')}</Link>
+                <Link href="/contact-us" role="menuitem" onClick={() => setOpenMenu(null)}>{t('contactUs')}</Link>
               </div>
             </div>
           )}
@@ -668,13 +673,54 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
           >
             {t('roofWaterproofing')}
           </Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('whyImperial')}</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('ourProjects')}</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('testimonials')}</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('awards')}</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('socialMedia')}</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('blog')}</Link>
-          <Link href="#" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>{t('getCredit')}</Link>
+          <Link
+            href="/uae-project-supply"
+            className={`mobile-nav-link${pathname === '/uae-project-supply' ? ' active' : ''}`}
+            aria-current={pathname === '/uae-project-supply' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('uaeProjectSupply')}
+          </Link>
+          <Link
+            href="/uae-service-areas"
+            className={`mobile-nav-link${pathname === '/uae-service-areas' ? ' active' : ''}`}
+            aria-current={pathname === '/uae-service-areas' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('uaeServiceAreas')}
+          </Link>
+          <Link
+            href="/faqs"
+            className={`mobile-nav-link${pathname === '/faqs' ? ' active' : ''}`}
+            aria-current={pathname === '/faqs' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('faqHub')}
+          </Link>
+          <Link
+            href="/technical-resources"
+            className={`mobile-nav-link${pathname === '/technical-resources' ? ' active' : ''}`}
+            aria-current={pathname === '/technical-resources' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('technicalResources')}
+          </Link>
+          <Link
+            href="/delivery-information"
+            className={`mobile-nav-link${pathname === '/delivery-information' ? ' active' : ''}`}
+            aria-current={pathname === '/delivery-information' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('deliveryInformation')}
+          </Link>
+          <Link
+            href="/contact-us"
+            className={`mobile-nav-link${pathname === '/contact-us' ? ' active' : ''}`}
+            aria-current={pathname === '/contact-us' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('contactUs')}
+          </Link>
 
           <div className="mobile-nav-section" style={{ marginTop: '8px' }}>{t('action')}</div>
           <Link

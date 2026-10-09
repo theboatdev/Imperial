@@ -24,15 +24,25 @@
     "tileSystemsDescription": "Source primers, levellers, waterproofing, tile adhesives, grouts, sealants and tools from Imperial in Mussafah, Abu Dhabi.",
     "roofWaterproofingTitle": "Roof Waterproofing Materials Abu Dhabi | Imperial",
     "roofWaterproofingDescription": "Compare roof waterproofing membranes, liquid systems, primers, sealants and repair products from Imperial in Mussafah, Abu Dhabi.",
+    "uaeProjectSupplyTitle": "UAE Project Material Supply & Support | Imperial",
+    "uaeProjectSupplyDescription": "Get material recommendations, technical support, site visits, project pricing and coordinated UAE delivery from Imperial in Mussafah, Abu Dhabi.",
+    "uaeServiceAreasTitle": "Building Material Supply Across the UAE | Imperial",
+    "uaeServiceAreasDescription": "Imperial is based in Mussafah, Abu Dhabi and supports building material requirements, project pricing and delivery across all seven Emirates.",
+    "faqHubTitle": "Building Materials & Project Supply FAQs | Imperial",
+    "faqHubDescription": "Get answers about Imperial's Mussafah location, UAE delivery, construction materials, technical support, site visits, project pricing and trade accounts.",
     "categoriesTitle": "Categories",
     "categoriesDescription": "Shop construction chemicals, waterproofing, tile systems, tools and project materials by category.",
-    "contactTitle": "Contact Us",
-    "contactDescription": "Contact Imperial in Mussafah for product availability, technical support, project pricing and UAE delivery.",
+    "contactTitle": "Contact Imperial Middle East | Mussafah Abu Dhabi",
+    "contactDescription": "Contact Imperial in Mussafah for product availability, technical support, material recommendations, site visits, project pricing and UAE delivery.",
     "cartTitle": "Your Cart",
     "accountTitle": "Account",
     "wishlistTitle": "My Wishlist",
     "ordersTitle": "Order History",
-    "ogLocale": "en_US"
+    "ogLocale": "en_US",
+    "technicalResourcesTitle": "Technical Support, TDS & SDS UAE | Imperial",
+    "technicalResourcesDescription": "Access product documents or request material recommendations, technical support and suitable site visits from Imperial in Mussafah, Abu Dhabi.",
+    "deliveryInfoTitle": "Building Materials Delivery Across the UAE | Imperial",
+    "deliveryInfoDescription": "Plan building-material delivery from Imperial in Mussafah to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah."
   },
   "Nav": {
     "freeDelivery": "Based in Mussafah, Abu Dhabi. Technical support and project supply across all seven Emirates.",
@@ -66,6 +76,9 @@
     "theCompany": "The Company",
     "tileSystems": "Tile Installation Systems",
     "roofWaterproofing": "Roof Waterproofing",
+    "uaeProjectSupply": "UAE Project Supply",
+    "uaeServiceAreas": "UAE Service Areas",
+    "faqHub": "FAQs",
     "whyImperial": "Why Imperial?",
     "ourProjects": "Our Projects",
     "testimonials": "Testimonials",
@@ -78,7 +91,10 @@
     "mainNav": "Main navigation",
     "mobileNav": "Mobile navigation",
     "action": "Action",
-    "logoAlt": "Imperial Middle East"
+    "logoAlt": "Imperial Middle East",
+    "technicalResources": "Technical Resources",
+    "deliveryInformation": "Delivery Information",
+    "contactUs": "Contact Us"
   },
   "Footer": {
     "eyebrow": "Imperial Middle East",
@@ -95,6 +111,9 @@
     "bonding": "Bonding",
     "tileSystems": "Tile Installation Systems",
     "roofWaterproofing": "Roof Waterproofing",
+    "uaeProjectSupply": "UAE Project Supply",
+    "uaeServiceAreas": "UAE Service Areas",
+    "faqHub": "FAQs",
     "requestQuote": "Request a Quote",
     "bulkOrderTerms": "Bulk Order Terms",
     "theCompany": "About Imperial",
@@ -110,7 +129,10 @@
     "whatsapp": "WhatsApp: +971 56 669 4324",
     "securedCheckout": "Secured checkout · UAE based",
     "copyright": "© {year} Imperial Middle East. All Rights Reserved.",
-    "taglineBottom": "Mussafah, Abu Dhabi · Serving all seven Emirates"
+    "taglineBottom": "Mussafah, Abu Dhabi · Serving all seven Emirates",
+    "technicalResources": "Technical Resources",
+    "deliveryInformation": "Delivery Information",
+    "contactUs": "Contact Us"
   },
   "Hero": {
     "alt": "Imperial Construction Projects",
@@ -556,8 +578,12 @@
     "promotionsDesc": "We're curating special offers for trade partners. Check back soon, or browse the full catalogue.",
     "browseAllProducts": "Browse All Products",
     "aboutTitle": "About Imperial Middle East",
+    "aboutKicker": "Since 2013",
+    "aboutLocation": "M45, Mussafah, Abu Dhabi · Serving all seven Emirates",
     "aboutSummary": "Imperial Middle East is a building materials and construction products supplier based in Mussafah, Abu Dhabi. Since 2013, the company has supported contractors, project teams, maintenance businesses, workshops and individual buyers in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah.",
     "aboutRange": "Our range supports waterproofing, tile installation, concrete repair, sealing, bonding, flooring, coatings, fixings, tools, cleaning and site safety. Customers can request product documents, material recommendations, suitable site visits, project quotations, trade support and coordinated UAE delivery.",
+    "aboutCtaKicker": "Next step",
+    "aboutCtaText": "Explore the catalogue or request project pricing from the Mussafah team.",
     "missionTitle": "Our mission",
     "mission": "To help UAE customers source suitable construction and industrial products with clear information, responsive service and dependable project coordination.",
     "visionTitle": "Our vision",
@@ -619,6 +645,17 @@
         "question": "Can the materials be delivered to any Emirate?",
         "answer": "Confirmed tile-system orders can be coordinated to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah, subject to availability, handling, access and schedule."
       }
+    },
+    "heroLine": "Primers, levellers, waterproofing, adhesives, grouts and tools from Mussafah.",
+    "ctaKicker": "Project support",
+    "ctaText": "Share your tile schedule or BOQ for a system recommendation and quotation.",
+    "relatedIntro": "Browse related product ranges for the full tile installation build-up.",
+    "infoHint": "For faster quotes",
+    "relatedHints": {
+      "0": "Adhesives, grouts and primers for ceramic, porcelain and stone",
+      "1": "Membranes and wet-area systems under the tile finish",
+      "2": "Movement joints, perimeter sealing and finishing",
+      "3": "Trowels, mixers and site application equipment"
     }
   },
   "RoofWaterproofing": {
@@ -663,6 +700,143 @@
         "question": "Can roof waterproofing products be delivered anywhere in the UAE?",
         "answer": "Confirmed project deliveries can be coordinated to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah, subject to product, quantity, access and schedule."
       }
+    },
+    "heroLine": "Liquid-applied, cementitious and bituminous systems from Mussafah.",
+    "infoHint": "For faster quotes",
+    "relatedIntro": "Browse related ranges used with roof waterproofing build-ups.",
+    "relatedHints": {
+      "0": "Membranes, coatings and wet-area systems for exposed and protected roofs",
+      "1": "Detail sealing at upstands, penetrations and perimeter joints",
+      "2": "Substrate repair and preparation ahead of the waterproofing layer",
+      "3": "Application tools, reinforcement and site accessories"
+    }
+  },
+  "UaeProjectSupply": {
+    "breadcrumb": "UAE Project Supply",
+    "kicker": "Project support",
+    "title": "Project Material Supply and Support Across the UAE",
+    "quickAnswer": "Imperial Middle East is based in Mussafah, Abu Dhabi and supports project material requirements in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah. Services include product and document support, material recommendations, suitable site visits, special project pricing and coordinated delivery.",
+    "intro": "Contractors, subcontractors, procurement teams, maintenance companies, consultants and facility teams can use one route to discuss product selection, quantities, manufacturer documents, commercial terms, site support and delivery planning.",
+    "supportTitle": "How Imperial supports projects",
+    "supportItems": {
+      "0": "Technical support based on the application, substrate, exposure, specification and current manufacturer information.",
+      "1": "Material recommendations that identify the proposed product, related system components, documents and approval still required.",
+      "2": "Arranged site visits for suitable project requirements, subject to scope, location, access, team availability and agreed terms.",
+      "3": "Special project pricing based on the BOQ, exact products, quantities, availability, delivery and commercial review.",
+      "4": "Coordinated delivery to confirmed project locations across all seven Emirates, subject to handling, access and schedule."
+    },
+    "infoTitle": "Project information to send",
+    "infoItems": {
+      "0": "Project name, Emirate and site location",
+      "1": "BOQ, specification or material schedule",
+      "2": "Application, substrate and exposure",
+      "3": "Preferred brands or approved products",
+      "4": "Quantities and required dates",
+      "5": "Site access, offloading and gate-pass requirements",
+      "6": "Technical documents and approvals required",
+      "7": "Technical and commercial contact persons"
+    },
+    "serviceScope": "Imperial provides product and system guidance using available manufacturer information and the project details supplied by the customer. Structural design, engineering approval, consultant approval, method statements and final application responsibility remain with the appropriately qualified project parties unless a separate written scope states otherwise.",
+    "ctaBoq": "Upload BOQ",
+    "ctaPricing": "Request Project Pricing",
+    "ctaSupport": "Request Technical Support or a Site Visit",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "What project services does Imperial Middle East provide?",
+        "answer": "Imperial provides product supply, technical product support, material recommendations, document assistance, suitable site visits, project pricing and coordinated delivery."
+      },
+      "1": {
+        "question": "Where is Imperial's UAE project-supply base?",
+        "answer": "Imperial Middle East is based in M45, Mussafah, Abu Dhabi, UAE."
+      },
+      "2": {
+        "question": "Which Emirates can Imperial support?",
+        "answer": "Imperial supports suitable requirements in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah."
+      },
+      "3": {
+        "question": "Does Imperial replace the project consultant or engineer?",
+        "answer": "No. Imperial supports product selection and supply. Design, specification approval, engineering decisions and final application responsibility remain with the qualified project parties unless separately agreed in writing."
+      },
+      "4": {
+        "question": "How can I get special project pricing?",
+        "answer": "Send the BOQ or product list with exact quantities, preferred brands, project location, required date, delivery conditions and contact details."
+      },
+      "5": {
+        "question": "Can Imperial arrange project site visits outside Abu Dhabi?",
+        "answer": "A visit can be considered for suitable requirements across the UAE after the team reviews the project scope, location, technical need, access, availability and commercial terms."
+      }
+    },
+    "heroLine": "Mussafah base — project supply coordinated across all seven Emirates.",
+    "infoHint": "For faster quotes",
+    "supportIntro": "One route for product guidance, pricing, site support and delivery planning.",
+    "supportLabels": {
+      "0": "Technical support",
+      "1": "Material recommendations",
+      "2": "Site visits",
+      "3": "Project pricing",
+      "4": "Coordinated delivery"
+    },
+    "scopeTitle": "Service scope",
+    "ctaStrip": "Upload a BOQ or request pricing for projects anywhere in the UAE.",
+    "coverageLink": "View UAE service areas"
+  },
+  "UaeServiceAreas": {
+    "breadcrumb": "UAE Service Areas",
+    "kicker": "Coverage",
+    "title": "Construction Material Supply Across All Seven Emirates",
+    "quickAnswer": "Imperial Middle East supplies construction materials from Mussafah, Abu Dhabi and supports customers and projects in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah. Services may include technical support, material recommendations, suitable site visits, project pricing and delivery planning.",
+    "consolidatedNote": "This is one consolidated UAE service-area page. Do not rely on thin or duplicated city pages. Any future local page must contain genuine, location-specific information, customer value and verified service evidence.",
+    "emirates": {
+      "abuDhabi": {
+        "name": "Abu Dhabi",
+        "body": "Imperial's physical base is in Mussafah, Abu Dhabi. Customers can contact the team for stock confirmation, collection, technical product support, project pricing, suitable site visits and delivery planning across Abu Dhabi city, Mussafah and other confirmed project locations in the Emirate."
+      },
+      "dubai": {
+        "name": "Dubai",
+        "body": "Imperial supports confirmed product and project requirements in Dubai through remote technical coordination, project quotations and planned delivery from Abu Dhabi. Add the exact Dubai location, access information and required date to the enquiry."
+      },
+      "sharjah": {
+        "name": "Sharjah",
+        "body": "Customers and project teams in Sharjah can request product availability, material information, project pricing and delivery planning. Confirm industrial-area access, offloading and time restrictions where applicable."
+      },
+      "ajman": {
+        "name": "Ajman",
+        "body": "Imperial can quote suitable construction and industrial product requirements for Ajman. Submit the exact product, quantity, project location and required delivery date for confirmation."
+      },
+      "ummAlQuwain": {
+        "name": "Umm Al Quwain",
+        "body": "Requirements for Umm Al Quwain can be reviewed for product availability, technical documents, commercial terms and planned delivery. Transport timing depends on product, quantity, route and site access."
+      },
+      "rasAlKhaimah": {
+        "name": "Ras Al Khaimah",
+        "body": "Imperial supports suitable project and trade requirements in Ras Al Khaimah through quotations, product guidance and coordinated delivery. Include the site location, schedule and any access or handling needs."
+      },
+      "fujairah": {
+        "name": "Fujairah",
+        "body": "Customers in Fujairah can request building materials, construction chemicals, tools and project products for confirmed delivery. Add the exact destination, quantity, timing and transport requirements to the enquiry."
+      }
+    },
+    "ctaPricing": "Request UAE Project Pricing",
+    "ctaContact": "Contact Imperial in Mussafah",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "Does Imperial have a physical location in every Emirate?",
+        "answer": "Imperial's stated physical base is in Mussafah, Abu Dhabi. Services in other Emirates are provided through confirmed project support and delivery arrangements."
+      },
+      "1": {
+        "question": "Which seven Emirates does Imperial serve?",
+        "answer": "Imperial serves suitable customer and project requirements in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah."
+      },
+      "2": {
+        "question": "Are delivery charges the same across the UAE?",
+        "answer": "No. Charges and schedules depend on product, quantity, weight, handling, distance, site access, offloading and the agreed route."
+      },
+      "3": {
+        "question": "Are site visits available in every Emirate?",
+        "answer": "Site visits can be considered for suitable requirements, but they are not automatic. Confirmation depends on project scope, location, technical need, access, team availability and agreed terms."
+      }
     }
   },
   "Errors": {
@@ -676,5 +850,290 @@
   "Common": {
     "home": "Home",
     "loading": "Loading..."
+  },
+  "FaqHub": {
+    "breadcrumb": "FAQs",
+    "kicker": "Help centre",
+    "title": "Building Materials and Project Supply FAQs",
+    "intro": "Imperial Middle East is a building materials and project-supply company based in Mussafah, Abu Dhabi. This page answers common questions about products, technical support, material recommendations, site visits, project pricing, trade accounts, collection and delivery across the UAE.",
+    "ctaQuote": "Request a Quote",
+    "ctaProject": "UAE Project Supply",
+    "ctaContact": "Contact Imperial",
+    "sections": {
+      "location": {
+        "title": "Location and service coverage",
+        "faqs": {
+          "0": {
+            "question": "Where is Imperial Middle East based?",
+            "answer": "Imperial Middle East is based in M45, Mussafah, Abu Dhabi, UAE. Check the Contact page for the verified map pin, opening hours and collection guidance."
+          },
+          "1": {
+            "question": "Does Imperial serve customers outside Abu Dhabi?",
+            "answer": "Yes. Imperial supports suitable requirements in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah."
+          },
+          "2": {
+            "question": "Does Imperial deliver to all seven Emirates?",
+            "answer": "Yes. Confirmed orders may be delivered to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah. The final charge and schedule depend on stock, quantity, weight, handling, destination, access and offloading."
+          },
+          "3": {
+            "question": "Can customers collect orders from Mussafah?",
+            "answer": "Collection may be arranged after product, quantity, payment and collection readiness are confirmed. Contact the team before travelling."
+          }
+        }
+      },
+      "products": {
+        "title": "Products and material selection",
+        "faqs": {
+          "0": {
+            "question": "What materials does Imperial supply?",
+            "answer": "Imperial supplies construction chemicals, waterproofing, tile systems, concrete repair, adhesives, sealants, flooring materials, paints, coatings, tools, fixings, safety equipment, industrial cleaners and project essentials."
+          },
+          "1": {
+            "question": "Can Imperial recommend a product for my application?",
+            "answer": "Yes. Share the application, substrate, exposure, specification, performance requirement, quantity and project location. Recommendations use available manufacturer information and do not replace required consultant or engineering approval."
+          },
+          "2": {
+            "question": "Can Imperial suggest an alternative brand?",
+            "answer": "Only when the customer allows alternatives. Any proposed substitute must be checked for technical equivalence and receive the required project approval."
+          },
+          "3": {
+            "question": "Can I search by SKU or technical term?",
+            "answer": "Yes. The website search supports product name, brand, SKU, category, application and technical terms. If no result appears, send the exact requirement to the team."
+          }
+        }
+      },
+      "technical": {
+        "title": "Technical support and site visits",
+        "faqs": {
+          "0": {
+            "question": "What does Imperial technical support include?",
+            "answer": "Support may include product-document assistance, comparison of available options, system-component guidance and review of BOQs or product schedules using current manufacturer information."
+          },
+          "1": {
+            "question": "Does Imperial provide engineering design?",
+            "answer": "Not as part of standard product supply. Structural design, engineering approval, consultant approval and final method statements remain with qualified project parties unless separately agreed in writing."
+          },
+          "2": {
+            "question": "How do I request a project site visit?",
+            "answer": "Submit the application, project location, scope, technical question, contact person and preferred timing. Imperial will confirm whether a site visit is suitable and available."
+          },
+          "3": {
+            "question": "Are site visits available outside Abu Dhabi?",
+            "answer": "They can be considered for suitable projects across the UAE. Confirmation depends on scope, location, technical need, access, team availability and commercial terms."
+          }
+        }
+      },
+      "quotations": {
+        "title": "Quotations and trade purchasing",
+        "faqs": {
+          "0": {
+            "question": "How do I request special project pricing?",
+            "answer": "Add the exact products, brands, pack sizes, quantities, project location, required date, delivery conditions and BOQ or specification where available."
+          },
+          "1": {
+            "question": "Can I upload an Excel BOQ or PDF specification?",
+            "answer": "Yes. The RFQ form accepts common business document formats within the stated file-size limit."
+          },
+          "2": {
+            "question": "How quickly will I receive a quotation?",
+            "answer": "Response time depends on completeness, number of products, technical review, supplier confirmation and project requirements."
+          },
+          "3": {
+            "question": "Who can apply for a trade account?",
+            "answer": "Eligible UAE businesses with valid documents and recurring purchasing requirements may apply. Approval and terms are subject to Imperial's review."
+          }
+        }
+      },
+      "orders": {
+        "title": "Orders, documents and delivery",
+        "faqs": {
+          "0": {
+            "question": "How can I confirm product stock?",
+            "answer": "Check the live availability status and contact Imperial for large quantities, project orders or collection confirmation. Stock is not reserved until the order is confirmed."
+          },
+          "1": {
+            "question": "Where can I find TDS and SDS documents?",
+            "answer": "Applicable documents should appear on the product page. Verify the revision and exact product before use."
+          },
+          "2": {
+            "question": "Does website information replace the manufacturer TDS?",
+            "answer": "No. Website copy is a purchasing guide. The latest manufacturer TDS, SDS, approval documents and project specification control technical use."
+          },
+          "3": {
+            "question": "What information is required for UAE delivery?",
+            "answer": "Provide the complete address, Emirate, site contact, delivery date, vehicle restrictions, time slot, gate pass, offloading and handling requirements."
+          }
+        }
+      }
+    }
+  },
+  "TechnicalResources": {
+    "breadcrumb": "Technical Resources",
+    "kicker": "Support",
+    "title": "Technical Support and Product Resources",
+    "quickAnswer": "Imperial Middle East provides product-information support from Mussafah, Abu Dhabi, including access to available TDS, SDS, approvals, declarations and application resources, together with material guidance for suitable UAE requirements.",
+    "searchNote": "Search by brand, product name, SKU, document type or application. Every document record should show the manufacturer, exact title, language, revision or issue date and related product. Replace superseded files promptly.",
+    "supportTitle": "Support available",
+    "supportItems": {
+      "0": "Material recommendations based on the stated application and current manufacturer information",
+      "1": "System-component and compatibility guidance",
+      "2": "TDS, SDS and approval-document assistance",
+      "3": "Technical review of BOQs and product schedules",
+      "4": "Suitable project site visits",
+      "5": "Clear identification of consultant, engineer or manufacturer approval still required",
+      "6": "Support coordination for Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah"
+    },
+    "libraryTitle": "Resource library",
+    "libraryIntro": "Product documents appear on product pages where available. Use the catalogue search and the actions below to find related products or request support.",
+    "libraryLabels": {
+      "0": "Search by product, brand or SKU",
+      "1": "Filter by brand, category, application, language and document type",
+      "2": "Show document revision or issue date",
+      "3": "View Related Product",
+      "4": "Request Technical Support",
+      "5": "Download TDS",
+      "6": "Download SDS",
+      "7": "View Approval Document"
+    },
+    "ctaSearch": "Search Technical Resources",
+    "ctaSupport": "Request Technical Support",
+    "ctaUpload": "Upload a Specification",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "Can Imperial provide a TDS or SDS?",
+        "answer": "Yes, where the current manufacturer document is available. Verify the exact product, variant, language and revision before use."
+      },
+      "1": {
+        "question": "Can Imperial select a complete product system?",
+        "answer": "Imperial can help compare available system components using the stated application and manufacturer information. Final technical approval remains with the appropriate project parties."
+      },
+      "2": {
+        "question": "Can technical support be requested from any Emirate?",
+        "answer": "Yes. Customers in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah can submit technical product questions. The response method and any site visit depend on the scope and location."
+      },
+      "3": {
+        "question": "Are product documents permanently valid?",
+        "answer": "No. Manufacturers can revise documents. Imperial publishes the current version available and documents on product pages should be checked for issue or revision date before use."
+      }
+    }
+  },
+  "DeliveryInformation": {
+    "breadcrumb": "Delivery Information",
+    "kicker": "Logistics",
+    "title": "Building Materials Delivery Across All Seven Emirates",
+    "quickAnswer": "Imperial Middle East coordinates confirmed deliveries from Mussafah, Abu Dhabi to project and business locations in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah. Collection from Mussafah may also be arranged after order confirmation.",
+    "dependNote": "The available method, charge and schedule depend on product availability, stock location, order size, weight, transport classification, destination, vehicle access, gate-pass requirements and offloading. The quotation or order confirmation will state the agreed delivery details.",
+    "infoTitle": "Information required for delivery",
+    "infoItems": {
+      "0": "Complete delivery address and map pin",
+      "1": "Emirate and project name",
+      "2": "Site contact and telephone",
+      "3": "Required date and permitted time slot",
+      "4": "Vehicle size or access restrictions",
+      "5": "Gate pass, permit and security requirements",
+      "6": "Offloading labour or equipment requirement",
+      "7": "Special handling, storage or hazardous-goods requirement"
+    },
+    "acceptTitle": "Before accepting delivery",
+    "acceptItems": {
+      "0": "Inspect the packaging and quantity at handover.",
+      "1": "Record visible damage or shortage before signing.",
+      "2": "Check the product name, variant, batch and expiry where applicable.",
+      "3": "Move products into the manufacturer-specified storage conditions.",
+      "4": "Follow SDS and handling instructions for chemicals and controlled products."
+    },
+    "confirmNote": "Cut-off times, lead times, free-delivery thresholds, restricted products, collection process and return rules are confirmed on the quotation or order confirmation for each order.",
+    "ctaConfirm": "Request Delivery Confirmation",
+    "ctaUpload": "Upload a Project List",
+    "ctaAreas": "View UAE Service Areas",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "Which Emirates does Imperial deliver to?",
+        "answer": "Imperial coordinates confirmed delivery to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah."
+      },
+      "1": {
+        "question": "Is delivery free across the UAE?",
+        "answer": "Do not assume delivery is free. The quotation or checkout will state the applicable charge based on the order and destination."
+      },
+      "2": {
+        "question": "Can I choose a specific delivery time?",
+        "answer": "Provide the required slot, but confirmation depends on route, product readiness, vehicle access, gate passes and the agreed schedule."
+      },
+      "3": {
+        "question": "Can I collect from Mussafah instead?",
+        "answer": "Collection may be arranged after the order, payment and collection readiness are confirmed. Contact the team before travelling."
+      }
+    }
+  },
+  "ContactUs": {
+    "breadcrumb": "Contact Us",
+    "kicker": "Get in touch",
+    "title": "Contact Imperial Middle East",
+    "intro": "Contact Imperial Middle East in Mussafah, Abu Dhabi for product availability, pack sizes, technical documents, material recommendations, site-visit requests, project pricing, trade accounts, collection and UAE delivery confirmation.",
+    "detailsTitle": "Contact details",
+    "addressLabel": "Address",
+    "address": "M45, Mussafah, Abu Dhabi, UAE",
+    "landlineLabel": "Landline",
+    "landline": "+971 2 644 2611",
+    "whatsappLabel": "WhatsApp",
+    "whatsapp": "+971 56 669 4324",
+    "emailLabel": "Email",
+    "email": "Email *",
+    "hoursLabel": "Opening hours",
+    "hours": "Contact the team to confirm opening hours before visiting or collecting.",
+    "coverageLabel": "Service coverage",
+    "coverage": "Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah",
+    "formHeading": "Tell us what you need",
+    "formHelper": "For faster support, add the brand, product name or SKU, application, substrate, pack size, quantity, Emirate, exact project location and required date.",
+    "name": "Name *",
+    "company": "Company *",
+    "phone": "Telephone *",
+    "enquiryType": "Enquiry type *",
+    "selectEnquiryType": "Select enquiry type",
+    "enquiryTypes": {
+      "availability": "Product Availability",
+      "recommendation": "Material Recommendation",
+      "technical": "Technical Support",
+      "siteVisit": "Site Visit",
+      "pricing": "Project Pricing",
+      "delivery": "Delivery",
+      "trade": "Trade Account"
+    },
+    "product": "Product or application *",
+    "quantity": "Quantity",
+    "emirate": "Emirate *",
+    "selectEmirate": "Select Emirate",
+    "projectLocation": "Project location",
+    "requiredDate": "Required date",
+    "requiredDatePlaceholder": "e.g. 15 Oct 2026",
+    "message": "Message *",
+    "upload": "Upload supporting document",
+    "uploadHint": "BOQ, specification, product list, image or supporting document (PDF, Excel, Word, image).",
+    "attached": "Attached: {filename}",
+    "submit": "Send Enquiry",
+    "successTitle": "Enquiry received",
+    "successMessage": "Thank you. Your enquiry has been received. The Imperial team will review the information and contact you if any product, technical, commercial or delivery details are missing.",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "Can I visit Imperial in Mussafah?",
+        "answer": "Yes. Contact the team before visiting to confirm opening hours, product availability, pack size and collection readiness."
+      },
+      "1": {
+        "question": "Can I contact Imperial through WhatsApp?",
+        "answer": "Yes. Use +971 56 669 4324 and include the product, application, quantity, project location and required date."
+      },
+      "2": {
+        "question": "Can I request support for a project outside Abu Dhabi?",
+        "answer": "Yes. Imperial supports suitable requirements in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah."
+      },
+      "3": {
+        "question": "What should I include in a technical enquiry?",
+        "answer": "Include the application, substrate, exposure, specification, required approval, preferred brand, quantity, location and relevant drawings or images."
+      }
+    },
+    "emailValue": "info@imperial.ae"
   }
 }
