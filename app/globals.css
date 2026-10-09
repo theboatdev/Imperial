@@ -1210,6 +1210,16 @@ html[dir="rtl"] {
   --font-body: var(--font-arabic);
 }
 
+html[lang="zh"] body {
+  font-family:
+    var(--font-noto-sc), "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+    sans-serif;
+}
+html[lang="zh"] {
+  --font-display: var(--font-noto-sc), "Noto Sans SC", sans-serif;
+  --font-body: var(--font-noto-sc), "Noto Sans SC", sans-serif;
+}
+
 html[dir="rtl"] .topbar .topbar-left span { margin-right: 0; margin-left: 20px; }
 html[dir="rtl"] .check .cnt { margin-left: 0; margin-right: auto; }
 

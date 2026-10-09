@@ -49,6 +49,17 @@ export default function LanguageSwitcher() {
       >
         AR
       </button>
+      <span className="lang-sep" aria-hidden="true">
+        /
+      </span>
+      <button
+        type="button"
+        className={locale === 'zh' ? 'active' : undefined}
+        onClick={() => switchLocale('zh')}
+        aria-pressed={locale === 'zh'}
+      >
+        ZH
+      </button>
     </div>
   );
 }

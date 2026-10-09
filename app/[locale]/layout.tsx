@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Cairo } from "next/font/google";
+import { Poppins, Cairo, Noto_Sans_SC } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -22,6 +22,13 @@ const cairo = Cairo({
   variable: "--font-cairo",
   subsets: ["arabic", "latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const notoSansSC = Noto_Sans_SC({
+  variable: "--font-noto-sc",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
   display: "swap",
 });
 
@@ -87,7 +94,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={isRtl ? "rtl" : "ltr"}
-      className={`${poppins.variable} ${cairo.variable}`}
+      className={`${poppins.variable} ${cairo.variable} ${notoSansSC.variable}`}
     >
       <body className={isRtl ? "font-arabic" : undefined}>
         <NextIntlClientProvider messages={messages}>
