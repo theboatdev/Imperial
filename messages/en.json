@@ -196,7 +196,70 @@
     "review2": "“Responsive team, easy to get technical data sheets before ordering.”",
     "review2Meta": "Verified buyer · Sharjah",
     "review3": "“Used on a 400 sqm villa floor — zero lippage issues.”",
-    "review3Meta": "Verified buyer · Abu Dhabi"
+    "review3Meta": "Verified buyer · Abu Dhabi",
+    "trustLabel": "Why Imperial",
+    "trustItems": {
+      "0": "Based in Mussafah, Abu Dhabi",
+      "1": "Technical support and material recommendations",
+      "2": "Project site visits for suitable requirements",
+      "3": "Special project pricing",
+      "4": "Delivery across all seven Emirates"
+    },
+    "directAnswerKicker": "Direct answer",
+    "directAnswerTitle": "Who is Imperial Middle East?",
+    "directAnswer": "Imperial Middle East is a building materials and construction products supplier based in Mussafah, Abu Dhabi. We support contractors, subcontractors, procurement teams, maintenance companies, workshops, facility teams and individual buyers across Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah.",
+    "introKicker": "Introduction",
+    "introTitle": "A practical supply partner for construction, maintenance and trade",
+    "introBody1": "Imperial brings products, technical information and project coordination into one purchasing route. Customers can browse by product, brand, application or industry, review available technical documents, request material guidance and submit a BOQ for project pricing.",
+    "introBody2": "Our role is to help buyers identify available product options and the information needed for a sound purchasing decision. Final design, project approval and application responsibility remain with the appropriate consultant, engineer, manufacturer and contractor where required.",
+    "servicesKicker": "Core services",
+    "servicesTitle": "Support that continues beyond the product shelf",
+    "services": {
+      "0": {
+        "title": "Technical support",
+        "body": "Discuss the application, substrate, exposure, specification and manufacturer information."
+      },
+      "1": {
+        "title": "Material recommendations",
+        "body": "Compare suitable available options and complete system components."
+      },
+      "2": {
+        "title": "Project site visits",
+        "body": "Request an arranged visit when the project scope and technical requirement justify on-site review."
+      },
+      "3": {
+        "title": "Special project pricing",
+        "body": "Receive a commercial quotation based on verified products, quantities, location and programme."
+      },
+      "4": {
+        "title": "UAE delivery",
+        "body": "Coordinate confirmed orders to project and business locations across all seven Emirates."
+      }
+    },
+    "howItWorksKicker": "How it works",
+    "howItWorksTitle": "From requirement to confirmed supply",
+    "howItWorksCta": "Request a quote",
+    "howItWorksSteps": {
+      "0": "Send the product list, BOQ, application or performance requirement.",
+      "1": "Add the project location, quantity, required date, specification and preferred brand.",
+      "2": "Imperial reviews available products, documents, project support and commercial requirements.",
+      "3": "You receive a quotation stating product, quantity, VAT, delivery, validity and payment terms.",
+      "4": "After acceptance and confirmation, the team coordinates collection or delivery."
+    },
+    "coverageKicker": "Service coverage",
+    "coverageTitle": "Based in Abu Dhabi. Supporting all seven Emirates.",
+    "coverageBody": "Imperial operates from M45, Mussafah, Abu Dhabi and supports confirmed requirements in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah. Delivery method, site visits and response times depend on the product, project scope, location, access, schedule and agreed terms.",
+    "coverageCtaPrimary": "View UAE Service Areas",
+    "coverageCtaSecondary": "Contact the Team",
+    "brandsKicker": "Brands",
+    "brandsTitle": "Shop established construction and industrial brands",
+    "brandsBody": "Browse published products by brand and compare applications, pack sizes, variants and technical documents. Only brands and claims Imperial can verify are shown. If a required item is not listed, send the exact product name or SKU for confirmation.",
+    "brandsCta": "Explore brands",
+    "techKicker": "Technical resources",
+    "techTitle": "Product information for clearer decisions",
+    "techBody": "Use the Technical Resource Centre to find available TDS, SDS, approvals and application documents. Product documents can change, so every file should show its manufacturer, language, revision or issue date and related product.",
+    "techCtaPrimary": "Open Technical Resources",
+    "techCtaSecondary": "Request Technical Support"
   },
   "FAQ": {
     "support": "Support",

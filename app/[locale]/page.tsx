@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { getAllProducts, getCollections } from '@/lib/shopify-api';
 import HeroSection from '@/components/home/HeroSection';
+import HomeHandoverSections from '@/components/home/HomeHandoverSections';
 import FaqSection from '@/components/home/FaqSection';
 import FeaturedTabs from '@/components/home/FeaturedTabs';
 import type { Metadata } from 'next';
@@ -89,6 +90,9 @@ export default async function HomePage() {
 
       {/* Hero Section */}
       <HeroSection />
+
+      {/* Handover content: trust strip, answer, services, coverage, brands/tech */}
+      <HomeHandoverSections />
 
       {/* Imperial Rewards Banner */}
       <div style={{ position: 'relative', borderRadius: 'var(--r-card)', margin: '48px 28px', boxShadow: 'var(--sh-lift)', overflow: 'hidden', minHeight: '280px' }}>
