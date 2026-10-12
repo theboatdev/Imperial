@@ -62,12 +62,14 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
       pathname === '/concrete-repair-protection' ||
       pathname === '/industrial-epoxy-flooring' ||
       pathname === '/anchoring-fixing-solutions' ||
+      pathname === '/trade-account' ||
       pathname === '/uae-project-supply' ||
       pathname === '/uae-service-areas' ||
       pathname === '/faqs' ||
       pathname === '/technical-resources' ||
       pathname === '/delivery-information' ||
       pathname === '/contact-us',
+    brandsHub: pathname === '/brands' || pathname.startsWith('/brands/'),
     promotions: pathname === '/promotions' || pathname.startsWith('/promotions/'),
     calculator: pathname === '/coverage-calculator' || pathname.startsWith('/coverage-calculator/'),
     bulk: pathname === '/bulk-inquiries' || pathname.startsWith('/bulk-inquiries/'),
@@ -379,64 +381,63 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
         </Link>
 
         {/* Brands dropdown */}
-        {vendors.length > 0 && (
-          <div
-            className={`megaitem${navActive.brands ? ' active' : ''}`}
-            onMouseEnter={() => setOpenMenu('brands')}
-            onMouseLeave={() => setOpenMenu(null)}
+        <div
+          className={`megaitem${navActive.brands || navActive.brandsHub ? ' active' : ''}`}
+          onMouseEnter={() => setOpenMenu('brands')}
+          onMouseLeave={() => setOpenMenu(null)}
+        >
+          <button
+            type="button"
+            className="megaitem-btn"
+            aria-expanded={openMenu === 'brands'}
+            aria-haspopup="true"
+            aria-current={navActive.brands || navActive.brandsHub ? 'page' : undefined}
+            onClick={() => setOpenMenu(openMenu === 'brands' ? null : 'brands')}
           >
-            <button
-              type="button"
-              className="megaitem-btn"
-              aria-expanded={openMenu === 'brands'}
-              aria-haspopup="true"
-              aria-current={navActive.brands ? 'page' : undefined}
-              onClick={() => setOpenMenu(openMenu === 'brands' ? null : 'brands')}
+            {t('brands')}
+            <svg
+              width="12" height="12" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" strokeWidth="2.5" aria-hidden="true"
+              style={{ marginLeft: '4px', transition: 'transform 0.2s', transform: openMenu === 'brands' ? 'rotate(180deg)' : 'none' }}
             >
-              {t('brands')}
-              <svg
-                width="12" height="12" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" strokeWidth="2.5" aria-hidden="true"
-                style={{ marginLeft: '4px', transition: 'transform 0.2s', transform: openMenu === 'brands' ? 'rotate(180deg)' : 'none' }}
-              >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
 
-            {openMenu === 'brands' && (
-              <div className="megapanel" role="menu">
-                {brandCol1.length > 0 && (
-                  <div className="megacol">
-                    {brandCol1.map((vendor) => (
-                      <Link
-                        key={vendor}
-                        href={`/products?vendor=${encodeURIComponent(vendor)}`}
-                        role="menuitem"
-                        onClick={() => setOpenMenu(null)}
-                      >
-                        {vendor}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-                {brandCol2.length > 0 && (
-                  <div className="megacol">
-                    {brandCol2.map((vendor) => (
-                      <Link
-                        key={vendor}
-                        href={`/products?vendor=${encodeURIComponent(vendor)}`}
-                        role="menuitem"
-                        onClick={() => setOpenMenu(null)}
-                      >
-                        {vendor}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+          {openMenu === 'brands' && (
+            <div className="megapanel" role="menu">
+              <div className="megacol">
+                <Link href="/brands" role="menuitem" onClick={() => setOpenMenu(null)} style={{ fontWeight: 700 }}>
+                  {t('brandsHub')}
+                </Link>
+                {brandCol1.map((vendor) => (
+                  <Link
+                    key={vendor}
+                    href={`/products?vendor=${encodeURIComponent(vendor)}`}
+                    role="menuitem"
+                    onClick={() => setOpenMenu(null)}
+                  >
+                    {vendor}
+                  </Link>
+                ))}
               </div>
-            )}
-          </div>
-        )}
+              {brandCol2.length > 0 && (
+                <div className="megacol">
+                  {brandCol2.map((vendor) => (
+                    <Link
+                      key={vendor}
+                      href={`/products?vendor=${encodeURIComponent(vendor)}`}
+                      role="menuitem"
+                      onClick={() => setOpenMenu(null)}
+                    >
+                      {vendor}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
 
         {/* Collections dropdown — real data */}
         {collections.length > 0 && (
@@ -543,6 +544,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
                 <Link href="/concrete-repair-protection" role="menuitem" onClick={() => setOpenMenu(null)}>{t('concreteRepair')}</Link>
                 <Link href="/industrial-epoxy-flooring" role="menuitem" onClick={() => setOpenMenu(null)}>{t('industrialFlooring')}</Link>
                 <Link href="/anchoring-fixing-solutions" role="menuitem" onClick={() => setOpenMenu(null)}>{t('anchoringFixing')}</Link>
+                <Link href="/trade-account" role="menuitem" onClick={() => setOpenMenu(null)}>{t('tradeAccount')}</Link>
                 <Link href="/uae-project-supply" role="menuitem" onClick={() => setOpenMenu(null)}>{t('uaeProjectSupply')}</Link>
                 <Link href="/uae-service-areas" role="menuitem" onClick={() => setOpenMenu(null)}>{t('uaeServiceAreas')}</Link>
                 <Link href="/faqs" role="menuitem" onClick={() => setOpenMenu(null)}>{t('faqHub')}</Link>
@@ -613,7 +615,15 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
           >
             {t('promotions')}
           </Link>
-          <div className={`mobile-nav-section${navActive.brands ? ' active' : ''}`}>{t('brands')}</div>
+          <div className={`mobile-nav-section${navActive.brands || navActive.brandsHub ? ' active' : ''}`}>{t('brands')}</div>
+          <Link
+            href="/brands"
+            className={`mobile-nav-link${navActive.brandsHub ? ' active' : ''}`}
+            aria-current={navActive.brandsHub ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('brandsHub')}
+          </Link>
           {vendors.slice(0, 8).map((vendor) => {
             const isVendorActive = hasVendor && searchParams.get('vendor') === vendor;
             return (
@@ -709,6 +719,14 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
             onClick={() => setMobileMenuOpen(false)}
           >
             {t('anchoringFixing')}
+          </Link>
+          <Link
+            href="/trade-account"
+            className={`mobile-nav-link${pathname === '/trade-account' ? ' active' : ''}`}
+            aria-current={pathname === '/trade-account' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('tradeAccount')}
           </Link>
           <Link
             href="/uae-project-supply"

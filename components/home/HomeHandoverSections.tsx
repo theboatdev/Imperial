@@ -311,7 +311,7 @@ export default async function HomeHandoverSections() {
             <p style={{ margin: 0, fontSize: '14px', lineHeight: 1.65, color: 'var(--muted)', flex: 1 }}>
               {t('brandsBody')}
             </p>
-            <Link href="/products" className="hero-link" style={{ alignSelf: 'flex-start' }}>
+            <Link href="/brands" className="hero-link" style={{ alignSelf: 'flex-start' }}>
               {t('brandsCta')}
               <svg className="ic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7" />

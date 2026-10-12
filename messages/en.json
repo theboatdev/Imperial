@@ -50,7 +50,11 @@
     "industrialFlooringTitle": "Industrial Epoxy Flooring Abu Dhabi | Imperial",
     "industrialFlooringDescription": "Compare epoxy primers, coatings, screeds, repair products and anti-slip finishes from Imperial in Mussafah, Abu Dhabi for UAE projects.",
     "anchoringFixingTitle": "Anchoring & Fixing Systems Abu Dhabi | Imperial",
-    "anchoringFixingDescription": "Shop chemical anchors, mechanical fixings, rods, screws and installation accessories from Imperial in Mussafah, Abu Dhabi."
+    "anchoringFixingDescription": "Shop chemical anchors, mechanical fixings, rods, screws and installation accessories from Imperial in Mussafah, Abu Dhabi.",
+    "tradeAccountTitle": "Trade Account for UAE Businesses | Imperial",
+    "tradeAccountDescription": "Apply for an Imperial trade account for repeat purchasing, project quotations, technical support and delivery across all seven Emirates.",
+    "brandsHubTitle": "Construction Brands in Abu Dhabi | Imperial",
+    "brandsHubDescription": "Browse construction chemicals, tools, coatings, fixings and project products by brand from Imperial Middle East in Mussafah, Abu Dhabi."
   },
   "Nav": {
     "freeDelivery": "Based in Mussafah, Abu Dhabi. Technical support and project supply across all seven Emirates.",
@@ -106,7 +110,9 @@
     "bathroomWetArea": "Bathroom Waterproofing",
     "concreteRepair": "Concrete Repair",
     "industrialFlooring": "Industrial Flooring",
-    "anchoringFixing": "Anchoring & Fixing"
+    "anchoringFixing": "Anchoring & Fixing",
+    "tradeAccount": "Trade Account",
+    "brandsHub": "Brands Hub"
   },
   "Footer": {
     "eyebrow": "Imperial Middle East",
@@ -148,7 +154,9 @@
     "bathroomWetArea": "Bathroom Waterproofing",
     "concreteRepair": "Concrete Repair",
     "industrialFlooring": "Industrial Flooring",
-    "anchoringFixing": "Anchoring & Fixing"
+    "anchoringFixing": "Anchoring & Fixing",
+    "tradeAccount": "Trade Account",
+    "brandsHub": "Brands Hub"
   },
   "Hero": {
     "alt": "Imperial Construction Projects",
@@ -1455,5 +1463,114 @@
       }
     },
     "emailValue": "info@imperial.ae"
+  },
+  "TradeAccount": {
+    "breadcrumb": "Trade Account",
+    "kicker": "Trade",
+    "title": "Open an Imperial Trade Account",
+    "quickAnswer": "Imperial trade accounts are designed for eligible UAE contractors, subcontractors, maintenance companies, fit-out teams, workshops, facility managers, procurement teams and other businesses that purchase materials regularly.",
+    "approvedNote": "Approved accounts may receive business pricing, special project quotation support, saved company details, order history and purchasing features based on agreed commercial terms. Credit requires a separate assessment and is not guaranteed.",
+    "heroLine": "Repeat purchasing, project quotations and UAE delivery support from Mussafah.",
+    "ctaApply": "Apply for a Trade Account",
+    "ctaSales": "Talk to Trade Sales",
+    "whyTitle": "Why apply",
+    "whyItems": {
+      "0": "Request trade and project pricing",
+      "1": "Receive product and technical document support",
+      "2": "Ask for material recommendations",
+      "3": "Discuss suitable project site visits",
+      "4": "Plan deliveries across all seven Emirates",
+      "5": "Save company and VAT details",
+      "6": "Reorder frequently purchased products",
+      "7": "Upload BOQs and product schedules"
+    },
+    "docsTitle": "Documents to prepare",
+    "docItems": {
+      "0": "Valid UAE trade licence",
+      "1": "VAT registration certificate, if applicable",
+      "2": "Authorised signatory and purchasing contacts",
+      "3": "Company and delivery addresses",
+      "4": "Bank or credit documents only when requested through a secure process"
+    },
+    "processTitle": "Application process",
+    "processItems": {
+      "0": "Submit company information and required documents.",
+      "1": "Imperial verifies the business and purchasing requirement.",
+      "2": "The team requests any missing information.",
+      "3": "Approved pricing, payment and account features are confirmed in writing.",
+      "4": "The account is activated for authorised users."
+    },
+    "applyTitle": "Apply for a trade account",
+    "formHeading": "Trade account application",
+    "formHelper": "Complete the form below. Attach your trade licence or VAT certificate if available. Credit documents are only requested through a secure process when needed.",
+    "company": "Company name",
+    "tradeLicence": "UAE trade licence number",
+    "vat": "VAT registration (if applicable)",
+    "businessType": "Business type",
+    "selectBusinessType": "Select business type",
+    "businessTypes": {
+      "contractor": "Contractor",
+      "subcontractor": "Subcontractor",
+      "maintenance": "Maintenance company",
+      "fitout": "Fit-out team",
+      "workshop": "Workshop",
+      "facility": "Facility management",
+      "procurement": "Procurement / purchasing",
+      "other": "Other commercial buyer"
+    },
+    "contactName": "Primary contact name",
+    "signatory": "Authorised signatory",
+    "phone": "Phone",
+    "email": "Email",
+    "purchasingContacts": "Purchasing contacts",
+    "companyAddress": "Company address",
+    "deliveryAddress": "Primary delivery address",
+    "emirate": "Emirate",
+    "selectEmirate": "Select Emirate",
+    "notes": "Purchasing notes",
+    "notesPlaceholder": "Typical products, project types, expected volumes or preferred brands",
+    "upload": "Upload documents",
+    "uploadHint": "PDF, Excel, Word or image · trade licence / VAT preferred",
+    "attached": "Attached: {filename}",
+    "creditNote": "Submitting this form does not guarantee credit. Account approval, pricing, payment terms and any credit facility are subject to separate commercial assessment and written confirmation.",
+    "submit": "Submit application",
+    "successTitle": "Application received",
+    "successMessage": "Thank you. The Imperial team will review your details and contact you about next steps. Credit is assessed separately and is not guaranteed by this submission.",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "Who can apply for an Imperial trade account?",
+        "answer": "Eligible UAE contractors, maintenance companies, fit-out teams, workshops, facility managers, procurement businesses and other recurring commercial buyers may apply."
+      },
+      "1": {
+        "question": "Does a trade account guarantee credit?",
+        "answer": "No. Account approval, pricing, payment terms, credit limit and credit period are subject to separate commercial assessment and written confirmation."
+      },
+      "2": {
+        "question": "Can trade customers request material recommendations?",
+        "answer": "Yes. Provide the application, substrate, specification, product requirement and project information for technical product support."
+      },
+      "3": {
+        "question": "Can trade accounts receive delivery across the UAE?",
+        "answer": "Yes. Confirmed deliveries can be planned for Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah, subject to product, quantity, access and schedule."
+      }
+    }
+  },
+  "BrandsHub": {
+    "breadcrumb": "Brands",
+    "kicker": "Brands",
+    "title": "Construction, Tool and Industrial Brands",
+    "quickAnswer": "Imperial Middle East supplies a multi-brand range of construction chemicals, waterproofing systems, repair materials, tile products, coatings, tools, fixings and industrial products from Mussafah, Abu Dhabi. Browse published brands below or request a brand or product that is not yet listed.",
+    "heroLine": "Shop published brands from Mussafah — or request a product confirmation.",
+    "ctaExplore": "Explore Products by Brand",
+    "ctaRequest": "Request a Brand or Product",
+    "disclaimer": "Only brands and relationship claims Imperial can verify are shown. Do not assume authorised, exclusive or official distributor status unless confirmed in writing by Imperial management.",
+    "listTitle": "Shop by brand",
+    "listIntro": "Select a brand to view currently published products. Availability, pack sizes and documents can change — confirm the exact item before ordering.",
+    "listCount": "{count} brands",
+    "listEmptyHint": "Catalogue sync",
+    "emptyBody": "Brand filters will appear here once product vendors are available from Shopify. You can still browse all products or request a specific brand.",
+    "emptyCta": "Browse all products",
+    "requestStrip": "Need a brand or SKU that is not listed? Send the exact product name for confirmation from Mussafah."
   }
 }

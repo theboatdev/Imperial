@@ -43,10 +43,11 @@ export default async function Footer() {
           <h6>{t('trade')}</h6>
           <Link href="/rfq">{t('requestQuote')}</Link>
           <Link href="/bulk-inquiries">{t('bulkOrderTerms')}</Link>
+          <Link href="/trade-account">{t('tradeAccount')}</Link>
           <Link href="/uae-project-supply">{t('uaeProjectSupply')}</Link>
           <Link href="/uae-service-areas">{t('uaeServiceAreas')}</Link>
           <Link href="/company">{t('theCompany')}</Link>
-          <div>{t('projectCredit')}</div>
+          <Link href="/brands">{t('brandsHub')}</Link>
         </div>
 
         {/* Support */}
