@@ -355,7 +355,9 @@
     "connectStore": "连接您的商店",
     "connectStoreDesc": "将您的 Shopify 凭据添加到 .env.local 以查看产品详情。",
     "addToWishlist": "加入收藏",
-    "removeFromWishlist": "从收藏中移除"
+    "removeFromWishlist": "从收藏中移除",
+    "viewTds": "查看技术数据表",
+    "tdsNotAvailable": "暂无技术数据表"
   },
   "Forms": {
     "home": "首页",

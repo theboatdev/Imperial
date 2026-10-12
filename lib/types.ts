@@ -40,6 +40,8 @@ export interface ShopifyProduct {
   totalInventory: number | null;
   createdAt: string;
   updatedAt: string;
+  /** Parsed URL from custom.tds_link metafield, if present */
+  tdsUrl: string | null;
 }
 
 export interface ShopifyCollection {
@@ -97,6 +99,11 @@ export interface ShopifyConnection<T> {
   };
 }
 
+export interface ShopifyMetafield {
+  value: string;
+  type: string;
+}
+
 export interface ShopifyProductRaw {
   id: string;
   title: string;
@@ -123,6 +130,7 @@ export interface ShopifyProductRaw {
     quantityAvailable: number | null;
     selectedOptions: { name: string; value: string }[];
   }>;
+  tdsLink?: ShopifyMetafield | null;
 }
 
 // ─── API Function Types ──────────────────────────────────────────────────────

@@ -185,11 +185,8 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
             </Suspense>
           </div>
           <div className="topbar-currency currency">
-            <select aria-label={t('currency')}>
-              <option>AED</option>
-              <option>USD</option>
-              <option>EUR</option>
-              <option>SAR</option>
+            <select aria-label={t('currency')} disabled title="AED">
+              <option value="AED">AED</option>
             </select>
           </div>
         </div>

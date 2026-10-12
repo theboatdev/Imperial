@@ -9,6 +9,7 @@ import { useCartStore } from '@/lib/cart-store';
 import { useCompareStore } from '@/lib/compare-store';
 import { addLineItemAction } from '@/app/actions/cart';
 import { usePrice } from '@/lib/use-price';
+import { formatPrice } from '@/lib/utils';
 
 export default function CompareClient() {
   const t = useTranslations('Compare');
@@ -89,7 +90,10 @@ export default function CompareClient() {
               // We'll show the other value in the subtitle.
               const priceNum = parseFloat(basePrice.amount);
               const exclTaxAmount = priceNum / (1 + vatRate);
-              const exclTaxStr = new Intl.NumberFormat('en-AE', { style: 'currency', currency: 'AED' }).format(exclTaxAmount);
+              const exclTaxStr = formatPrice({
+                amount: String(exclTaxAmount),
+                currencyCode: basePrice.currencyCode || 'AED',
+              });
 
               return (
                 <td key={p.id} style={{ border: '1px solid var(--line)', padding: '24px', verticalAlign: 'top', position: 'relative', width: '300px' }}>

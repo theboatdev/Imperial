@@ -355,7 +355,9 @@
     "connectStore": "Connect Your Store",
     "connectStoreDesc": "Add your Shopify credentials to .env.local to view product details.",
     "addToWishlist": "Add to wishlist",
-    "removeFromWishlist": "Remove from wishlist"
+    "removeFromWishlist": "Remove from wishlist",
+    "viewTds": "View TDS",
+    "tdsNotAvailable": "TDS not available"
   },
   "Forms": {
     "home": "Home",

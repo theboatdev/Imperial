@@ -1,13 +1,16 @@
 import type { Money } from './types';
 
 /**
- * Format a Shopify Money object into a locale-aware currency string.
+ * Format a Shopify Money object using the currency Shopify returned.
+ * Falls back to AED (store default) only when currencyCode is missing.
  */
 export function formatPrice(money: Money): string {
   const amount = parseFloat(money.amount);
-  return new Intl.NumberFormat('en-AE', {
+  const currency = money.currencyCode || 'AED';
+  const locale = currency === 'USD' ? 'en-US' : 'en-AE';
+  return new Intl.NumberFormat(locale, {
     style: 'currency',
-    currency: 'AED',
+    currency,
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
   }).format(amount);

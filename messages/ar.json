@@ -355,7 +355,9 @@
     "connectStore": "اربط متجرك",
     "connectStoreDesc": "أضف بيانات اعتماد Shopify إلى .env.local لعرض تفاصيل المنتج.",
     "addToWishlist": "أضف إلى قائمة الرغبات",
-    "removeFromWishlist": "إزالة من قائمة الرغبات"
+    "removeFromWishlist": "إزالة من قائمة الرغبات",
+    "viewTds": "عرض ورقة البيانات الفنية",
+    "tdsNotAvailable": "ورقة البيانات الفنية غير متوفرة"
   },
   "Forms": {
     "home": "الرئيسية",

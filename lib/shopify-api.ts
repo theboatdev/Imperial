@@ -50,14 +50,35 @@ function toCollectionSortKey(sortKey?: SortKey | string): CollectionSortKey {
 
 // ─── Product Helpers ─────────────────────────────────────────────────────────
 
+/** Extract a URL from Shopify metafield (link JSON or plain URL string). */
+function parseMetafieldUrl(metafield?: { value: string; type: string } | null): string | null {
+  if (!metafield?.value?.trim()) return null;
+  const value = metafield.value.trim();
+
+  if (metafield.type === 'link' || value.startsWith('{')) {
+    try {
+      const parsed = JSON.parse(value) as { url?: string };
+      const url = parsed?.url?.trim();
+      if (url && /^https?:\/\//i.test(url)) return url;
+    } catch {
+      // fall through to plain URL check
+    }
+  }
+
+  if (/^https?:\/\//i.test(value)) return value;
+  return null;
+}
+
 function normalizeProduct(raw: ShopifyProductRaw): ShopifyProduct {
+  const { tdsLink, ...rest } = raw;
   return {
-    ...raw,
+    ...rest,
     images: flattenConnection(raw.images),
     variants: flattenConnection(raw.variants).map((v) => ({
       ...v,
       price: v.price,
     })),
+    tdsUrl: parseMetafieldUrl(tdsLink),
   };
 }
 
@@ -120,6 +141,7 @@ export async function getProductRecommendations(
       ...p,
       images: p.images ? flattenConnection(p.images) : [],
       variants: p.variants ? flattenConnection(p.variants) : [],
+      tdsUrl: null,
     })) as ShopifyProduct[];
   } catch {
     return [];

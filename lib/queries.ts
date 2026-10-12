@@ -120,6 +120,10 @@ export const PRODUCT_BY_HANDLE_QUERY = `
           }
         }
       }
+      tdsLink: metafield(namespace: "custom", key: "tds_link") {
+        value
+        type
+      }
     }
   }
 `;

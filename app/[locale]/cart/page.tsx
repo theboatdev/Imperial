@@ -19,6 +19,7 @@ export default function CartPage() {
   const removeItem = useCartStore((s) => s.removeItem);
   const syncFromApi = useCartStore((s) => s.syncFromApi);
   const subtotalStr = useCartStore((s) => s.subtotal());
+  const currencyCode = useCartStore((s) => s.currency());
   const subtotalNum = parseFloat(subtotalStr) || 0;
 
   const { isVatInclusive, vatRate } = useVatStore();
@@ -183,7 +184,7 @@ export default function CartPage() {
                   </div>
 
                   <div className="price">
-                    {formatPrice({ amount: itemTotal.toString(), currencyCode: 'AED' })}
+                    {formatPrice({ amount: itemTotal.toString(), currencyCode: item.price.currencyCode || currencyCode })}
                   </div>
                 </div>
               );
@@ -197,19 +198,19 @@ export default function CartPage() {
             <h4>{t('orderSummary')}</h4>
             <div className="sumrow">
               <span>{t('subtotal')}</span>
-              <span>{formatPrice({ amount: subtotalNum.toString(), currencyCode: 'AED' })}</span>
+              <span>{formatPrice({ amount: subtotalNum.toString(), currencyCode })}</span>
             </div>
             <div className="sumrow">
               <span>{t('shipping')}</span>
-              <span>{shippingCost === 0 ? t('free') : formatPrice({ amount: shippingCost.toString(), currencyCode: 'AED' })}</span>
+              <span>{shippingCost === 0 ? t('free') : formatPrice({ amount: shippingCost.toString(), currencyCode })}</span>
             </div>
             <div className="sumrow">
               <span>{t('vat', { rate: Math.round(vatRate * 100) })}</span>
-              <span>{formatPrice({ amount: vatAmount.toString(), currencyCode: 'AED' })}</span>
+              <span>{formatPrice({ amount: vatAmount.toString(), currencyCode })}</span>
             </div>
             <div className="sumrow total">
               <span>{t('total')}</span>
-              <span>{formatPrice({ amount: grandTotal.toString(), currencyCode: 'AED' })}</span>
+              <span>{formatPrice({ amount: grandTotal.toString(), currencyCode })}</span>
             </div>
 
             <p style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.55, marginTop: '14px' }}>{t('vatNote')}</p>
