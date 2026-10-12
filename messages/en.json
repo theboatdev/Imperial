@@ -42,7 +42,15 @@
     "technicalResourcesTitle": "Technical Support, TDS & SDS UAE | Imperial",
     "technicalResourcesDescription": "Access product documents or request material recommendations, technical support and suitable site visits from Imperial in Mussafah, Abu Dhabi.",
     "deliveryInfoTitle": "Building Materials Delivery Across the UAE | Imperial",
-    "deliveryInfoDescription": "Plan building-material delivery from Imperial in Mussafah to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah."
+    "deliveryInfoDescription": "Plan building-material delivery from Imperial in Mussafah to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah.",
+    "bathroomWetAreaTitle": "Bathroom Waterproofing Materials Abu Dhabi | Imperial",
+    "bathroomWetAreaDescription": "Build a wet-area system with waterproofing, primers, tapes, tile adhesives, grouts and sealants from Imperial in Mussafah, Abu Dhabi.",
+    "concreteRepairTitle": "Concrete Repair Systems Abu Dhabi | Imperial",
+    "concreteRepairDescription": "Source repair mortars, bonding agents, grouts, injection products and concrete protection materials from Imperial in Mussafah, Abu Dhabi.",
+    "industrialFlooringTitle": "Industrial Epoxy Flooring Abu Dhabi | Imperial",
+    "industrialFlooringDescription": "Compare epoxy primers, coatings, screeds, repair products and anti-slip finishes from Imperial in Mussafah, Abu Dhabi for UAE projects.",
+    "anchoringFixingTitle": "Anchoring & Fixing Systems Abu Dhabi | Imperial",
+    "anchoringFixingDescription": "Shop chemical anchors, mechanical fixings, rods, screws and installation accessories from Imperial in Mussafah, Abu Dhabi."
   },
   "Nav": {
     "freeDelivery": "Based in Mussafah, Abu Dhabi. Technical support and project supply across all seven Emirates.",
@@ -94,7 +102,11 @@
     "logoAlt": "Imperial Middle East",
     "technicalResources": "Technical Resources",
     "deliveryInformation": "Delivery Information",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "bathroomWetArea": "Bathroom Waterproofing",
+    "concreteRepair": "Concrete Repair",
+    "industrialFlooring": "Industrial Flooring",
+    "anchoringFixing": "Anchoring & Fixing"
   },
   "Footer": {
     "eyebrow": "Imperial Middle East",
@@ -132,7 +144,11 @@
     "taglineBottom": "Mussafah, Abu Dhabi · Serving all seven Emirates",
     "technicalResources": "Technical Resources",
     "deliveryInformation": "Delivery Information",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "bathroomWetArea": "Bathroom Waterproofing",
+    "concreteRepair": "Concrete Repair",
+    "industrialFlooring": "Industrial Flooring",
+    "anchoringFixing": "Anchoring & Fixing"
   },
   "Hero": {
     "alt": "Imperial Construction Projects",
@@ -774,6 +790,222 @@
       "1": "Detail sealing at upstands, penetrations and perimeter joints",
       "2": "Substrate repair and preparation ahead of the waterproofing layer",
       "3": "Application tools, reinforcement and site accessories"
+    }
+  },
+  "BathroomWetArea": {
+    "breadcrumb": "Bathroom Waterproofing",
+    "kicker": "Solutions",
+    "title": "Bathroom and Wet-Area Waterproofing Systems",
+    "quickAnswer": "Imperial Middle East supplies wet-area waterproofing systems for bathrooms, kitchens, laundries and balconies from its Mussafah, Abu Dhabi base. The full build-up may include substrate repair, primer, membrane, reinforcement tape, tile adhesive, grout and movement-joint sealant.",
+    "heroLine": "Continuous wet-area systems from Mussafah for bathrooms, kitchens and balconies.",
+    "overviewTitle": "Application overview",
+    "overview": "The waterproof layer must remain continuous at corners, drains, thresholds and pipe penetrations, and it must be compatible with the substrate and tile installation system. Check application thickness, curing and flood-test requirements before covering the membrane.",
+    "infoTitle": "Information to send",
+    "infoHint": "For faster quotes",
+    "infoItems": {
+      "0": "Floor and wall area",
+      "1": "Concrete, screed, blockwork or board substrate",
+      "2": "Drain, threshold and penetration details",
+      "3": "Tile material and size",
+      "4": "Internal wet area or exposed balcony",
+      "5": "Specified brand, approval or system"
+    },
+    "relatedTitle": "Related ranges",
+    "relatedIntro": "Browse related ranges used with wet-area waterproofing build-ups.",
+    "relatedWaterproofing": "Waterproofing Materials",
+    "relatedAdhesives": "Tile Adhesives and Grouts",
+    "relatedSealants": "Adhesives and Sealants",
+    "relatedTileSystems": "Tile Installation Systems",
+    "relatedHints": {
+      "0": "Membranes, primers and tapes for continuous wet-area layers",
+      "1": "Compatible adhesives and grouts over the waterproofing system",
+      "2": "Movement-joint and detail sealants at thresholds and penetrations",
+      "3": "Full tile-system build-up from substrate to finished joints"
+    },
+    "uaeSupport": "Imperial supports suitable requirements from Mussafah, Abu Dhabi across all seven Emirates through product guidance, project quotations, arranged site visits and confirmed delivery planning.",
+    "ctaQuote": "Request a System Quote",
+    "ctaSupport": "Request Technical Support",
+    "ctaSiteVisit": "Request a Site Visit",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "What products are normally needed for bathroom waterproofing?",
+        "answer": "The system may require repair material, primer, waterproof membrane, corner or joint tape, compatible tile adhesive, grout and movement-joint sealant. Follow the approved project detail and manufacturer system."
+      },
+      "1": {
+        "question": "Should a bathroom waterproofing membrane be flood tested?",
+        "answer": "Follow the project specification and manufacturer instructions. Flood testing should only occur after the required cure time and before the membrane is covered."
+      },
+      "2": {
+        "question": "Can Imperial calculate the required quantity?",
+        "answer": "Yes. Provide wall and floor areas, system thickness and details. Final consumption still depends on substrate condition, waste and manufacturer coverage."
+      },
+      "3": {
+        "question": "Is wet-area system delivery available throughout the UAE?",
+        "answer": "Yes. Confirmed orders can be planned for all seven Emirates, subject to stock, quantity and delivery requirements."
+      }
+    }
+  },
+  "ConcreteRepair": {
+    "breadcrumb": "Concrete Repair",
+    "kicker": "Solutions",
+    "title": "Concrete Repair and Protection Systems",
+    "quickAnswer": "Imperial Middle East supplies concrete repair and protection materials from Mussafah, Abu Dhabi for patch repair, reinforcement protection, crack injection, grouting and protective coating requirements across the UAE.",
+    "heroLine": "Repair mortars, bonding agents, grouts and protection from Mussafah.",
+    "overviewTitle": "Application overview",
+    "overview": "Repair should address the cause of deterioration and rebuild the section with compatible materials. A complete process may include breakout, reinforcement preparation, corrosion protection, bonding, repair mortar or micro-concrete, curing and a protective finish.",
+    "infoTitle": "Information to send",
+    "infoHint": "For faster quotes",
+    "infoItems": {
+      "0": "Cause and extent of damage",
+      "1": "Repair depth, area and orientation",
+      "2": "Structural or non-structural requirement",
+      "3": "Reinforcement condition",
+      "4": "Exposure and protective finish",
+      "5": "Approved repair schedule, drawings and quantities"
+    },
+    "relatedTitle": "Related ranges",
+    "relatedIntro": "Browse related ranges used with concrete repair and protection build-ups.",
+    "relatedRepair": "Concrete Repair and Protection",
+    "relatedCoatings": "Paints and Coatings",
+    "relatedTech": "Technical Resources",
+    "relatedTools": "Tools and Equipment",
+    "relatedHints": {
+      "0": "Repair mortars, bonding agents and grouting products",
+      "1": "Protective finishes after structural or patch repair",
+      "2": "TDS, SDS and system documents for project approvals",
+      "3": "Application tools and site accessories"
+    },
+    "uaeSupport": "Imperial supports suitable requirements from Mussafah, Abu Dhabi across all seven Emirates through product guidance, project quotations, arranged site visits and confirmed delivery planning.",
+    "ctaQuote": "Request a System Quote",
+    "ctaSupport": "Request Technical Support",
+    "ctaSiteVisit": "Request a Site Visit",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "Can Imperial recommend a complete concrete repair system?",
+        "answer": "Imperial can compare available product systems using the repair information and manufacturer documents. Structural design and final technical approval remain with qualified project parties."
+      },
+      "1": {
+        "question": "What should be included in a concrete repair enquiry?",
+        "answer": "Provide the cause, repair depth, orientation, reinforcement condition, exposure, structural requirement, specification, drawings, quantities and project location."
+      },
+      "2": {
+        "question": "Can a site visit be requested?",
+        "answer": "Yes. A suitable project site visit can be considered after the scope, location, access and technical requirement are reviewed."
+      },
+      "3": {
+        "question": "Is project delivery available outside Abu Dhabi?",
+        "answer": "Yes. Imperial coordinates confirmed material deliveries across all seven Emirates, subject to the agreed project schedule and site requirements."
+      }
+    }
+  },
+  "IndustrialFlooring": {
+    "breadcrumb": "Industrial Flooring",
+    "kicker": "Solutions",
+    "title": "Industrial and Commercial Flooring Systems",
+    "quickAnswer": "Imperial Middle East supplies industrial flooring materials from Mussafah, Abu Dhabi, including primers, epoxy coatings, screeds, repair products, aggregates, anti-slip finishes and application accessories.",
+    "heroLine": "Epoxy primers, coatings, screeds and anti-slip finishes from Mussafah.",
+    "overviewTitle": "Application overview",
+    "overview": "Select the system around substrate moisture and strength, preparation, traffic, impact, chemicals, cleaning, slip resistance, required thickness and return-to-service time. A decorative colour alone is not a performance specification.",
+    "infoTitle": "Information to send",
+    "infoHint": "For faster quotes",
+    "infoItems": {
+      "0": "Floor area, slab age and current condition",
+      "1": "Moisture and substrate test information",
+      "2": "Traffic, impact and abrasion",
+      "3": "Chemical and cleaning exposure",
+      "4": "Slip resistance, finish and colour",
+      "5": "Shutdown and cure-time limits"
+    },
+    "relatedTitle": "Related ranges",
+    "relatedIntro": "Browse related ranges used with industrial flooring build-ups.",
+    "relatedFlooring": "Epoxy Flooring Systems",
+    "relatedRepair": "Concrete Repair",
+    "relatedCleaners": "Industrial Cleaners",
+    "relatedTools": "Tools and Equipment",
+    "relatedHints": {
+      "0": "Primers, coatings, screeds and anti-slip finishes",
+      "1": "Substrate repair and preparation ahead of flooring",
+      "2": "Surface preparation and cleaning products",
+      "3": "Application tools and site accessories"
+    },
+    "uaeSupport": "Imperial supports suitable requirements from Mussafah, Abu Dhabi across all seven Emirates through product guidance, project quotations, arranged site visits and confirmed delivery planning.",
+    "ctaQuote": "Request a System Quote",
+    "ctaSupport": "Request Technical Support",
+    "ctaSiteVisit": "Request a Site Visit",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "What information is needed for an industrial flooring material schedule?",
+        "answer": "Provide area, slab condition, test information, traffic, impact, chemicals, cleaning, slip requirements, thickness, finish, colour and project programme."
+      },
+      "1": {
+        "question": "Can Imperial arrange a flooring site review?",
+        "answer": "A site visit may be arranged for suitable project requirements after the team reviews the scope, location, access and information available."
+      },
+      "2": {
+        "question": "Does a product quotation include installation?",
+        "answer": "No, unless installation is specifically included in a separate written scope and quotation."
+      },
+      "3": {
+        "question": "Can flooring materials be delivered across all seven Emirates?",
+        "answer": "Yes. Confirmed orders can be coordinated across the UAE, subject to product availability, quantity, handling and site access."
+      }
+    }
+  },
+  "AnchoringFixing": {
+    "breadcrumb": "Anchoring & Fixing",
+    "kicker": "Solutions",
+    "title": "Anchoring and Fixing Solutions",
+    "quickAnswer": "Imperial Middle East supplies selected chemical anchors, mechanical fixings, threaded rods, screws, dispensers, drill bits and hole-cleaning accessories from Mussafah, Abu Dhabi.",
+    "heroLine": "Chemical anchors, mechanical fixings and installation accessories from Mussafah.",
+    "overviewTitle": "Application overview",
+    "overview": "A reliable fixing depends on the anchor, base material, design load, embedment, spacing, edge distance, hole condition, cleaning and installation procedure. Structural and safety-critical applications require qualified engineering design and approval.",
+    "infoTitle": "Information to send",
+    "infoHint": "For faster quotes",
+    "infoItems": {
+      "0": "Base material and condition",
+      "1": "Application and design load",
+      "2": "Anchor diameter and embedment",
+      "3": "Edge distance and spacing",
+      "4": "Dry, wet, flooded or overhead hole",
+      "5": "Required approvals, rods, accessories and quantity"
+    },
+    "relatedTitle": "Related ranges",
+    "relatedIntro": "Browse related ranges used with anchoring and fixing systems.",
+    "relatedFixings": "Fixings and Anchors",
+    "relatedTools": "Tools and Equipment",
+    "relatedTech": "Technical Resources",
+    "relatedProject": "UAE Project Supply",
+    "relatedHints": {
+      "0": "Chemical anchors, mechanical fixings and rods",
+      "1": "Drill bits, dispensers and hole-cleaning accessories",
+      "2": "Approvals, TDS and installation guidance",
+      "3": "Project quotations and coordinated UAE delivery"
+    },
+    "uaeSupport": "Imperial supports suitable requirements from Mussafah, Abu Dhabi across all seven Emirates through product guidance, project quotations, arranged site visits and confirmed delivery planning.",
+    "ctaQuote": "Request a System Quote",
+    "ctaSupport": "Request Technical Support",
+    "ctaSiteVisit": "Request a Site Visit",
+    "faqTitle": "Frequently asked questions",
+    "faqs": {
+      "0": {
+        "question": "What information is required to select an anchor?",
+        "answer": "Provide base material, load, safety classification, edge distance, spacing, embedment, hole condition, environment, required approval and quantity."
+      },
+      "1": {
+        "question": "Can Imperial approve a structural anchor design?",
+        "answer": "No. Imperial can provide product information and availability. A qualified engineer must complete and approve the structural design."
+      },
+      "2": {
+        "question": "Are drilling and cleaning accessories available?",
+        "answer": "Selected dispensers, drill bits, brushes, blow-out tools, rods and accessories may be quoted with the anchor system."
+      },
+      "3": {
+        "question": "Do you supply anchor systems across the UAE?",
+        "answer": "Yes. Project quotations and confirmed delivery planning are available for Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah."
+      }
     }
   },
   "UaeProjectSupply": {

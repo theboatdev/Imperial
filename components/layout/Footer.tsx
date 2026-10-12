@@ -32,6 +32,10 @@ export default async function Footer() {
           <Link href="/products?collection=bonding">{t('bonding')}</Link>
           <Link href="/tile-installation-systems">{t('tileSystems')}</Link>
           <Link href="/roof-waterproofing-materials-abu-dhabi">{t('roofWaterproofing')}</Link>
+          <Link href="/bathroom-wet-area-waterproofing">{t('bathroomWetArea')}</Link>
+          <Link href="/concrete-repair-protection">{t('concreteRepair')}</Link>
+          <Link href="/industrial-epoxy-flooring">{t('industrialFlooring')}</Link>
+          <Link href="/anchoring-fixing-solutions">{t('anchoringFixing')}</Link>
         </div>
 
         {/* Trade */}

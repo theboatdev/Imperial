@@ -58,6 +58,10 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
       pathname.startsWith('/company/') ||
       pathname === '/tile-installation-systems' ||
       pathname === '/roof-waterproofing-materials-abu-dhabi' ||
+      pathname === '/bathroom-wet-area-waterproofing' ||
+      pathname === '/concrete-repair-protection' ||
+      pathname === '/industrial-epoxy-flooring' ||
+      pathname === '/anchoring-fixing-solutions' ||
       pathname === '/uae-project-supply' ||
       pathname === '/uae-service-areas' ||
       pathname === '/faqs' ||
@@ -530,11 +534,15 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
           </button>
 
           {openMenu === 'about' && (
-            <div className="megapanel" role="menu" style={{ minWidth: '220px', padding: '16px 20px' }}>
+            <div className="megapanel" role="menu" style={{ minWidth: '260px', padding: '16px 20px' }}>
               <div className="megacol" style={{ minWidth: '100%' }}>
                 <Link href="/company" role="menuitem" onClick={() => setOpenMenu(null)}>{t('theCompany')}</Link>
                 <Link href="/tile-installation-systems" role="menuitem" onClick={() => setOpenMenu(null)}>{t('tileSystems')}</Link>
                 <Link href="/roof-waterproofing-materials-abu-dhabi" role="menuitem" onClick={() => setOpenMenu(null)}>{t('roofWaterproofing')}</Link>
+                <Link href="/bathroom-wet-area-waterproofing" role="menuitem" onClick={() => setOpenMenu(null)}>{t('bathroomWetArea')}</Link>
+                <Link href="/concrete-repair-protection" role="menuitem" onClick={() => setOpenMenu(null)}>{t('concreteRepair')}</Link>
+                <Link href="/industrial-epoxy-flooring" role="menuitem" onClick={() => setOpenMenu(null)}>{t('industrialFlooring')}</Link>
+                <Link href="/anchoring-fixing-solutions" role="menuitem" onClick={() => setOpenMenu(null)}>{t('anchoringFixing')}</Link>
                 <Link href="/uae-project-supply" role="menuitem" onClick={() => setOpenMenu(null)}>{t('uaeProjectSupply')}</Link>
                 <Link href="/uae-service-areas" role="menuitem" onClick={() => setOpenMenu(null)}>{t('uaeServiceAreas')}</Link>
                 <Link href="/faqs" role="menuitem" onClick={() => setOpenMenu(null)}>{t('faqHub')}</Link>
@@ -669,6 +677,38 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
             onClick={() => setMobileMenuOpen(false)}
           >
             {t('roofWaterproofing')}
+          </Link>
+          <Link
+            href="/bathroom-wet-area-waterproofing"
+            className={`mobile-nav-link${pathname === '/bathroom-wet-area-waterproofing' ? ' active' : ''}`}
+            aria-current={pathname === '/bathroom-wet-area-waterproofing' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('bathroomWetArea')}
+          </Link>
+          <Link
+            href="/concrete-repair-protection"
+            className={`mobile-nav-link${pathname === '/concrete-repair-protection' ? ' active' : ''}`}
+            aria-current={pathname === '/concrete-repair-protection' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('concreteRepair')}
+          </Link>
+          <Link
+            href="/industrial-epoxy-flooring"
+            className={`mobile-nav-link${pathname === '/industrial-epoxy-flooring' ? ' active' : ''}`}
+            aria-current={pathname === '/industrial-epoxy-flooring' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('industrialFlooring')}
+          </Link>
+          <Link
+            href="/anchoring-fixing-solutions"
+            className={`mobile-nav-link${pathname === '/anchoring-fixing-solutions' ? ' active' : ''}`}
+            aria-current={pathname === '/anchoring-fixing-solutions' ? 'page' : undefined}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('anchoringFixing')}
           </Link>
           <Link
             href="/uae-project-supply"
