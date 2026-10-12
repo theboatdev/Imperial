@@ -36,7 +36,9 @@ yarn-error.log*
 .env.local*
 
 Imperial_Middle_East_Website_Content_Handover-2.docx
-ITEM LIST SUB PRODUCT WISE - Sheet1.csv
+
+# local data exports / imports
+*.csv
 
 # vercel
 .vercel
