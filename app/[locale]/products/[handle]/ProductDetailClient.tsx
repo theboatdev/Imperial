@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import type { ShopifyProduct } from '@/lib/types';
 import { useCartStore } from '@/lib/cart-store';
 import { useCompareStore } from '@/lib/compare-store';
+import { useWishlistStore } from '@/lib/wishlist-store';
 import { addLineItemAction } from '@/app/actions/cart';
 import { usePrice, isUnknownPrice } from '@/lib/use-price';
 import { getProductCoverageInfo } from '@/lib/coverage';
@@ -25,6 +26,12 @@ export default function ProductDetailClient({ product }: { product: ShopifyProdu
   const openCart = useCartStore((s) => s.openCart);
   const cartId = useCartStore((s) => s.cartId);
   const syncFromApi = useCartStore((s) => s.syncFromApi);
+
+  const wishlistItems = useWishlistStore((s) => s.items);
+  const toggleWishlist = useWishlistStore((s) => s.toggleItem);
+  const wishlisted =
+    wishlistItems.includes(product.id) ||
+    wishlistItems.some((id) => product.id.endsWith('/' + id) || id.endsWith('/' + product.id));
 
   const compareProducts = useCompareStore((s) => s.products);
   const addCompare = useCompareStore((s) => s.addProduct);
@@ -220,9 +227,12 @@ export default function ProductDetailClient({ product }: { product: ShopifyProdu
             </div>
           ) : null}
 
-          {/* TDS document */}
-          {product.tdsUrl ? (
-            <div className="field pdp-field" style={{ marginTop: '4px' }}>
+          {/* TDS + Wishlist */}
+          <div
+            className="field pdp-field"
+            style={{ marginTop: '4px', display: 'flex', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}
+          >
+            {product.tdsUrl ? (
               <a
                 href={product.tdsUrl}
                 target="_blank"
@@ -238,8 +248,29 @@ export default function ProductDetailClient({ product }: { product: ShopifyProdu
                 </svg>
                 {t('viewTds')}
               </a>
-            </div>
-          ) : null}
+            ) : null}
+            <button
+              type="button"
+              className={`btn ${wishlisted ? 'primary' : 'secondary'}`}
+              onClick={() => toggleWishlist(product.id)}
+              aria-pressed={wishlisted}
+              aria-label={wishlisted ? t('removeFromWishlist') : t('addToWishlist')}
+              title={wishlisted ? t('removeFromWishlist') : t('addToWishlist')}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+            >
+              <svg
+                className={`ic sm ${wishlisted ? 'fill' : ''}`}
+                viewBox="0 0 24 24"
+                fill={wishlisted ? 'currentColor' : 'none'}
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
+                <path d="M12 20.2C9.5 18 4.5 14.4 4.5 10.6A3.9 3.9 0 0 1 12 8.4a3.9 3.9 0 0 1 7.5 2.2c0 3.8-5 7.4-7.5 9.6Z" />
+              </svg>
+              {wishlisted ? t('removeFromWishlist') : t('addToWishlist')}
+            </button>
+          </div>
 
           {/* Pack Size Swatches */}
           {product.variants.length > 1 && (
