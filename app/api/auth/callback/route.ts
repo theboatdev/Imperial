@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
+import { getSiteOrigin } from '@/lib/site-url';
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -23,11 +24,7 @@ export async function GET(request: Request) {
 
   try {
     // Must match the redirect_uri used in the login route exactly
-    let rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || url.origin;
-    if (!rawSiteUrl.startsWith('http')) {
-      rawSiteUrl = `https://${rawSiteUrl}`;
-    }
-    const siteOrigin = rawSiteUrl.replace(/\/$/, '');
+    const siteOrigin = getSiteOrigin(request.url);
     const redirectUri = `${siteOrigin}/api/auth/callback`;
 
     // Exchange code for token

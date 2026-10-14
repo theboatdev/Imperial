@@ -16,7 +16,6 @@ export default function HeroSection() {
     title: t(`slides.${i}.title`),
     titleLine2: t(`slides.${i}.titleLine2`),
     description: t(`slides.${i}.description`),
-    note: t(`slides.${i}.note`),
     artType: i,
   }));
 
@@ -74,12 +73,15 @@ export default function HeroSection() {
           </h1>
           <p>{slide.description}</p>
           <div className="hero-actions">
-            <Link href="/rfq" className="btn line">
+            <Link href="/rfq" className="btn primary hero-cta">
               {t('requestQuote')}
+              <svg className="ic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </Link>
-            <Link href="/products" className="hero-link">
+            <Link href="/products" className="btn line hero-cta">
               {t('browseCatalogue')}
-              <svg className="ic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg className="ic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
@@ -103,7 +105,6 @@ export default function HeroSection() {
         {/* Stage with dynamic rotating brand wheel */}
         <div className="hero-stage">
           <BrandWheel />
-          <p className="hero-note">{slide.note}</p>
         </div>
 
         {/* Right dots */}

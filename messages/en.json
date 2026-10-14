@@ -9,7 +9,7 @@
     "productsTitle": "Products",
     "productsDescription": "Browse construction chemicals, waterproofing, adhesives, sealants, tools and project materials from Imperial Middle East.",
     "compareTitle": "Compare Products",
-    "compareDescription": "Compare construction products side-by-side.",
+    "compareDescription": "Compare construction products side by side.",
     "rfqTitle": "Request Building Materials Quote UAE | Imperial",
     "rfqDescription": "Upload a BOQ or material list for technical review, material recommendations, special project pricing and delivery across all seven Emirates.",
     "bulkTitle": "Bulk Inquiries",
@@ -42,13 +42,13 @@
     "technicalResourcesTitle": "Technical Support, TDS & SDS UAE | Imperial",
     "technicalResourcesDescription": "Access product documents or request material recommendations, technical support and suitable site visits from Imperial in Mussafah, Abu Dhabi.",
     "deliveryInfoTitle": "Building Materials Delivery Across the UAE | Imperial",
-    "deliveryInfoDescription": "Plan building-material delivery from Imperial in Mussafah to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah.",
+    "deliveryInfoDescription": "Plan building material delivery from Imperial in Mussafah to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah.",
     "bathroomWetAreaTitle": "Bathroom Waterproofing Materials Abu Dhabi | Imperial",
-    "bathroomWetAreaDescription": "Build a wet-area system with waterproofing, primers, tapes, tile adhesives, grouts and sealants from Imperial in Mussafah, Abu Dhabi.",
+    "bathroomWetAreaDescription": "Build a wet area system with waterproofing, primers, tapes, tile adhesives, grouts and sealants from Imperial in Mussafah, Abu Dhabi.",
     "concreteRepairTitle": "Concrete Repair Systems Abu Dhabi | Imperial",
     "concreteRepairDescription": "Source repair mortars, bonding agents, grouts, injection products and concrete protection materials from Imperial in Mussafah, Abu Dhabi.",
     "industrialFlooringTitle": "Industrial Epoxy Flooring Abu Dhabi | Imperial",
-    "industrialFlooringDescription": "Compare epoxy primers, coatings, screeds, repair products and anti-slip finishes from Imperial in Mussafah, Abu Dhabi for UAE projects.",
+    "industrialFlooringDescription": "Compare epoxy primers, coatings, screeds, repair products and anti slip finishes from Imperial in Mussafah, Abu Dhabi for UAE projects.",
     "anchoringFixingTitle": "Anchoring & Fixing Systems Abu Dhabi | Imperial",
     "anchoringFixingDescription": "Shop chemical anchors, mechanical fixings, rods, screws and installation accessories from Imperial in Mussafah, Abu Dhabi.",
     "tradeAccountTitle": "Trade Account for UAE Businesses | Imperial",
@@ -172,15 +172,15 @@
         "l2": "Based in Mussafah, Abu Dhabi",
         "title": "Building Materials and",
         "titleLine2": "Project Supply from Mussafah",
-        "description": "Source construction chemicals, waterproofing systems, tile adhesives, repair materials, sealants, tools, coatings, fixings, safety products and site essentials from Imperial Middle East — with technical support and delivery across all seven Emirates.",
+        "description": "Source construction chemicals, waterproofing systems, tile adhesives, repair materials, sealants, tools, coatings, fixings, safety products and site essentials from Imperial Middle East, with technical support and delivery across all seven Emirates.",
         "note": "Technical support · Material recommendations · UAE delivery"
       },
       "1": {
         "l1": "Waterproofing & tanking",
         "l2": "Sika · Mapei · Fosroc",
-        "title": "Roof, wet-area and",
+        "title": "Roof, wet area and",
         "titleLine2": "basement systems",
-        "description": "Waterproofing membranes, primers and joint systems for UAE projects — with available technical documents and practical material guidance from Mussafah.",
+        "description": "Waterproofing membranes, primers and joint systems for UAE projects, with available technical documents and practical material guidance from Mussafah.",
         "note": "Ask for material recommendations before you order."
       },
       "2": {
@@ -204,7 +204,7 @@
     "noProducts": "No products available in this category.",
     "rewardsTitle": "Imperial Rewards",
     "rewardsDescription": "Join our exclusive royalty program today! Earn points on every purchase, unlock professional tiers, and get a 10% discount on your first order.",
-    "rewardsCta": "Sign Up Now — Get 10% Off",
+    "rewardsCta": "Sign Up Now: Get 10% Off",
     "rewardsAlt": "Imperial Rewards Cards",
     "explore": "Explore",
     "shopByCategory": "Shop by project requirement",
@@ -219,7 +219,7 @@
     "review1Meta": "Verified buyer · Dubai",
     "review2": "“Responsive team, easy to get technical data sheets before ordering.”",
     "review2Meta": "Verified buyer · Sharjah",
-    "review3": "“Used on a 400 sqm villa floor — zero lippage issues.”",
+    "review3": "“Used on a 400 sqm villa floor with zero lippage issues.”",
     "review3Meta": "Verified buyer · Abu Dhabi",
     "trustLabel": "Why Imperial",
     "trustItems": {
@@ -249,7 +249,7 @@
       },
       "2": {
         "title": "Project site visits",
-        "body": "Request an arranged visit when the project scope and technical requirement justify on-site review."
+        "body": "Request an arranged visit when the project scope and technical requirement justify on site review."
       },
       "3": {
         "title": "Special project pricing",
@@ -299,7 +299,7 @@
       },
       "2": {
         "question": "Where can I find TDS and SDS documents?",
-        "answer": "Applicable documents appear on the product page under Documents when available. Website copy is a purchasing guide — the latest manufacturer TDS, SDS and project specification control technical use."
+        "answer": "Applicable documents appear on the product page under Documents when available. Website copy is a purchasing guide. The latest manufacturer TDS, SDS and project specification control technical use."
       },
       "3": {
         "question": "Can I upload a BOQ for pricing?",
@@ -317,6 +317,16 @@
     "vatNote": "Applicable 5% UAE VAT is shown before payment based on your Inc/Ex VAT preference.",
     "proceedToCheckout": "Proceed to Secure Checkout",
     "compareItems": "Compare Items",
+    "compareCartTitle": "Compare cart products",
+    "compareCartIntro": "Select any two products in your cart to compare them side by side.",
+    "compareCartHint": "Select exactly 2 products, then tap Compare selected.",
+    "compareSelected": "Compare selected",
+    "compareCancel": "Cancel",
+    "compareClose": "Close comparison",
+    "compareLoading": "Loading comparison...",
+    "compareLoadError": "Could not load product details for comparison. Please try again.",
+    "compareResultTitle": "Side by side comparison",
+    "compareSelectAria": "Select {title} for comparison",
     "continueShopping": "Continue Shopping",
     "decreaseQty": "Decrease quantity",
     "increaseQty": "Increase quantity",
@@ -354,7 +364,7 @@
     "inStock": "In Stock",
     "lowStock": "Low Stock",
     "outOfStock": "Out of Stock",
-    "lowStockLeft": "Low Stock — {count} left",
+    "lowStockLeft": "Low Stock: {count} left",
     "inStockCount": "In Stock ({count})",
     "requestForQuote": "Request for Quote",
     "perUnit": "/ unit",
@@ -397,8 +407,8 @@
     "sku": "SKU: {sku}",
     "priceIncludesVat": "Price includes 5% VAT",
     "priceExcludesVat": "Price excludes VAT",
-    "outOfStockMessage": "Out of Stock — Check back soon or request a custom order",
-    "lowStockMessage": "Low stock — only {count} units left at this location",
+    "outOfStockMessage": "Out of Stock. Check back soon or request a custom order",
+    "lowStockMessage": "Low stock: only {count} units left at this location",
     "packSize": "Pack Size",
     "coverageCalculator": "Coverage Calculator",
     "areaSqm": "Area (sqm)",
@@ -411,7 +421,7 @@
     "wastageExtra": "+ 10% wastage ({count} extra {unit})",
     "enterArea": "Enter an area to automatically calculate and set the {units} required",
     "quantity": "Quantity",
-    "autoSet": "✓ Auto-set for {area} sqm ({rate} sqm/{unit})",
+    "autoSet": "✓ Auto set for {area} sqm ({rate} sqm/{unit})",
     "manuallyAdjusted": "(Manually adjusted: {qty} {unit})",
     "requestQuote": "Request Quote",
     "addedToCart": "✓ Added to Cart",
@@ -467,7 +477,7 @@
       "material": "Material / Product / SKU",
       "materialPlaceholder": "e.g. Sika Ceram-215 / Tile Adhesive",
       "application": "Application / Substrate (optional)",
-      "applicationPlaceholder": "e.g. wet-area waterproofing on concrete",
+      "applicationPlaceholder": "e.g. wet area waterproofing on concrete",
       "quantity": "Quantity Requested",
       "quantityPlaceholder": "e.g. 200 bags / 5 pallets",
       "budget": "Target Price / Budget (optional)",
@@ -482,7 +492,7 @@
       "alternatives": "Approved alternatives may be proposed",
       "siteVisit": "Request technical support or a site visit",
       "notes": "Additional Notes / Site Access / Specifications",
-      "notesPlaceholder": "Share technical requirements, preferred brands, gate-pass or offloading details...",
+      "notesPlaceholder": "Share technical requirements, preferred brands, gate pass or offloading details...",
       "submit": "Submit Quote Request",
       "successTitle": "Quote Request Received",
       "successMessage": "Thank you. Your request has been received. The Imperial team will review the technical and commercial information and contact you if anything is missing. This submission is not a confirmed order until a quotation is accepted and Imperial issues order confirmation."
@@ -543,11 +553,12 @@
   "Compare": {
     "title": "Compare Products",
     "loading": "Loading...",
-    "empty": "No products to compare. Add some products from the store to compare them side-by-side.",
+    "empty": "No products to compare. Add some products from the store to compare them side by side.",
     "browseProducts": "Browse Products",
     "exclTax": "Excl. Tax: {price}",
     "addToCart": "Add to Cart",
     "addToWishlist": "Add to Wishlist",
+    "removeFromCompare": "Remove {title} from comparison",
     "sku": "SKU",
     "description": "Description",
     "shortDescription": "Short Description",
@@ -568,7 +579,7 @@
     "sealants": "Sealants",
     "groutCalcTitle": "Calculation of joint consumption",
     "product": "Product",
-    "standardGrout": "Standard Cementitious Tile Grout (20kg Bag - General)",
+    "standardGrout": "Standard Cementitious Tile Grout (20kg Bag, General)",
     "tileSpecs": "Tile specifications",
     "tileDimensions": "Tile Length/Width/Thickness (mm)",
     "groutSpecs": "Grout specifications",
@@ -576,7 +587,7 @@
     "areaToCover": "Area to be covered",
     "areaToGrout": "Area to be grouted (m²) *",
     "wastageAllowance": "Wastage Allowance",
-    "recommendedWaste": "Recommended 5% - 10%",
+    "recommendedWaste": "Recommended 5% to 10%",
     "reset": "Reset",
     "calculateGrout": "Calculate Grout",
     "estimatedConsumption": "Estimated Consumption",
@@ -596,7 +607,7 @@
     "addedToCart": "✓ Added to Cart!",
     "addBagsToCart": "Add {count} Bags to Cart",
     "browseGrouts": "Browse Available Grouts",
-    "loggedInNote": "✓ Logged in as customer — Calculation will sync to your account",
+    "loggedInNote": "✓ Logged in as customer. Calculation will sync to your account",
     "loginPrompt": "If you wish to save the calculation result, log in to the website.",
     "sealantCalcTitle": "Calculation of sealant consumption",
     "genericSealant": "Generic Construction Sealant (310 mL Cartridge)",
@@ -632,7 +643,7 @@
     "wishlistEmptyDesc": "Save products you love by tapping the heart icon on any product card.",
     "browseProducts": "Browse Products",
     "showingSaved": "Showing {count} saved items",
-    "signInIssue": "Sign-In Issue",
+    "signInIssue": "Sign In Issue",
     "tryAgain": "Try Again",
     "goHome": "Go Home",
     "welcomeBack": "Welcome back, {name}!",
@@ -676,12 +687,12 @@
     "missionTitle": "Our mission",
     "mission": "To help UAE customers source suitable construction and industrial products with clear information, responsive service and dependable project coordination.",
     "visionTitle": "Our vision",
-    "vision": "To become the UAE's most useful Abu Dhabi-based construction-material destination, recognised for product depth, technical clarity and project support.",
+    "vision": "To become the UAE's most useful Abu Dhabi based construction material destination, recognised for product depth, technical clarity and project support.",
     "companyValues": "What we value",
     "value1": "Accurate information before promotional claims",
     "value2": "Useful technical documents and product guidance",
     "value3": "Responsive customer and project support",
-    "value4": "Long-term trade relationships",
+    "value4": "Long term trade relationships",
     "value5": "Respect for specifications, approvals and safe application",
     "value6": "Clear commercial and delivery confirmation",
     "whyChooseUs": "Why Choose Us?",
@@ -697,7 +708,7 @@
     "title": "Complete Tile Installation Systems",
     "quickAnswer": "Imperial Middle East supplies complete tile installation materials from Mussafah, Abu Dhabi, including surface preparation, primers, levellers, waterproofing, adhesives, grouts, sealants and application tools.",
     "overviewTitle": "Application overview",
-    "overview": "Reliable tile installation depends on the full build-up. Tile material and dimensions, substrate strength and flatness, water exposure, movement, joint design and service conditions all affect the selected system.",
+    "overview": "Reliable tile installation depends on the full build up. Tile material and dimensions, substrate strength and flatness, water exposure, movement, joint design and service conditions all affect the selected system.",
     "infoTitle": "Information to send",
     "infoItems": {
       "0": "Tile material and dimensions",
@@ -723,7 +734,7 @@
         "answer": "A complete system accounts for substrate preparation, levelling, waterproofing where required, adhesive, grout, movement joints, perimeter joints and application tools."
       },
       "1": {
-        "question": "Which adhesive is suitable for large-format porcelain?",
+        "question": "Which adhesive is suitable for large format porcelain?",
         "answer": "Selection depends on tile dimensions, weight, substrate, location, required classification and service conditions. Follow the approved specification and the exact product TDS."
       },
       "2": {
@@ -732,17 +743,17 @@
       },
       "3": {
         "question": "Can the materials be delivered to any Emirate?",
-        "answer": "Confirmed tile-system orders can be coordinated to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah, subject to availability, handling, access and schedule."
+        "answer": "Confirmed tile system orders can be coordinated to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah, subject to availability, handling, access and schedule."
       }
     },
     "heroLine": "Primers, levellers, waterproofing, adhesives, grouts and tools from Mussafah.",
     "ctaKicker": "Project support",
     "ctaText": "Share your tile schedule or BOQ for a system recommendation and quotation.",
-    "relatedIntro": "Browse related product ranges for the full tile installation build-up.",
+    "relatedIntro": "Browse related product ranges for the full tile installation build up.",
     "infoHint": "For faster quotes",
     "relatedHints": {
       "0": "Adhesives, grouts and primers for ceramic, porcelain and stone",
-      "1": "Membranes and wet-area systems under the tile finish",
+      "1": "Membranes and wet area systems under the tile finish",
       "2": "Movement joints, perimeter sealing and finishing",
       "3": "Trowels, mixers and site application equipment"
     }
@@ -751,7 +762,7 @@
     "breadcrumb": "Roof Waterproofing",
     "kicker": "Solutions",
     "title": "Roof Waterproofing Materials for UAE Projects",
-    "quickAnswer": "Imperial Middle East supplies roof waterproofing materials from Mussafah, Abu Dhabi, including liquid-applied, cementitious and bituminous systems with related primers, reinforcement, sealants, repair products and accessories.",
+    "quickAnswer": "Imperial Middle East supplies roof waterproofing materials from Mussafah, Abu Dhabi, including liquid applied, cementitious and bituminous systems with related primers, reinforcement, sealants, repair products and accessories.",
     "overviewTitle": "Application overview",
     "overview": "A roof system must suit the substrate, existing condition, drainage, movement, UV exposure, traffic and detail areas. Confirm whether the roof is new or existing, how water is entering, what system is already present and what finish or warranty requirement applies.",
     "infoTitle": "Information to send",
@@ -790,11 +801,11 @@
         "answer": "Confirmed project deliveries can be coordinated to Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah, subject to product, quantity, access and schedule."
       }
     },
-    "heroLine": "Liquid-applied, cementitious and bituminous systems from Mussafah.",
+    "heroLine": "Liquid applied, cementitious and bituminous systems from Mussafah.",
     "infoHint": "For faster quotes",
-    "relatedIntro": "Browse related ranges used with roof waterproofing build-ups.",
+    "relatedIntro": "Browse related ranges used with roof waterproofing build ups.",
     "relatedHints": {
-      "0": "Membranes, coatings and wet-area systems for exposed and protected roofs",
+      "0": "Membranes, coatings and wet area systems for exposed and protected roofs",
       "1": "Detail sealing at upstands, penetrations and perimeter joints",
       "2": "Substrate repair and preparation ahead of the waterproofing layer",
       "3": "Application tools, reinforcement and site accessories"
@@ -803,11 +814,11 @@
   "BathroomWetArea": {
     "breadcrumb": "Bathroom Waterproofing",
     "kicker": "Solutions",
-    "title": "Bathroom and Wet-Area Waterproofing Systems",
-    "quickAnswer": "Imperial Middle East supplies wet-area waterproofing systems for bathrooms, kitchens, laundries and balconies from its Mussafah, Abu Dhabi base. The full build-up may include substrate repair, primer, membrane, reinforcement tape, tile adhesive, grout and movement-joint sealant.",
-    "heroLine": "Continuous wet-area systems from Mussafah for bathrooms, kitchens and balconies.",
+    "title": "Bathroom and Wet Area Waterproofing Systems",
+    "quickAnswer": "Imperial Middle East supplies wet area waterproofing systems for bathrooms, kitchens, laundries and balconies from its Mussafah, Abu Dhabi base. The full build up may include substrate repair, primer, membrane, reinforcement tape, tile adhesive, grout and movement joint sealant.",
+    "heroLine": "Continuous wet area systems from Mussafah for bathrooms, kitchens and balconies.",
     "overviewTitle": "Application overview",
-    "overview": "The waterproof layer must remain continuous at corners, drains, thresholds and pipe penetrations, and it must be compatible with the substrate and tile installation system. Check application thickness, curing and flood-test requirements before covering the membrane.",
+    "overview": "The waterproof layer must remain continuous at corners, drains, thresholds and pipe penetrations, and it must be compatible with the substrate and tile installation system. Check application thickness, curing and flood test requirements before covering the membrane.",
     "infoTitle": "Information to send",
     "infoHint": "For faster quotes",
     "infoItems": {
@@ -819,16 +830,16 @@
       "5": "Specified brand, approval or system"
     },
     "relatedTitle": "Related ranges",
-    "relatedIntro": "Browse related ranges used with wet-area waterproofing build-ups.",
+    "relatedIntro": "Browse related ranges used with wet area waterproofing build ups.",
     "relatedWaterproofing": "Waterproofing Materials",
     "relatedAdhesives": "Tile Adhesives and Grouts",
     "relatedSealants": "Adhesives and Sealants",
     "relatedTileSystems": "Tile Installation Systems",
     "relatedHints": {
-      "0": "Membranes, primers and tapes for continuous wet-area layers",
+      "0": "Membranes, primers and tapes for continuous wet area layers",
       "1": "Compatible adhesives and grouts over the waterproofing system",
-      "2": "Movement-joint and detail sealants at thresholds and penetrations",
-      "3": "Full tile-system build-up from substrate to finished joints"
+      "2": "Movement joint and detail sealants at thresholds and penetrations",
+      "3": "Full tile system build up from substrate to finished joints"
     },
     "uaeSupport": "Imperial supports suitable requirements from Mussafah, Abu Dhabi across all seven Emirates through product guidance, project quotations, arranged site visits and confirmed delivery planning.",
     "ctaQuote": "Request a System Quote",
@@ -838,7 +849,7 @@
     "faqs": {
       "0": {
         "question": "What products are normally needed for bathroom waterproofing?",
-        "answer": "The system may require repair material, primer, waterproof membrane, corner or joint tape, compatible tile adhesive, grout and movement-joint sealant. Follow the approved project detail and manufacturer system."
+        "answer": "The system may require repair material, primer, waterproof membrane, corner or joint tape, compatible tile adhesive, grout and movement joint sealant. Follow the approved project detail and manufacturer system."
       },
       "1": {
         "question": "Should a bathroom waterproofing membrane be flood tested?",
@@ -849,7 +860,7 @@
         "answer": "Yes. Provide wall and floor areas, system thickness and details. Final consumption still depends on substrate condition, waste and manufacturer coverage."
       },
       "3": {
-        "question": "Is wet-area system delivery available throughout the UAE?",
+        "question": "Is wet area system delivery available throughout the UAE?",
         "answer": "Yes. Confirmed orders can be planned for all seven Emirates, subject to stock, quantity and delivery requirements."
       }
     }
@@ -861,19 +872,19 @@
     "quickAnswer": "Imperial Middle East supplies concrete repair and protection materials from Mussafah, Abu Dhabi for patch repair, reinforcement protection, crack injection, grouting and protective coating requirements across the UAE.",
     "heroLine": "Repair mortars, bonding agents, grouts and protection from Mussafah.",
     "overviewTitle": "Application overview",
-    "overview": "Repair should address the cause of deterioration and rebuild the section with compatible materials. A complete process may include breakout, reinforcement preparation, corrosion protection, bonding, repair mortar or micro-concrete, curing and a protective finish.",
+    "overview": "Repair should address the cause of deterioration and rebuild the section with compatible materials. A complete process may include breakout, reinforcement preparation, corrosion protection, bonding, repair mortar or micro concrete, curing and a protective finish.",
     "infoTitle": "Information to send",
     "infoHint": "For faster quotes",
     "infoItems": {
       "0": "Cause and extent of damage",
       "1": "Repair depth, area and orientation",
-      "2": "Structural or non-structural requirement",
+      "2": "Structural or non structural requirement",
       "3": "Reinforcement condition",
       "4": "Exposure and protective finish",
       "5": "Approved repair schedule, drawings and quantities"
     },
     "relatedTitle": "Related ranges",
-    "relatedIntro": "Browse related ranges used with concrete repair and protection build-ups.",
+    "relatedIntro": "Browse related ranges used with concrete repair and protection build ups.",
     "relatedRepair": "Concrete Repair and Protection",
     "relatedCoatings": "Paints and Coatings",
     "relatedTech": "Technical Resources",
@@ -912,10 +923,10 @@
     "breadcrumb": "Industrial Flooring",
     "kicker": "Solutions",
     "title": "Industrial and Commercial Flooring Systems",
-    "quickAnswer": "Imperial Middle East supplies industrial flooring materials from Mussafah, Abu Dhabi, including primers, epoxy coatings, screeds, repair products, aggregates, anti-slip finishes and application accessories.",
-    "heroLine": "Epoxy primers, coatings, screeds and anti-slip finishes from Mussafah.",
+    "quickAnswer": "Imperial Middle East supplies industrial flooring materials from Mussafah, Abu Dhabi, including primers, epoxy coatings, screeds, repair products, aggregates, anti slip finishes and application accessories.",
+    "heroLine": "Epoxy primers, coatings, screeds and anti slip finishes from Mussafah.",
     "overviewTitle": "Application overview",
-    "overview": "Select the system around substrate moisture and strength, preparation, traffic, impact, chemicals, cleaning, slip resistance, required thickness and return-to-service time. A decorative colour alone is not a performance specification.",
+    "overview": "Select the system around substrate moisture and strength, preparation, traffic, impact, chemicals, cleaning, slip resistance, required thickness and return to service time. A decorative colour alone is not a performance specification.",
     "infoTitle": "Information to send",
     "infoHint": "For faster quotes",
     "infoItems": {
@@ -924,16 +935,16 @@
       "2": "Traffic, impact and abrasion",
       "3": "Chemical and cleaning exposure",
       "4": "Slip resistance, finish and colour",
-      "5": "Shutdown and cure-time limits"
+      "5": "Shutdown and cure time limits"
     },
     "relatedTitle": "Related ranges",
-    "relatedIntro": "Browse related ranges used with industrial flooring build-ups.",
+    "relatedIntro": "Browse related ranges used with industrial flooring build ups.",
     "relatedFlooring": "Epoxy Flooring Systems",
     "relatedRepair": "Concrete Repair",
     "relatedCleaners": "Industrial Cleaners",
     "relatedTools": "Tools and Equipment",
     "relatedHints": {
-      "0": "Primers, coatings, screeds and anti-slip finishes",
+      "0": "Primers, coatings, screeds and anti slip finishes",
       "1": "Substrate repair and preparation ahead of flooring",
       "2": "Surface preparation and cleaning products",
       "3": "Application tools and site accessories"
@@ -966,10 +977,10 @@
     "breadcrumb": "Anchoring & Fixing",
     "kicker": "Solutions",
     "title": "Anchoring and Fixing Solutions",
-    "quickAnswer": "Imperial Middle East supplies selected chemical anchors, mechanical fixings, threaded rods, screws, dispensers, drill bits and hole-cleaning accessories from Mussafah, Abu Dhabi.",
+    "quickAnswer": "Imperial Middle East supplies selected chemical anchors, mechanical fixings, threaded rods, screws, dispensers, drill bits and hole cleaning accessories from Mussafah, Abu Dhabi.",
     "heroLine": "Chemical anchors, mechanical fixings and installation accessories from Mussafah.",
     "overviewTitle": "Application overview",
-    "overview": "A reliable fixing depends on the anchor, base material, design load, embedment, spacing, edge distance, hole condition, cleaning and installation procedure. Structural and safety-critical applications require qualified engineering design and approval.",
+    "overview": "A reliable fixing depends on the anchor, base material, design load, embedment, spacing, edge distance, hole condition, cleaning and installation procedure. Structural and safety critical applications require qualified engineering design and approval.",
     "infoTitle": "Information to send",
     "infoHint": "For faster quotes",
     "infoItems": {
@@ -988,7 +999,7 @@
     "relatedProject": "UAE Project Supply",
     "relatedHints": {
       "0": "Chemical anchors, mechanical fixings and rods",
-      "1": "Drill bits, dispensers and hole-cleaning accessories",
+      "1": "Drill bits, dispensers and hole cleaning accessories",
       "2": "Approvals, TDS and installation guidance",
       "3": "Project quotations and coordinated UAE delivery"
     },
@@ -1008,7 +1019,7 @@
       },
       "2": {
         "question": "Are drilling and cleaning accessories available?",
-        "answer": "Selected dispensers, drill bits, brushes, blow-out tools, rods and accessories may be quoted with the anchor system."
+        "answer": "Selected dispensers, drill bits, brushes, blow out tools, rods and accessories may be quoted with the anchor system."
       },
       "3": {
         "question": "Do you supply anchor systems across the UAE?",
@@ -1037,7 +1048,7 @@
       "2": "Application, substrate and exposure",
       "3": "Preferred brands or approved products",
       "4": "Quantities and required dates",
-      "5": "Site access, offloading and gate-pass requirements",
+      "5": "Site access, offloading and gate pass requirements",
       "6": "Technical documents and approvals required",
       "7": "Technical and commercial contact persons"
     },
@@ -1052,7 +1063,7 @@
         "answer": "Imperial provides product supply, technical product support, material recommendations, document assistance, suitable site visits, project pricing and coordinated delivery."
       },
       "1": {
-        "question": "Where is Imperial's UAE project-supply base?",
+        "question": "Where is Imperial's UAE project supply base?",
         "answer": "Imperial Middle East is based in M45, Mussafah, Abu Dhabi, UAE."
       },
       "2": {
@@ -1072,7 +1083,7 @@
         "answer": "A visit can be considered for suitable requirements across the UAE after the team reviews the project scope, location, technical need, access, availability and commercial terms."
       }
     },
-    "heroLine": "Mussafah base — project supply coordinated across all seven Emirates.",
+    "heroLine": "Mussafah base: project supply coordinated across all seven Emirates.",
     "infoHint": "For faster quotes",
     "supportIntro": "One route for product guidance, pricing, site support and delivery planning.",
     "supportLabels": {
@@ -1091,7 +1102,7 @@
     "kicker": "Coverage",
     "title": "Construction Material Supply Across All Seven Emirates",
     "quickAnswer": "Imperial Middle East supplies construction materials from Mussafah, Abu Dhabi and supports customers and projects in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah. Services may include technical support, material recommendations, suitable site visits, project pricing and delivery planning.",
-    "consolidatedNote": "This is one consolidated UAE service-area page. Do not rely on thin or duplicated city pages. Any future local page must contain genuine, location-specific information, customer value and verified service evidence.",
+    "consolidatedNote": "This is one consolidated UAE service area page. Do not rely on thin or duplicated city pages. Any future local page must contain genuine, location specific information, customer value and verified service evidence.",
     "emirates": {
       "abuDhabi": {
         "name": "Abu Dhabi",
@@ -1103,7 +1114,7 @@
       },
       "sharjah": {
         "name": "Sharjah",
-        "body": "Customers and project teams in Sharjah can request product availability, material information, project pricing and delivery planning. Confirm industrial-area access, offloading and time restrictions where applicable."
+        "body": "Customers and project teams in Sharjah can request product availability, material information, project pricing and delivery planning. Confirm industrial area access, offloading and time restrictions where applicable."
       },
       "ajman": {
         "name": "Ajman",
@@ -1143,7 +1154,7 @@
         "answer": "Site visits can be considered for suitable requirements, but they are not automatic. Confirmation depends on project scope, location, technical need, access, team availability and agreed terms."
       }
     },
-    "heroLine": "Mussafah base — coordinated supply and delivery across all seven Emirates.",
+    "heroLine": "Mussafah base: coordinated supply and delivery across all seven Emirates.",
     "noteTitle": "One consolidated coverage page",
     "emiratesTitle": "Service by Emirate",
     "emiratesIntro": "Confirm location, access and timing on every enquiry so we can plan support and delivery accurately.",
@@ -1166,7 +1177,7 @@
     "breadcrumb": "FAQs",
     "kicker": "Help centre",
     "title": "Building Materials and Project Supply FAQs",
-    "intro": "Imperial Middle East is a building materials and project-supply company based in Mussafah, Abu Dhabi. This page answers common questions about products, technical support, material recommendations, site visits, project pricing, trade accounts, collection and delivery across the UAE.",
+    "intro": "Imperial Middle East is a building materials and project supply company based in Mussafah, Abu Dhabi. This page answers common questions about products, technical support, material recommendations, site visits, project pricing, trade accounts, collection and delivery across the UAE.",
     "ctaQuote": "Request a Quote",
     "ctaProject": "UAE Project Supply",
     "ctaContact": "Contact Imperial",
@@ -1218,7 +1229,7 @@
         "faqs": {
           "0": {
             "question": "What does Imperial technical support include?",
-            "answer": "Support may include product-document assistance, comparison of available options, system-component guidance and review of BOQs or product schedules using current manufacturer information."
+            "answer": "Support may include product document assistance, comparison of available options, system component guidance and review of BOQs or product schedules using current manufacturer information."
           },
           "1": {
             "question": "Does Imperial provide engineering design?",
@@ -1243,7 +1254,7 @@
           },
           "1": {
             "question": "Can I upload an Excel BOQ or PDF specification?",
-            "answer": "Yes. The RFQ form accepts common business document formats within the stated file-size limit."
+            "answer": "Yes. The RFQ form accepts common business document formats within the stated file size limit."
           },
           "2": {
             "question": "How quickly will I receive a quotation?",
@@ -1287,13 +1298,13 @@
     "breadcrumb": "Technical Resources",
     "kicker": "Support",
     "title": "Technical Support and Product Resources",
-    "quickAnswer": "Imperial Middle East provides product-information support from Mussafah, Abu Dhabi, including access to available TDS, SDS, approvals, declarations and application resources, together with material guidance for suitable UAE requirements.",
+    "quickAnswer": "Imperial Middle East provides product information support from Mussafah, Abu Dhabi, including access to available TDS, SDS, approvals, declarations and application resources, together with material guidance for suitable UAE requirements.",
     "searchNote": "Search by brand, product name, SKU, document type or application. Every document record should show the manufacturer, exact title, language, revision or issue date and related product. Replace superseded files promptly.",
     "supportTitle": "Support available",
     "supportItems": {
       "0": "Material recommendations based on the stated application and current manufacturer information",
-      "1": "System-component and compatibility guidance",
-      "2": "TDS, SDS and approval-document assistance",
+      "1": "System component and compatibility guidance",
+      "2": "TDS, SDS and approval document assistance",
       "3": "Technical review of BOQs and product schedules",
       "4": "Suitable project site visits",
       "5": "Clear identification of consultant, engineer or manufacturer approval still required",
@@ -1344,7 +1355,7 @@
     "kicker": "Logistics",
     "title": "Building Materials Delivery Across All Seven Emirates",
     "quickAnswer": "Imperial Middle East coordinates confirmed deliveries from Mussafah, Abu Dhabi to project and business locations in Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah. Collection from Mussafah may also be arranged after order confirmation.",
-    "dependNote": "The available method, charge and schedule depend on product availability, stock location, order size, weight, transport classification, destination, vehicle access, gate-pass requirements and offloading. The quotation or order confirmation will state the agreed delivery details.",
+    "dependNote": "The available method, charge and schedule depend on product availability, stock location, order size, weight, transport classification, destination, vehicle access, gate pass requirements and offloading. The quotation or order confirmation will state the agreed delivery details.",
     "infoTitle": "Information required for delivery",
     "infoItems": {
       "0": "Complete delivery address and map pin",
@@ -1354,17 +1365,17 @@
       "4": "Vehicle size or access restrictions",
       "5": "Gate pass, permit and security requirements",
       "6": "Offloading labour or equipment requirement",
-      "7": "Special handling, storage or hazardous-goods requirement"
+      "7": "Special handling, storage or hazardous goods requirement"
     },
     "acceptTitle": "Before accepting delivery",
     "acceptItems": {
       "0": "Inspect the packaging and quantity at handover.",
       "1": "Record visible damage or shortage before signing.",
       "2": "Check the product name, variant, batch and expiry where applicable.",
-      "3": "Move products into the manufacturer-specified storage conditions.",
+      "3": "Move products into the manufacturer specified storage conditions.",
       "4": "Follow SDS and handling instructions for chemicals and controlled products."
     },
-    "confirmNote": "Cut-off times, lead times, free-delivery thresholds, restricted products, collection process and return rules are confirmed on the quotation or order confirmation for each order.",
+    "confirmNote": "Cut off times, lead times, free delivery thresholds, restricted products, collection process and return rules are confirmed on the quotation or order confirmation for each order.",
     "ctaConfirm": "Request Delivery Confirmation",
     "ctaUpload": "Upload a Project List",
     "ctaAreas": "View UAE Service Areas",
@@ -1391,7 +1402,7 @@
     "dependTitle": "What delivery depends on",
     "infoHint": "For faster confirmation",
     "acceptHint": "Checklist",
-    "confirmTitle": "Order-specific confirmation",
+    "confirmTitle": "Order specific confirmation",
     "ctaStrip": "Share destination, access and timing so we can confirm delivery or collection.",
     "ctaContact": "Contact Support"
   },
@@ -1399,7 +1410,7 @@
     "breadcrumb": "Contact Us",
     "kicker": "Get in touch",
     "title": "Contact Imperial Middle East",
-    "intro": "Contact Imperial Middle East in Mussafah, Abu Dhabi for product availability, pack sizes, technical documents, material recommendations, site-visit requests, project pricing, trade accounts, collection and UAE delivery confirmation.",
+    "intro": "Contact Imperial Middle East in Mussafah, Abu Dhabi for product availability, pack sizes, technical documents, material recommendations, site visit requests, project pricing, trade accounts, collection and UAE delivery confirmation.",
     "detailsTitle": "Contact details",
     "addressLabel": "Address",
     "address": "M45, Mussafah, Abu Dhabi, UAE",
@@ -1468,7 +1479,7 @@
     "breadcrumb": "Trade Account",
     "kicker": "Trade",
     "title": "Open an Imperial Trade Account",
-    "quickAnswer": "Imperial trade accounts are designed for eligible UAE contractors, subcontractors, maintenance companies, fit-out teams, workshops, facility managers, procurement teams and other businesses that purchase materials regularly.",
+    "quickAnswer": "Imperial trade accounts are designed for eligible UAE contractors, subcontractors, maintenance companies, fit out teams, workshops, facility managers, procurement teams and other businesses that purchase materials regularly.",
     "approvedNote": "Approved accounts may receive business pricing, special project quotation support, saved company details, order history and purchasing features based on agreed commercial terms. Credit requires a separate assessment and is not guaranteed.",
     "heroLine": "Repeat purchasing, project quotations and UAE delivery support from Mussafah.",
     "ctaApply": "Apply for a Trade Account",
@@ -1512,7 +1523,7 @@
       "contractor": "Contractor",
       "subcontractor": "Subcontractor",
       "maintenance": "Maintenance company",
-      "fitout": "Fit-out team",
+      "fitout": "Fit out team",
       "workshop": "Workshop",
       "facility": "Facility management",
       "procurement": "Procurement / purchasing",
@@ -1540,7 +1551,7 @@
     "faqs": {
       "0": {
         "question": "Who can apply for an Imperial trade account?",
-        "answer": "Eligible UAE contractors, maintenance companies, fit-out teams, workshops, facility managers, procurement businesses and other recurring commercial buyers may apply."
+        "answer": "Eligible UAE contractors, maintenance companies, fit out teams, workshops, facility managers, procurement businesses and other recurring commercial buyers may apply."
       },
       "1": {
         "question": "Does a trade account guarantee credit?",
@@ -1560,13 +1571,13 @@
     "breadcrumb": "Brands",
     "kicker": "Brands",
     "title": "Construction, Tool and Industrial Brands",
-    "quickAnswer": "Imperial Middle East supplies a multi-brand range of construction chemicals, waterproofing systems, repair materials, tile products, coatings, tools, fixings and industrial products from Mussafah, Abu Dhabi. Browse published brands below or request a brand or product that is not yet listed.",
-    "heroLine": "Shop published brands from Mussafah — or request a product confirmation.",
+    "quickAnswer": "Imperial Middle East supplies a multi brand range of construction chemicals, waterproofing systems, repair materials, tile products, coatings, tools, fixings and industrial products from Mussafah, Abu Dhabi. Browse published brands below or request a brand or product that is not yet listed.",
+    "heroLine": "Shop published brands from Mussafah, or request a product confirmation.",
     "ctaExplore": "Explore Products by Brand",
     "ctaRequest": "Request a Brand or Product",
     "disclaimer": "Only brands and relationship claims Imperial can verify are shown. Do not assume authorised, exclusive or official distributor status unless confirmed in writing by Imperial management.",
     "listTitle": "Shop by brand",
-    "listIntro": "Select a brand to view currently published products. Availability, pack sizes and documents can change — confirm the exact item before ordering.",
+    "listIntro": "Select a brand to view currently published products. Availability, pack sizes and documents can change. Confirm the exact item before ordering.",
     "listCount": "{count} brands",
     "listEmptyHint": "Catalogue sync",
     "emptyBody": "Brand filters will appear here once product vendors are available from Shopify. You can still browse all products or request a specific brand.",

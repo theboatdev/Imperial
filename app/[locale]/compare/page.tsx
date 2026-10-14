@@ -4,7 +4,7 @@ import CompareClient from '@/components/compare/CompareClient';
 
 export const metadata: Metadata = {
   title: 'Compare Products | Imperial',
-  description: 'Compare construction materials and systems side-by-side.',
+  description: 'Compare construction materials and systems side by side.',
 };
 
 export default async function ComparePage() {

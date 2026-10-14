@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
 import crypto from 'crypto';
+import { getSiteOrigin } from '@/lib/site-url';
 
 // Random string generator for PKCE challenge and state using base64url
 function generateRandomString(length: number) {
@@ -28,20 +28,14 @@ export async function GET(request: Request) {
   }
 
   const url = new URL(request.url);
-  
-  // Normalize the site URL (add https:// if missing, remove trailing slash)
-  let rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || url.origin;
-  if (!rawSiteUrl.startsWith('http')) {
-    rawSiteUrl = `https://${rawSiteUrl}`;
-  }
-  const siteOrigin = rawSiteUrl.replace(/\/$/, '');
-  const currentOrigin = url.origin.replace(/\/$/, '');
+  const siteOrigin = getSiteOrigin(request.url);
+  const currentOrigin = url.origin;
 
   // If on a deploy preview (different origin), redirect to the stable domain.
   // We use searchParams.has('redirected') as a failsafe to prevent infinite loops
   // if the environment variables are misconfigured.
   if (currentOrigin !== siteOrigin && !url.searchParams.has('redirected')) {
-    const targetUrl = new URL(`${siteOrigin}/api/auth/login`);
+    const targetUrl = new URL('/api/auth/login', siteOrigin);
     targetUrl.searchParams.set('redirected', '1');
     return NextResponse.redirect(targetUrl.toString());
   }

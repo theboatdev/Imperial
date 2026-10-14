@@ -37,7 +37,8 @@ yarn-error.log*
 
 Imperial_Middle_East_Website_Content_Handover-2.docx
 
-# local data exports / imports
+# local data exports / imports (Shopify TDS bulk update)
+/shopify-tds-csv/
 *.csv
 
 # vercel

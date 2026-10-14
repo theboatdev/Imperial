@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { getAllProducts, getCollections } from '@/lib/shopify-api';
 import HeroSection from '@/components/home/HeroSection';
-import HomeHandoverSections from '@/components/home/HomeHandoverSections';
+import HomeHandoverSections, { HomeTrustStrip } from '@/components/home/HomeHandoverSections';
 import FaqSection from '@/components/home/FaqSection';
 import FeaturedTabs from '@/components/home/FeaturedTabs';
 import type { Metadata } from 'next';
@@ -91,39 +91,10 @@ export default async function HomePage() {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Handover content: trust strip, answer, services, coverage, brands/tech */}
-      <HomeHandoverSections />
+      {/* Trust strip — directly under hero */}
+      <HomeTrustStrip />
 
-      {/* Imperial Rewards Banner */}
-      <div style={{ position: 'relative', borderRadius: 'var(--r-card)', margin: '48px 28px', boxShadow: 'var(--sh-lift)', overflow: 'hidden', minHeight: '280px' }}>
-        {/* Full-width background image */}
-        <img
-          src="/IME WEB REWARDS CARDS.webp"
-          alt={t('rewardsAlt')}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
-        {/* Dark overlay for readability */}
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(7,27,70,0.65)' }} />
-        {/* Centered text + CTA */}
-        <div style={{ position: 'relative', zIndex: 2, padding: '64px 28px', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <h2 style={{ color: '#fff', borderBottom: 'none', padding: 0, marginBottom: '14px', fontSize: 'clamp(26px, 4vw, 36px)' }}>{t('rewardsTitle')}</h2>
-          <p style={{ fontSize: '15px', lineHeight: '1.7', color: 'rgba(255,255,255,0.9)', maxWidth: '560px', marginBottom: '28px' }}>
-            {t('rewardsDescription')}
-          </p>
-          <Link href="/account/register" className="btn primary" style={{ background: '#fff', color: 'var(--navy)', border: 'none', fontSize: '15px', padding: '13px 28px', display: 'inline-flex' }}>
-            {t('rewardsCta')}
-          </Link>
-        </div>
-      </div>
-
-      {/* Shop by Category */}
+      {/* 1. Shop by project requirement */}
       <div className="section">
         <div className="sectionhead">
           <div>
@@ -157,10 +128,36 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Featured Products Tabs */}
+      {/* 2. Discover products */}
       <FeaturedTabs products={products} />
 
-      {/* Reviews with Photos */}
+      {/* 3. Imperial Rewards */}
+      <div style={{ position: 'relative', borderRadius: 'var(--r-card)', margin: '48px 28px', boxShadow: 'var(--sh-lift)', overflow: 'hidden', minHeight: '280px' }}>
+        <img
+          src="/IME WEB REWARDS CARDS.webp"
+          alt={t('rewardsAlt')}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(7,27,70,0.65)' }} />
+        <div style={{ position: 'relative', zIndex: 2, padding: '64px 28px', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <h2 style={{ color: '#fff', borderBottom: 'none', padding: 0, marginBottom: '14px', fontSize: 'clamp(26px, 4vw, 36px)' }}>{t('rewardsTitle')}</h2>
+          <p style={{ fontSize: '15px', lineHeight: '1.7', color: 'rgba(255,255,255,0.9)', maxWidth: '560px', marginBottom: '28px' }}>
+            {t('rewardsDescription')}
+          </p>
+          <Link href="/account/register" className="btn primary" style={{ background: '#fff', color: 'var(--navy)', border: 'none', fontSize: '15px', padding: '13px 28px', display: 'inline-flex' }}>
+            {t('rewardsCta')}
+          </Link>
+        </div>
+      </div>
+
+      {/* 4. Reviews with Photos */}
       <div className="section">
         <div className="kicker">{t('feedback')}</div>
         <h3>
@@ -208,8 +205,11 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* FAQ Section */}
+      {/* 5. FAQ */}
       <FaqSection />
+
+      {/* Leftover: answer, services, coverage, brands/tech */}
+      <HomeHandoverSections />
     </>
   );
 }

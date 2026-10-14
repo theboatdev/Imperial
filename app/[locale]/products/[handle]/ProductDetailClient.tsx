@@ -2,8 +2,7 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import Image from 'next/image';
-import { Link } from '@/i18n/navigation';
-import { useRouter } from 'next/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import type { ShopifyProduct } from '@/lib/types';
 import { useCartStore } from '@/lib/cart-store';
@@ -23,6 +22,7 @@ export default function ProductDetailClient({ product }: { product: ShopifyProdu
   const [qtySource, setQtySource] = useState<'default' | 'calc' | 'manual'>('default');
 
   const addItem = useCartStore((s) => s.addItem);
+  const openCart = useCartStore((s) => s.openCart);
   const cartId = useCartStore((s) => s.cartId);
   const syncFromApi = useCartStore((s) => s.syncFromApi);
 
@@ -98,8 +98,11 @@ export default function ProductDetailClient({ product }: { product: ShopifyProdu
   };
 
   const handleAddToCart = useCallback(async () => {
-    if (isAdding || !isAvailable) return;
+    if (isAdding || !isAvailable || !selectedVariant) return;
     setIsAdding(true);
+    setAdded(false);
+
+    // Optimistic local cart update
     addItem({
       merchandiseId: selectedVariant.id,
       quantity: qty,
@@ -110,21 +113,27 @@ export default function ProductDetailClient({ product }: { product: ShopifyProdu
       handle: product.handle,
     });
     setAdded(true);
-    router.push('/cart');
+    openCart();
+
     try {
+      // Await Shopify sync before navigating — early navigation can abort the server action
       const updatedCart = await addLineItemAction(cartId, selectedVariant.id, qty);
-      const localCount = useCartStore.getState().items.length;
-      if (updatedCart.lines.length >= localCount) {
-        syncFromApi(updatedCart.lines, updatedCart.id, updatedCart.checkoutUrl);
-      } else {
-        useCartStore.setState({ cartId: updatedCart.id, checkoutUrl: updatedCart.checkoutUrl });
+      if (updatedCart?.id) {
+        const localCount = useCartStore.getState().items.length;
+        if (updatedCart.lines.length >= localCount) {
+          syncFromApi(updatedCart.lines, updatedCart.id, updatedCart.checkoutUrl);
+        } else {
+          useCartStore.setState({ cartId: updatedCart.id, checkoutUrl: updatedCart.checkoutUrl });
+        }
       }
+      router.push('/cart');
     } catch {
       useCartStore.getState().removeItem(selectedVariant.id);
+      setAdded(false);
     } finally {
       setIsAdding(false);
     }
-  }, [isAdding, isAvailable, selectedVariant, qty, addItem, router, product, activeImage, cartId, syncFromApi]);
+  }, [isAdding, isAvailable, selectedVariant, qty, addItem, openCart, router, product, activeImage, cartId, syncFromApi]);
 
   return (
     <>
@@ -208,6 +217,27 @@ export default function ProductDetailClient({ product }: { product: ShopifyProdu
                 <line x1="12" y1="16" x2="12.01" y2="16" />
               </svg>
               {t('lowStockMessage', { count: product.totalInventory })}
+            </div>
+          ) : null}
+
+          {/* TDS document */}
+          {product.tdsUrl ? (
+            <div className="field pdp-field" style={{ marginTop: '4px' }}>
+              <a
+                href={product.tdsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn primary"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
+              >
+                <svg className="ic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                </svg>
+                {t('viewTds')}
+              </a>
             </div>
           ) : null}
 
@@ -577,7 +607,7 @@ export default function ProductDetailClient({ product }: { product: ShopifyProdu
                   </svg>
                 ))}
               </span>
-              <p style={{ marginTop: '8px' }}>“Used on our project in Abu Dhabi — reliable quality and consistent batch mix.” — Verified contractor</p>
+              <p style={{ marginTop: '8px' }}>“Used on our project in Abu Dhabi: reliable quality and consistent batch mix.” Verified contractor</p>
             </div>
           )}
         </div>

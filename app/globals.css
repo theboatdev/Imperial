@@ -346,19 +346,21 @@ a.btn-primary {
 
 /* ─── Labels / Eyebrows ─────────────────────────────────── */
 .kicker {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+  display: inline-flex; align-items: center; margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--imperial-blue);
   font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--imperial-blue);
 }
-.kicker::before { content: ''; width: 22px; height: 1.5px; background: var(--imperial-blue); flex-shrink: 0; }
 .eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
+  display: inline-flex; align-items: center;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--imperial-blue);
   font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--imperial-blue);
 }
-.eyebrow::before {
-  content: ''; width: 28px; height: 2px; flex-shrink: 0;
-  background: linear-gradient(90deg, var(--signal-red) 0 33%, #fff 33% 66%, var(--uae-green) 66%);
+.eyebrow.on-dark {
+  color: #a9c3ea;
+  border-bottom-color: #a9c3ea;
 }
-.eyebrow.on-dark { color: #a9c3ea; }
 .viewall {
   display: inline-flex; align-items: center; gap: 11px; font-size: 12.5px; font-weight: 600;
   color: var(--imperial-blue); cursor: pointer; transition: color var(--motion); text-decoration: none;
@@ -408,21 +410,44 @@ a.btn-primary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 28px;
+  padding: 16px 28px;
   gap: 20px;
   flex-wrap: wrap;
   background: #fff;
+  position: relative;
+  z-index: 30;
 }
 .logo, .header-logo {
-  display: flex;
-  align-items: center;
-  gap: 11px;
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 168px;
+  height: 48px; /* layout slot — keeps nav bar height stable */
   cursor: pointer;
   text-decoration: none;
+  z-index: 40;
 }
-.logo img, .header-logo img {
-  height: 50px;
+.header-logo-frame {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(calc(-50% - 18px)); /* lift logo slightly into the top bar */
+  width: 168px;
+  height: 104px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  padding: 0;
+}
+.logo img, .header-logo img,
+.header-logo-frame img {
+  height: 138px;
   width: auto;
+  max-width: none;
   object-fit: contain;
   display: block;
 }
@@ -650,7 +675,43 @@ a.btn-primary {
   color: var(--navy); text-wrap: balance;
 }
 .hero-text p { margin: 0 0 34px; max-width: 330px; font-size: 12.5px; line-height: 1.9; color: var(--muted); }
-.hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.hero-actions .hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  min-height: 52px;
+  padding: 14px 28px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--r-soft);
+  box-shadow: var(--sh-track);
+}
+.hero-actions .hero-cta.primary {
+  background: var(--imperial-blue);
+  border-color: var(--imperial-blue);
+  color: #fff;
+}
+.hero-actions .hero-cta.primary:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+.hero-actions .hero-cta.line {
+  background: #fff;
+  border: 2px solid var(--imperial-blue);
+  color: var(--imperial-blue);
+  padding: 13px 26px;
+}
+.hero-actions .hero-cta.line:hover {
+  background: var(--imperial-blue);
+  color: #fff;
+  border-color: var(--imperial-blue);
+}
 .hero-link {
   display: inline-flex; align-items: center; gap: 9px; background: none; border: 0; padding: 0; cursor: pointer;
   font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);

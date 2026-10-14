@@ -201,14 +201,16 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
       {/* ── Main header row ── */}
       <div className="headerrow" style={{ position: 'relative' }}>
         <Link href="/" className="logo header-logo" aria-label={t('homeAria')}>
-          <Image
-            src="/logo.png"
-            alt={t('logoAlt')}
-            width={160}
-            height={50}
-            priority
-            style={{ objectFit: 'contain', height: '50px', width: 'auto', borderRadius: '8px' }}
-          />
+          <span className="header-logo-frame">
+            <Image
+              src="/IME LOGO - TRANSPARENT BACKGROUND.png"
+              alt={t('logoAlt')}
+              width={260}
+              height={120}
+              priority
+              style={{ objectFit: 'contain', height: '138px', width: 'auto' }}
+            />
+          </span>
         </Link>
 
         <div style={{ position: 'relative', flex: 1, minWidth: '240px', margin: '0 24px' }}>

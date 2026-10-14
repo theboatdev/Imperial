@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
+import { getSiteOrigin } from '@/lib/site-url';
 
 export async function GET(request: Request) {
   const cookieStore = await cookies();
@@ -65,7 +66,7 @@ export async function GET(request: Request) {
     if (idToken) {
       shopifyLogout.searchParams.append('id_token_hint', idToken);
     }
-    const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || url.origin;
+    const siteOrigin = getSiteOrigin(request.url);
     shopifyLogout.searchParams.append('post_logout_redirect_uri', siteOrigin);
     if (clientId) {
         shopifyLogout.searchParams.append('client_id', clientId);

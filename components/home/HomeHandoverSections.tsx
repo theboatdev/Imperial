@@ -6,10 +6,68 @@ const sectionPad: CSSProperties = {
   padding: '36px 28px',
 };
 
+/** Navy trust strip — sits directly under the hero */
+export async function HomeTrustStrip() {
+  const t = await getTranslations('Home');
+  const trustItems = [0, 1, 2, 3, 4].map((i) => t(`trustItems.${i}`));
+
+  return (
+    <section
+      aria-label={t('trustLabel')}
+      style={{
+        width: '100%',
+        margin: 0,
+        padding: '16px 28px',
+        background: 'var(--navy)',
+        color: '#fff',
+        borderRadius: 0,
+      }}
+    >
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+          gap: '12px 20px',
+          maxWidth: '1400px',
+          margin: '0 auto',
+        }}
+      >
+        {trustItems.map((item) => (
+          <div
+            key={item}
+            style={{
+              display: 'flex',
+              gap: '10px',
+              alignItems: 'flex-start',
+              fontSize: '13px',
+              lineHeight: 1.45,
+              fontWeight: 500,
+              opacity: 0.95,
+            }}
+          >
+            <span
+              aria-hidden="true"
+              style={{
+                flexShrink: 0,
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                background: 'var(--imperial-blue)',
+                marginTop: '6px',
+                boxShadow: '0 0 0 3px rgba(9, 79, 168, 0.35)',
+              }}
+            />
+            {item}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default async function HomeHandoverSections() {
   const t = await getTranslations('Home');
 
-  const trustItems = [0, 1, 2, 3, 4].map((i) => t(`trustItems.${i}`));
   const services = [0, 1, 2, 3, 4].map((i) => ({
     title: t(`services.${i}.title`),
     body: t(`services.${i}.body`),
@@ -18,58 +76,6 @@ export default async function HomeHandoverSections() {
 
   return (
     <>
-      {/* Trust / service strip — full bleed */}
-      <section
-        aria-label={t('trustLabel')}
-        style={{
-          width: '100%',
-          margin: 0,
-          padding: '16px 28px',
-          background: 'var(--navy)',
-          color: '#fff',
-          borderRadius: 0,
-        }}
-      >
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-            gap: '12px 20px',
-            maxWidth: '1400px',
-            margin: '0 auto',
-          }}
-        >
-          {trustItems.map((item) => (
-            <div
-              key={item}
-              style={{
-                display: 'flex',
-                gap: '10px',
-                alignItems: 'flex-start',
-                fontSize: '13px',
-                lineHeight: 1.45,
-                fontWeight: 500,
-                opacity: 0.95,
-              }}
-            >
-              <span
-                aria-hidden="true"
-                style={{
-                  flexShrink: 0,
-                  width: '6px',
-                  height: '6px',
-                  borderRadius: '50%',
-                  background: 'var(--imperial-blue)',
-                  marginTop: '6px',
-                  boxShadow: '0 0 0 3px rgba(9, 79, 168, 0.35)',
-                }}
-              />
-              {item}
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Direct answer + introduction */}
       <section style={sectionPad}>
         <div
@@ -89,7 +95,6 @@ export default async function HomeHandoverSections() {
               borderRadius: 'var(--r-panel)',
             }}
           >
-            <div className="kicker" style={{ marginBottom: '10px' }}>{t('directAnswerKicker')}</div>
             <h2
               style={{
                 color: 'var(--navy)',

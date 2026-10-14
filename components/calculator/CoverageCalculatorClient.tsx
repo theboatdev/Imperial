@@ -329,7 +329,7 @@ export default function CoverageCalculatorClient({
                 <option value="generic-grout">{t('standardGrout')}</option>
                 {groutProducts.map((p) => (
                   <option key={p.id} value={p.id}>
-                    {p.title} — {formatWithVat(p.priceRange.minVariantPrice)}
+                    {p.title}: {formatWithVat(p.priceRange.minVariantPrice)}
                   </option>
                 ))}
               </select>
@@ -594,7 +594,7 @@ export default function CoverageCalculatorClient({
                 <option value="generic-sealant">{t('genericSealant')}</option>
                 {sealantProducts.map((p) => (
                   <option key={p.id} value={p.id}>
-                    {p.title} — {formatWithVat(p.priceRange.minVariantPrice)}
+                    {p.title}: {formatWithVat(p.priceRange.minVariantPrice)}
                   </option>
                 ))}
               </select>
