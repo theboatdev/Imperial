@@ -1,6 +1,8 @@
 import type { CSSProperties } from 'react';
+import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { getTranslations } from 'next-intl/server';
+import TrustStripMarquee from './TrustStripMarquee';
 
 const sectionPad: CSSProperties = {
   padding: '36px 28px',
@@ -11,58 +13,7 @@ export async function HomeTrustStrip() {
   const t = await getTranslations('Home');
   const trustItems = [0, 1, 2, 3, 4].map((i) => t(`trustItems.${i}`));
 
-  return (
-    <section
-      aria-label={t('trustLabel')}
-      style={{
-        width: '100%',
-        margin: 0,
-        padding: '16px 28px',
-        background: 'var(--navy)',
-        color: '#fff',
-        borderRadius: 0,
-      }}
-    >
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-          gap: '12px 20px',
-          maxWidth: '1400px',
-          margin: '0 auto',
-        }}
-      >
-        {trustItems.map((item) => (
-          <div
-            key={item}
-            style={{
-              display: 'flex',
-              gap: '10px',
-              alignItems: 'flex-start',
-              fontSize: '13px',
-              lineHeight: 1.45,
-              fontWeight: 500,
-              opacity: 0.95,
-            }}
-          >
-            <span
-              aria-hidden="true"
-              style={{
-                flexShrink: 0,
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                background: 'var(--imperial-blue)',
-                marginTop: '6px',
-                boxShadow: '0 0 0 3px rgba(9, 79, 168, 0.35)',
-              }}
-            />
-            {item}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+  return <TrustStripMarquee label={t('trustLabel')} items={trustItems} />;
 }
 
 export default async function HomeHandoverSections() {
@@ -149,6 +100,24 @@ export default async function HomeHandoverSections() {
             .home-answer-grid { grid-template-columns: 1fr !important; }
           }
         `}</style>
+      </section>
+
+      {/* Image tile placeholders — before Core services */}
+      <section style={{ ...sectionPad, paddingBottom: 12 }} aria-label={t('imageTilesLabel')}>
+        <div className="home-image-tiles">
+          {[1, 2].map((n) => (
+            <div
+              key={n}
+              className="home-image-tile-placeholder"
+              role="img"
+              aria-label={t('imageTileLabel', { n })}
+            >
+              <span className="home-image-tile-kicker">{t('imageTileKicker')}</span>
+              <span className="home-image-tile-title">{t('imageTileTitle', { n })}</span>
+              <span className="home-image-tile-hint">{t('imageTileHint')}</span>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Core services */}
@@ -264,27 +233,34 @@ export default async function HomeHandoverSections() {
 
       {/* Service coverage */}
       <section style={{ ...sectionPad, paddingTop: '20px', paddingBottom: '20px' }}>
-        <div
-          style={{
-            padding: '28px 26px',
-            background: 'var(--slot)',
-            borderRadius: 'var(--r-panel)',
-          }}
-        >
-          <div className="kicker" style={{ marginBottom: '10px' }}>{t('coverageKicker')}</div>
-          <h3 style={{ margin: '0 0 12px', maxWidth: '28ch', borderBottom: 'none', paddingBottom: 0 }}>
-            {t('coverageTitle')}
-          </h3>
-          <p style={{ margin: '0 0 18px', fontSize: '14.5px', lineHeight: 1.7, color: 'var(--muted)', maxWidth: '62ch' }}>
-            {t('coverageBody')}
-          </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-            <Link href="/uae-service-areas" className="btn primary" style={{ textDecoration: 'none' }}>
-              {t('coverageCtaPrimary')}
-            </Link>
-            <Link href="/contact-us" className="btn secondary" style={{ textDecoration: 'none' }}>
-              {t('coverageCtaSecondary')}
-            </Link>
+        <div className="home-coverage">
+          <div className="home-coverage-copy">
+            <div className="kicker" style={{ marginBottom: '10px' }}>{t('coverageKicker')}</div>
+            <h3 style={{ margin: '0 0 12px', maxWidth: '28ch', borderBottom: 'none', paddingBottom: 0 }}>
+              {t('coverageTitle')}
+            </h3>
+            <p style={{ margin: '0 0 18px', fontSize: '14.5px', lineHeight: 1.7, color: 'var(--muted)', maxWidth: '62ch' }}>
+              {t('coverageBody')}
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+              <Link href="/uae-service-areas" className="btn primary" style={{ textDecoration: 'none' }}>
+                {t('coverageCtaPrimary')}
+              </Link>
+              <Link href="/contact-us" className="btn secondary" style={{ textDecoration: 'none' }}>
+                {t('coverageCtaSecondary')}
+              </Link>
+            </div>
+          </div>
+          <div className="home-coverage-map">
+            <Image
+              src="/uae_map.jpeg"
+              alt={t('coverageMapAlt')}
+              width={1162}
+              height={640}
+              sizes="(max-width: 820px) 280px, 280px"
+              className="home-coverage-map-img"
+              unoptimized
+            />
           </div>
         </div>
       </section>

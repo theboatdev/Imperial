@@ -23,25 +23,8 @@ export default function FeaturedTabs({ products }: FeaturedTabsProps) {
     { id: 'promotional', label: t('promotional') },
   ];
 
-  // Simulate different content based on tabs for demonstration
-  // In a real app, you would fetch distinct collections for each tab
-  const getTabProducts = () => {
-    if (!products || products.length === 0) return [];
-
-    switch (activeTab) {
-      case 'bestSellers':
-        return [...products].reverse().slice(0, 8);
-      case 'rewards':
-        return products.slice(2, 6);
-      case 'promotional':
-        return products.slice(4, 8);
-      case 'featured':
-      default:
-        return products.slice(0, 8);
-    }
-  };
-
-  const currentProducts = getTabProducts();
+  // Home page passes a curated product list — show it across tabs for now
+  const currentProducts = products ?? [];
 
   return (
     <div className="section">

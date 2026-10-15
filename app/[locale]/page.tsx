@@ -1,14 +1,26 @@
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { getAllProducts, getCollections } from '@/lib/shopify-api';
+import { getAllProducts, getProductsByHandles } from '@/lib/shopify-api';
 import HeroSection from '@/components/home/HeroSection';
 import HomeHandoverSections, { HomeTrustStrip } from '@/components/home/HomeHandoverSections';
 import FaqSection from '@/components/home/FaqSection';
 import FeaturedTabs from '@/components/home/FeaturedTabs';
 import type { Metadata } from 'next';
+import type { ShopifyProduct } from '@/lib/types';
 
 export const revalidate = 60;
+
+/** Curated Discover Products list (Shopify handles, display order) */
+const HOME_FEATURED_HANDLES = [
+  'promaster-pu-fiber', // PROMASTER PU FIBER — add in Shopify if missing
+  'sikadur-42-mp-slow', // SIKADUR 42 MP SLOW — add in Shopify if missing
+  'fosroc-dekguard-primer-dg', // FOSROC DEKGUARD PRIMER DG (client: DEGAURD)
+  'sodamco-webercol-flex', // WEBERCOL FLEX
+  'henkel-polycrete-fc', // POLYCRETE FC
+  'mapei-ultracolor-plus', // MAPEI ULTRACOLOR PLUS
+  'fosroc-renderoc-hs-xtra', // FOSROC RENDEROC HS XTRA
+];
 
 export const metadata: Metadata = {
   title: 'Building Materials Supplier Abu Dhabi & UAE | Imperial',
@@ -19,50 +31,41 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   const t = await getTranslations('Home');
 
-  const [collectionsResult, productsResult] = await Promise.allSettled([
-    getCollections(8),
-    getAllProducts({ first: 8, sortKey: 'BEST_SELLING' }),
-  ]);
+  let products: ShopifyProduct[] = [];
+  try {
+    products = await getProductsByHandles(HOME_FEATURED_HANDLES);
+    // Fallback if curated handles are unpublished / not yet created
+    if (products.length === 0) {
+      const result = await getAllProducts({ first: 8, sortKey: 'BEST_SELLING' });
+      products = result.products;
+    }
+  } catch {
+    products = [];
+  }
 
-  const collections = collectionsResult.status === 'fulfilled' ? collectionsResult.value : [];
-  const products = productsResult.status === 'fulfilled' ? productsResult.value.products : [];
-
-  // Prefer live Shopify collections; fall back to product-type categories
-  const CATEGORY_IMAGES = [
-    '/category-chemicals.webp',
-    '/category-paints.webp',
-    '/category-building-materials.webp',
-    '/category-tools.webp',
+  // Fixed home category tiles (labels are display names; links keep Shopify collection handles)
+  const CATEGORIES = [
+    {
+      title: t('adhesives'),
+      href: '/products?collection=adhesive',
+      image: '/category-building-materials.webp',
+    },
+    {
+      title: t('sealants'),
+      href: '/products?collection=sealent',
+      image: '/category-paints.webp',
+    },
+    {
+      title: t('waterproofing'),
+      href: '/products?collection=waterproofing',
+      image: '/category-chemicals.webp',
+    },
+    {
+      title: t('bonding'),
+      href: '/products?collection=bonding',
+      image: '/category-tools.webp',
+    },
   ];
-  const CATEGORIES =
-    collections.length > 0
-      ? collections.slice(0, 4).map((col, i) => ({
-          title: col.title.charAt(0).toUpperCase() + col.title.slice(1),
-          href: `/products?collection=${col.handle}`,
-          image: CATEGORY_IMAGES[i % CATEGORY_IMAGES.length],
-        }))
-      : [
-          {
-            title: t('waterproofing'),
-            href: '/products?collection=waterproofing',
-            image: '/category-chemicals.webp',
-          },
-          {
-            title: t('adhesives'),
-            href: '/products?collection=adhesive',
-            image: '/category-paints.webp',
-          },
-          {
-            title: t('sealants'),
-            href: '/products?collection=sealent',
-            image: '/category-building-materials.webp',
-          },
-          {
-            title: t('bonding'),
-            href: '/products?collection=bonding',
-            image: '/category-tools.webp',
-          },
-        ];
 
   return (
     <>
@@ -205,7 +208,16 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* 5. FAQ */}
+      {/* Banner placeholder — between Feedback and Support */}
+      <div className="home-banner-placeholder" role="img" aria-label={t('bannerPlaceholderLabel')}>
+        <div className="home-banner-placeholder-inner">
+          <span className="home-banner-placeholder-kicker">{t('bannerPlaceholderKicker')}</span>
+          <span className="home-banner-placeholder-title">{t('bannerPlaceholderTitle')}</span>
+          <span className="home-banner-placeholder-hint">{t('bannerPlaceholderHint')}</span>
+        </div>
+      </div>
+
+      {/* 5. FAQ / Support */}
       <FaqSection />
 
       {/* Leftover: answer, services, coverage, brands/tech */}

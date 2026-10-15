@@ -125,6 +125,25 @@ export async function getProductByHandle(
   return normalizeProduct(data.productByHandle);
 }
 
+/** Fetch products by handle, preserving request order and skipping missing handles */
+export async function getProductsByHandles(
+  handles: string[]
+): Promise<ShopifyProduct[]> {
+  const unique = [...new Set(handles.map((h) => h.trim()).filter(Boolean))];
+  if (unique.length === 0) return [];
+
+  const results = await Promise.all(unique.map((handle) => getProductByHandle(handle)));
+  const byHandle = new Map(
+    results
+      .filter((p): p is ShopifyProduct => p !== null)
+      .map((p) => [p.handle, p])
+  );
+
+  return unique
+    .map((handle) => byHandle.get(handle))
+    .filter((p): p is ShopifyProduct => Boolean(p));
+}
+
 export async function getProductRecommendations(
   productId: string
 ): Promise<ShopifyProduct[]> {
@@ -340,7 +359,10 @@ export async function getProductFilters(collectionHandle?: string): Promise<Prod
 
     const products = data.products.edges.map((e) => e.node);
     const vendors = [...new Set(products.map((p) => p.vendor).filter(Boolean))].sort();
-    const productTypes = [...new Set(products.map((p) => p.productType).filter(Boolean))].sort();
+    // TEMP: hide Fosroc from category filter UI (brand, not a category)
+    const productTypes = [...new Set(products.map((p) => p.productType).filter(Boolean))]
+      .filter((type) => type.trim().toLowerCase() !== 'fosroc')
+      .sort();
     const allTags = products.flatMap((p) => p.tags);
     const tags = [...new Set(allTags)].sort().slice(0, 20); // cap at 20 tags
 
@@ -376,7 +398,12 @@ export async function getCollections(
     revalidate: 300, // collections change less often — revalidate every 5 min
   });
 
-  return flattenConnection(data.collections);
+  // TEMP: hide Fosroc from category UI (brand, not a category)
+  return flattenConnection(data.collections).filter(
+    (collection) =>
+      collection.handle.toLowerCase() !== 'fosroc' &&
+      collection.title.trim().toLowerCase() !== 'fosroc'
+  );
 }
 
 export async function getCollectionProducts(

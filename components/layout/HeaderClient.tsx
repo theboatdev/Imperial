@@ -186,7 +186,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
             </button>
           </div>
           <div className="topbar-language">
-            <Suspense fallback={<span className="lang-switcher">EN / AR</span>}>
+            <Suspense fallback={<span className="lang-switcher">EN / AR / ZH / RU</span>}>
               <LanguageSwitcher />
             </Suspense>
           </div>
@@ -477,7 +477,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
                         role="menuitem"
                         onClick={() => setOpenMenu(null)}
                       >
-                        {col.title}
+                        {col.title.toUpperCase()}
                       </Link>
                     ))}
                   </div>
@@ -491,7 +491,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
                         role="menuitem"
                         onClick={() => setOpenMenu(null)}
                       >
-                        {col.title}
+                        {col.title.toUpperCase()}
                       </Link>
                     ))}
                   </div>
@@ -651,7 +651,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
                 aria-current={isColActive ? 'page' : undefined}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {col.title}
+                {col.title.toUpperCase()}
               </Link>
             );
           })}

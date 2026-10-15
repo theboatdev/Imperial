@@ -15,6 +15,7 @@ export default function HeroSection() {
     l2: t(`slides.${i}.l2`),
     title: t(`slides.${i}.title`),
     titleLine2: t(`slides.${i}.titleLine2`),
+    titleLine3: t.has(`slides.${i}.titleLine3`) ? t(`slides.${i}.titleLine3`) : '',
     description: t(`slides.${i}.description`),
     artType: i,
   }));
@@ -70,6 +71,12 @@ export default function HeroSection() {
             {slide.title}
             <br />
             {slide.titleLine2}
+            {slide.titleLine3 ? (
+              <>
+                <br />
+                {slide.titleLine3}
+              </>
+            ) : null}
           </h1>
           <p>{slide.description}</p>
           <div className="hero-actions">

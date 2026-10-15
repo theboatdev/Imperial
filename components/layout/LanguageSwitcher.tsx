@@ -60,6 +60,17 @@ export default function LanguageSwitcher() {
       >
         ZH
       </button>
+      <span className="lang-sep" aria-hidden="true">
+        /
+      </span>
+      <button
+        type="button"
+        className={locale === 'ru' ? 'active' : undefined}
+        onClick={() => switchLocale('ru')}
+        aria-pressed={locale === 'ru'}
+      >
+        RU
+      </button>
     </div>
   );
 }

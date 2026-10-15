@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Cairo, Noto_Sans_SC } from "next/font/google";
+import { Poppins, Cairo, Noto_Sans_SC, Rubik } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -29,6 +29,13 @@ const notoSansSC = Noto_Sans_SC({
   variable: "--font-noto-sc",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  display: "swap",
+});
+
+const rubik = Rubik({
+  variable: "--font-rubik",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -89,14 +96,20 @@ export default async function LocaleLayout({
   const isLoggedIn = Boolean(accessToken || idToken);
   const wishlistItems = await getWishlist();
   const isRtl = locale === "ar";
+  const bodyFontClass =
+    locale === "ar"
+      ? "font-arabic"
+      : locale === "ru"
+        ? "font-russian"
+        : undefined;
 
   return (
     <html
       lang={locale}
       dir={isRtl ? "rtl" : "ltr"}
-      className={`${poppins.variable} ${cairo.variable} ${notoSansSC.variable}`}
+      className={`${poppins.variable} ${cairo.variable} ${notoSansSC.variable} ${rubik.variable}`}
     >
-      <body className={isRtl ? "font-arabic" : undefined}>
+      <body className={bodyFontClass}>
         <NextIntlClientProvider messages={messages}>
           <CartProvider>
             <WishlistProvider
