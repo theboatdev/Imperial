@@ -208,13 +208,29 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Banner placeholder — between Feedback and Support */}
-      <div className="home-banner-placeholder" role="img" aria-label={t('bannerPlaceholderLabel')}>
-        <div className="home-banner-placeholder-inner">
-          <span className="home-banner-placeholder-kicker">{t('bannerPlaceholderKicker')}</span>
-          <span className="home-banner-placeholder-title">{t('bannerPlaceholderTitle')}</span>
-          <span className="home-banner-placeholder-hint">{t('bannerPlaceholderHint')}</span>
-        </div>
+      {/* Banner — between Feedback and Support */}
+      <div
+        style={{
+          position: 'relative',
+          borderRadius: 'var(--r-card)',
+          margin: '48px 28px',
+          boxShadow: 'var(--sh-lift)',
+          overflow: 'hidden',
+          minHeight: '500px',
+        }}
+      >
+        <img
+          src="/home2.webp"
+          alt={t('bannerPlaceholderLabel')}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
       </div>
 
       {/* 5. FAQ / Support */}
