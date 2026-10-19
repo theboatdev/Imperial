@@ -209,8 +209,8 @@
     "rewardsAlt": "Imperial Rewards Cards",
     "explore": "Explore",
     "shopByCategory": "Shop by project requirement",
-    "waterproofing": "Cements and Grouts",
-    "adhesives": "Building Materials",
+    "waterproofing": "Building Materials & Chemicals",
+    "adhesives": "Cements and Grouts",
     "sealants": "Paints and Equipments",
     "bonding": "Tools and Equipments",
     "feedback": "Feedback",
@@ -287,6 +287,7 @@
     "coverageCtaPrimary": "View UAE Service Areas",
     "coverageCtaSecondary": "Contact the Team",
     "coverageMapAlt": "Map of the UAE with pins for Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah",
+    "coverageLocate": "Locate",
 
     "brandsKicker": "Brands",
     "brandsTitle": "Shop established construction and industrial brands",

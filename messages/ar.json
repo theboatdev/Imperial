@@ -209,8 +209,8 @@
     "rewardsAlt": "بطاقات مكافآت إمبريال",
     "explore": "استكشف",
     "shopByCategory": "تسوق حسب احتياج المشروع",
-    "waterproofing": "الأسمنت والجراوت",
-    "adhesives": "مواد البناء",
+    "waterproofing": "مواد البناء والكيماويات",
+    "adhesives": "الأسمنت والجراوت",
     "sealants": "الدهانات والمعدات",
     "bonding": "الأدوات والمعدات",
     "feedback": "آراء",
@@ -287,6 +287,7 @@
     "coverageCtaPrimary": "عرض مناطق الخدمة في الإمارات",
     "coverageCtaSecondary": "تواصل مع الفريق",
     "coverageMapAlt": "خريطة الإمارات مع علامات لأبيظبي ودبي والشارقة وعجمان وأم القيوين ورأس الخيمة والفجيرة",
+    "coverageLocate": "الموقع",
 
     "brandsKicker": "العلامات",
     "brandsTitle": "تسوق علامات بناء وصناعة معتمدة",

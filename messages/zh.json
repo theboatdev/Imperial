@@ -209,8 +209,8 @@
     "rewardsAlt": "帝国积分卡",
     "explore": "探索",
     "shopByCategory": "按工程需求选购",
-    "waterproofing": "水泥与灌浆",
-    "adhesives": "建筑材料",
+    "waterproofing": "建筑材料与化学品",
+    "adhesives": "水泥与灌浆",
     "sealants": "涂料与设备",
     "bonding": "工具与设备",
     "feedback": "客户反馈",
@@ -287,6 +287,7 @@
     "coverageCtaPrimary": "查看阿联酋服务区域",
     "coverageCtaSecondary": "联系团队",
     "coverageMapAlt": "阿联酋地图，标注阿布扎比、迪拜、沙迦、阿治曼、乌姆盖万、拉斯海玛与富查伊拉",
+    "coverageLocate": "定位",
 
     "brandsKicker": "品牌",
     "brandsTitle": "选购成熟的建筑与工业品牌",

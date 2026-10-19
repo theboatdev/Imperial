@@ -253,14 +253,26 @@ export default async function HomeHandoverSections() {
           </div>
           <div className="home-coverage-map">
             <Image
-              src="/uae_map.jpeg"
+              src="/United Arab Emirates Cartographic Infographic.png"
               alt={t('coverageMapAlt')}
-              width={1162}
-              height={640}
-              sizes="(max-width: 820px) 280px, 280px"
+              width={1672}
+              height={941}
+              sizes="(max-width: 820px) 400px, 480px"
               className="home-coverage-map-img"
               unoptimized
             />
+            <a
+              href="https://maps.app.goo.gl/FUtnahfQ8fyU7M139?g_st=ic"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-coverage-locate"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+              <span>{t('coverageLocate')}</span>
+            </a>
           </div>
         </div>
       </section>
