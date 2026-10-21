@@ -141,7 +141,7 @@
     "productSpecialists": "Product Specialists",
     "documents": "Documents & Downloads",
     "technicalSupport": "Technical Support",
-    "email": "info@imperial.ae",
+    "email": "ime@ime-ae.com",
     "address": "M45, Mussafah, Abu Dhabi, UAE",
     "landline": "+971 2 644 2611",
     "whatsapp": "WhatsApp: +971 56 669 4324",
@@ -1435,7 +1435,7 @@
     "emailLabel": "Email",
     "email": "Email *",
     "hoursLabel": "Opening hours",
-    "hours": "Contact the team to confirm opening hours before visiting or collecting.",
+    "hours": "Monday to Sunday, 8:00 AM – 7:00 PM",
     "coverageLabel": "Service coverage",
     "coverage": "Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah and Fujairah",
     "formHeading": "Tell us what you need",
@@ -1472,7 +1472,7 @@
     "faqs": {
       "0": {
         "question": "Can I visit Imperial in Mussafah?",
-        "answer": "Yes. Contact the team before visiting to confirm opening hours, product availability, pack size and collection readiness."
+        "answer": "Yes. We are open Monday to Sunday, 8:00 AM to 7:00 PM. Contact the team before visiting to confirm product availability, pack size and collection readiness."
       },
       "1": {
         "question": "Can I contact Imperial through WhatsApp?",
@@ -1487,7 +1487,7 @@
         "answer": "Include the application, substrate, exposure, specification, required approval, preferred brand, quantity, location and relevant drawings or images."
       }
     },
-    "emailValue": "info@imperial.ae"
+    "emailValue": "ime@ime-ae.com"
   },
   "TradeAccount": {
     "breadcrumb": "Trade Account",

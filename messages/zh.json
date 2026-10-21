@@ -141,7 +141,7 @@
     "productSpecialists": "产品专家",
     "documents": "文档与下载",
     "technicalSupport": "技术支持",
-    "email": "info@imperial.ae",
+    "email": "ime@ime-ae.com",
     "address": "M45, Mussafah, Abu Dhabi, UAE",
     "landline": "+971 2 644 2611",
     "whatsapp": "WhatsApp: +971 56 669 4324",
@@ -1435,7 +1435,7 @@
     "emailLabel": "邮箱",
     "email": "邮箱 *",
     "hoursLabel": "营业时间",
-    "hours": "到访或自提前请联系团队确认营业时间。",
+    "hours": "周一至周日，上午 8:00 至晚上 7:00",
     "coverageLabel": "服务覆盖",
     "coverage": "阿布扎比、迪拜、沙迦、阿治曼、乌姆盖万、拉斯海玛和富查伊拉",
     "formHeading": "告诉我们您的需求",
@@ -1472,7 +1472,7 @@
     "faqs": {
       "0": {
         "question": "我可以拜访穆萨法的帝国吗？",
-        "answer": "可以。到访前请联系团队确认营业时间、产品库存、包装规格与自提准备情况。"
+        "answer": "可以。营业时间为周一至周日，上午 8:00 至晚上 7:00。到访前请联系团队确认产品库存、包装规格与自提准备情况。"
       },
       "1": {
         "question": "我可以通过 WhatsApp 联系帝国吗？",
@@ -1487,7 +1487,7 @@
         "answer": "请包含应用、基层、暴露条件、规格、所需批准、首选品牌、数量、地点以及相关图纸或图片。"
       }
     },
-    "emailValue": "info@imperial.ae"
+    "emailValue": "ime@ime-ae.com"
   },
   "TradeAccount": {
     "breadcrumb": "贸易账户",

@@ -617,7 +617,7 @@ export default function ProductDetailClient({ product }: { product: ShopifyProdu
                     <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6 }}>{t('docsDisclaimer')}</p>
                     <p style={{ marginTop: '10px' }}>
                       {t('docsContact')}{' '}
-                      <a href="mailto:info@imperial.ae" style={{ color: 'var(--imperial-blue)' }}>info@imperial.ae</a>
+                      <a href="mailto:ime@ime-ae.com" style={{ color: 'var(--imperial-blue)' }}>ime@ime-ae.com</a>
                       {' · '}
                       <a href="https://wa.me/971566694324" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--imperial-blue)' }}>
                         WhatsApp +971 56 669 4324

@@ -20,7 +20,7 @@ export default async function ContactUsPage() {
     { label: t('addressLabel'), value: t('address'), href: null },
     { label: t('landlineLabel'), value: t('landline'), href: 'tel:+97126442611' },
     { label: t('whatsappLabel'), value: t('whatsapp'), href: 'https://wa.me/971566694324' },
-    { label: t('emailLabel'), value: t('emailValue'), href: 'mailto:info@imperial.ae' },
+    { label: t('emailLabel'), value: t('emailValue'), href: `mailto:${t('emailValue')}` },
     { label: t('hoursLabel'), value: t('hours'), href: null },
     { label: t('coverageLabel'), value: t('coverage'), href: null },
   ] as const;

@@ -166,7 +166,7 @@ export default function HeaderClient({ collections, vendors = [] }: Props) {
       <div className="topbar">
         <div className="topbar-left">
           <span>{t('freeDelivery')}</span>
-          <span className="topbar-email">info@imperial.ae</span>
+          <span className="topbar-email">ime@ime-ae.com</span>
         </div>
         <div className="topbar-right">
           <div className="segment on-dark">
