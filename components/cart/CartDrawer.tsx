@@ -1,21 +1,21 @@
 'use client';
 
 import Image from 'next/image';
-import { Link } from '@/i18n/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useCartStore } from '@/lib/cart-store';
-import { formatPrice, isValidCheckoutUrl } from '@/lib/utils';
+import { formatPrice } from '@/lib/utils';
 import { useEffect, useRef, useState } from 'react';
 import { updateLineItemAction, removeLineItemAction } from '@/app/actions/cart';
 
 export default function CartDrawer() {
   const t = useTranslations('Cart');
+  const router = useRouter();
   const isOpen = useCartStore((s) => s.isOpen);
   const closeCart = useCartStore((s) => s.closeCart);
   const items = useCartStore((s) => s.items);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const removeItem = useCartStore((s) => s.removeItem);
-  const checkoutUrl = useCartStore((s) => s.checkoutUrl);
   const subtotal = useCartStore((s) => s.subtotal());
   const currency = useCartStore((s) => s.currency());
   const totalQuantity = useCartStore((s) => s.totalQuantity());
@@ -39,9 +39,8 @@ export default function CartDrawer() {
   }, [isOpen, closeCart]);
 
   const handleCheckout = () => {
-    if (checkoutUrl && isValidCheckoutUrl(checkoutUrl)) {
-      window.location.href = checkoutUrl;
-    }
+    closeCart();
+    router.push('/checkout');
   };
 
   // Increase quantity by 1

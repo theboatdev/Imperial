@@ -2,10 +2,10 @@
 
 import { useCartStore } from '@/lib/cart-store';
 import { useVatStore } from '@/lib/vat-store';
-import { formatPrice, isValidCheckoutUrl } from '@/lib/utils';
+import { formatPrice } from '@/lib/utils';
 import { updateLineItemAction, removeLineItemAction } from '@/app/actions/cart';
 import Image from 'next/image';
-import { Link } from '@/i18n/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useState, useEffect, useMemo, type SyntheticEvent } from 'react';
 import type { ShopifyProduct } from '@/lib/types';
@@ -13,10 +13,10 @@ import CompareTable from '@/components/compare/CompareTable';
 
 export default function CartPage() {
   const t = useTranslations('Cart');
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const items = useCartStore((s) => s.items);
   const cartId = useCartStore((s) => s.cartId);
-  const checkoutUrl = useCartStore((s) => s.checkoutUrl);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const removeItem = useCartStore((s) => s.removeItem);
   const syncFromApi = useCartStore((s) => s.syncFromApi);
@@ -148,9 +148,7 @@ export default function CartPage() {
   };
 
   const handleCheckout = () => {
-    if (checkoutUrl && isValidCheckoutUrl(checkoutUrl)) {
-      window.location.href = checkoutUrl;
-    }
+    router.push('/checkout');
   };
 
   const toggleSelect = (handle: string) => {
