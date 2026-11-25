@@ -220,7 +220,7 @@ export default async function HomePage() {
         }}
       >
         <img
-          src="/home2.webp"
+          src="/promaster-banner.webp"
           alt={t('bannerPlaceholderLabel')}
           style={{
             position: 'absolute',

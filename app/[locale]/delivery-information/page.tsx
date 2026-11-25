@@ -35,7 +35,7 @@ export default async function DeliveryInformationPage() {
               display: 'grid',
               gridTemplateColumns: 'minmax(240px, 0.9fr) minmax(0, 1.1fr)',
               gap: '28px',
-              alignItems: 'stretch',
+              alignItems: 'center',
               marginBottom: '48px',
             }}
             className="delivery-info-header"
@@ -43,7 +43,8 @@ export default async function DeliveryInformationPage() {
             <div
               style={{
                 position: 'relative',
-                minHeight: '300px',
+                width: '100%',
+                aspectRatio: '928 / 1000',
                 borderRadius: 'var(--r-panel)',
                 overflow: 'hidden',
                 boxShadow: 'var(--sh-soft)',
@@ -51,18 +52,19 @@ export default async function DeliveryInformationPage() {
               }}
             >
               <Image
-                src="/category-building-materials.webp"
+                src="/delivery-information.webp"
                 alt={t('title')}
                 fill
                 priority
                 sizes="(max-width: 900px) 100vw, 45vw"
-                style={{ objectFit: 'cover', objectPosition: 'center' }}
+                style={{ objectFit: 'contain', objectPosition: 'center' }}
               />
               <div
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(180deg, transparent 40%, rgba(7, 27, 70, 0.6) 100%)',
+                  background: 'linear-gradient(180deg, transparent 55%, rgba(7, 27, 70, 0.45) 100%)',
+                  pointerEvents: 'none',
                 }}
               />
               <div
