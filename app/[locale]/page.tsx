@@ -5,6 +5,7 @@ import { getAllProducts, getProductsByHandles } from '@/lib/shopify-api';
 import HeroSection from '@/components/home/HeroSection';
 import HomeHandoverSections, { HomeTrustStrip } from '@/components/home/HomeHandoverSections';
 import FaqSection from '@/components/home/FaqSection';
+import HomeBannerCarousel from '@/components/home/HomeBannerCarousel';
 import FeaturedTabs from '@/components/home/FeaturedTabs';
 import type { Metadata } from 'next';
 import type { ShopifyProduct } from '@/lib/types';
@@ -208,30 +209,8 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Banner — between Feedback and Support */}
-      <div
-        style={{
-          position: 'relative',
-          borderRadius: 'var(--r-card)',
-          margin: '48px 28px',
-          boxShadow: 'var(--sh-lift)',
-          overflow: 'hidden',
-          minHeight: '500px',
-        }}
-      >
-        <img
-          src="/promaster-banner.webp"
-          alt={t('bannerPlaceholderLabel')}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
-      </div>
+      {/* Banner carousel — between Feedback and Support */}
+      <HomeBannerCarousel />
 
       {/* 5. FAQ / Support */}
       <FaqSection />
